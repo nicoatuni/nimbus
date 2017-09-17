@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\dbc40e620d96a85d8e8a8c255ee66b9622ae2b01\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_403ebbb2e22d3525ba2c6aff4e9354cef7f4894c\classes.dex" />
+        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
+        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1219be91aa7683b8ae6d771ae482046ab2678c4e\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -18,15 +18,6 @@
         revision="26.0.1"
         sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
         <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8721e161ad09941a035a2a149518884dde88dd3b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Richard Aldrich\.android\build-cache\30eb34128b555665bf5048ca8652004a70480c49\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
-        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_815edafdcd353e17870581d977baad51521f3d2e\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -57,15 +48,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Richard Aldrich\.android\build-cache\8fb0151a511d9465575abbfb183b48a1bc7f8edc\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
-        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55dfccbebba76a1558a81650d041e244d853459d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -75,12 +57,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\0e92b8efff9e60baaca3edb3fa3e54013ddf66d3\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="a70a8f14f118e0642369d60966d70979eca4c746">
-        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5ed58e1ef241931d1d5159b0e9be23db785087dc\classes.dex" />
+        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
+        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6a06dd789c7894a26ad55b5507eccdceab6cf35e\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -90,6 +72,51 @@
         revision="26.0.1"
         sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
         <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d377cd25e95b24c150f518466e9628ddd6630b67\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\4bf98b25aac123bc6fb96fe7331b51d746938d44\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bfe3ecb4e2355a8b460e9d41b7b45bff85594335\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_403ebbb2e22d3525ba2c6aff4e9354cef7f4894c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\30eb34128b555665bf5048ca8652004a70480c49\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_815edafdcd353e17870581d977baad51521f3d2e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\8fb0151a511d9465575abbfb183b48a1bc7f8edc\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
+        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55dfccbebba76a1558a81650d041e244d853459d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d9c7cbeb218e427af546ae59a16442235571ee60">
+        <dex dex="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5ed58e1ef241931d1d5159b0e9be23db785087dc\classes.dex" />
     </item>
 
 </items>
