@@ -1,0 +1,257 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:3:5-28
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+application
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:5:5-24:19
+MERGED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\5a2b531a80a6141e4fd5d584c2ea23138c51b96c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\2c02a3b3058aa56e11f67b69def98a6e6c4c6fea\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\c4a3146c042cafb2d0db317ada74a8a934c42d7a\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\bf2549f7048f76aca228df74bade16165cd15501\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-auth:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\8fb0151a511d9465575abbfb183b48a1bc7f8edc\output\AndroidManifest.xml:19:5-20:19
+MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.firebase:firebase-core:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\ca0103f73658d0aeb320c92b3125f98f14eb2d5a\output\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:24:5-33:19
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:28:5-50:19
+MERGED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7973f89faac795d152beac66e0017cf05015c48c\output\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7cdef260dc2a0f376cf252742564b9d6be226b0f\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\30eb34128b555665bf5048ca8652004a70480c49\output\AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\07f1393e708bbdcfea22f057f103c9aa02caf616\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e145fcfca18239ce91d63699e3fec57972794512\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\bb50059f21c6c8186446fc6acc7053f716ffcb3d\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\ee163f572dc150bd9440336fee5b46366abfafc1\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\eca6d6dcca7ba55b59570a67480543edaa95bbfd\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\28b86375b6fa3494a46c406064d3af9f1dc0bf27\output\AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:10:9-35
+	android:roundIcon
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:11:9-40
+activity#nimbus.arcane.MainActivity
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:12:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:27-74
+activity#nimbus.arcane.StartActivity
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:19:9-51
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:19:19-48
+activity#nimbus.arcane.RegisterActivity
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:20:9-22:59
+	android:parentActivityName
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:22:13-56
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:21:13-45
+activity#nimbus.arcane.LoginActivity
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:9-60
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:19-48
+uses-sdk
+INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\5a2b531a80a6141e4fd5d584c2ea23138c51b96c\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\2c02a3b3058aa56e11f67b69def98a6e6c4c6fea\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\c4a3146c042cafb2d0db317ada74a8a934c42d7a\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\eb3ace0245ece387366f52301c2f3cadd4177f89\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\bf2549f7048f76aca228df74bade16165cd15501\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-auth:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\8fb0151a511d9465575abbfb183b48a1bc7f8edc\output\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-core:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\ca0103f73658d0aeb320c92b3125f98f14eb2d5a\output\AndroidManifest.xml:4:5-42
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7973f89faac795d152beac66e0017cf05015c48c\output\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7cdef260dc2a0f376cf252742564b9d6be226b0f\output\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\30eb34128b555665bf5048ca8652004a70480c49\output\AndroidManifest.xml:17:5-42
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\07f1393e708bbdcfea22f057f103c9aa02caf616\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e145fcfca18239ce91d63699e3fec57972794512\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\bb50059f21c6c8186446fc6acc7053f716ffcb3d\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\ee163f572dc150bd9440336fee5b46366abfafc1\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\eca6d6dcca7ba55b59570a67480543edaa95bbfd\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\28b86375b6fa3494a46c406064d3af9f1dc0bf27\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\5a2b531a80a6141e4fd5d584c2ea23138c51b96c\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\2c02a3b3058aa56e11f67b69def98a6e6c4c6fea\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\c4a3146c042cafb2d0db317ada74a8a934c42d7a\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\eb3ace0245ece387366f52301c2f3cadd4177f89\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\bf2549f7048f76aca228df74bade16165cd15501\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\07f1393e708bbdcfea22f057f103c9aa02caf616\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e145fcfca18239ce91d63699e3fec57972794512\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\bb50059f21c6c8186446fc6acc7053f716ffcb3d\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\ee163f572dc150bd9440336fee5b46366abfafc1\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\eca6d6dcca7ba55b59570a67480543edaa95bbfd\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\28b86375b6fa3494a46c406064d3af9f1dc0bf27\output\AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:26:9-47
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:19:19-85
+uses-permission#android.permission.INTERNET
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:20:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:21:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:21:5-67
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:22:22-65
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:27:162-184
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:27:17-104
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:32:16-87
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:22:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:24:17-71
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:26:22-76
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:30:9-36:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:30:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:30:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:30:19-84
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:31:13-35:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:32:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:32:25-78
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:33:17-85
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:33:25-83
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:34:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:34:27-58
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:40:9-119
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:40:93-117
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:40:19-92
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:44:9-48:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:44:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:44:18-82
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:45:13-47:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:45:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:46:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\c9a66ca4e82f471673c94d85a0a24bfe38bddc55\output\AndroidManifest.xml:46:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7973f89faac795d152beac66e0017cf05015c48c\output\AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7973f89faac795d152beac66e0017cf05015c48c\output\AndroidManifest.xml:6:19-78
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7973f89faac795d152beac66e0017cf05015c48c\output\AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7973f89faac795d152beac66e0017cf05015c48c\output\AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\7973f89faac795d152beac66e0017cf05015c48c\output\AndroidManifest.xml:6:79-143
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\30eb34128b555665bf5048ca8652004a70480c49\output\AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\30eb34128b555665bf5048ca8652004a70480c49\output\AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\30eb34128b555665bf5048ca8652004a70480c49\output\AndroidManifest.xml:20:20-65
