@@ -6,22 +6,22 @@
     density="560dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1505549897484"
+    timestamp="1505627801895"
     token="4366575899248907817"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="458" />
+        duration="687" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="23" />
+        duration="37" />
     <task
         name="verifier"
-        duration="8" />
+        duration="10" />
 
     <artifact
         location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
@@ -76,13 +76,7 @@
         timestamp="1505543843357"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -90,10 +84,10 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1505548598444"
+        timestamp="1505627284120"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -101,10 +95,16 @@
         <artifact
             location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
+        <artifact
+            location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1505549832178"
+        timestamp="1505627446298"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\outputs\apk\app-debug.apk"
@@ -112,7 +112,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1505549897484"
+        timestamp="1505627801895"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"

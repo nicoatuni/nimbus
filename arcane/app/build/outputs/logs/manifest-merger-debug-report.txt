@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:1-26:12
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:1-27:12
 	package
 		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:3:5-28
 		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\Andr
 		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
 application
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:5:5-24:19
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:5:5-25:19
 MERGED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\5a2b531a80a6141e4fd5d584c2ea23138c51b96c\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\2c02a3b3058aa56e11f67b69def98a6e6c4c6fea\output\AndroidManifest.xml:26:5-20
@@ -23,6 +23,7 @@ MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Richard Aldr
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-auth:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\8fb0151a511d9465575abbfb183b48a1bc7f8edc\output\AndroidManifest.xml:19:5-20:19
 MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:18:5-20:19
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Richard Aldrich\.android\build-cache\4bf98b25aac123bc6fb96fe7331b51d746938d44\output\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-core:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\ca0103f73658d0aeb320c92b3125f98f14eb2d5a\output\AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:24:5-33:19
 MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:24:5-28:19
@@ -73,9 +74,13 @@ ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:21:13-45
 activity#nimbus.arcane.LoginActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:9-60
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:9-51
 	android:name
 		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:19-48
+activity#nimbus.arcane.SettingsActivity
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:24:9-63
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:24:19-51
 uses-sdk
 INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:26.0.0-alpha1] C:\Users\Richard Aldrich\.android\build-cache\e482f1d250de1e250b7090860bab1f5b7da9efa9\output\AndroidManifest.xml:21:5-23:62
@@ -87,6 +92,9 @@ MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Richard Aldr
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-auth:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\8fb0151a511d9465575abbfb183b48a1bc7f8edc\output\AndroidManifest.xml:17:5-42
 MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\58b3ba100d6d6f8a57212060c282efc488e7fe47\output\AndroidManifest.xml:17:5-42
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Richard Aldrich\.android\build-cache\4bf98b25aac123bc6fb96fe7331b51d746938d44\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-database:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\dbc40e620d96a85d8e8a8c255ee66b9622ae2b01\output\AndroidManifest.xml:3:5-42
+MERGED from [com.google.firebase:firebase-database-connection:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\0e92b8efff9e60baaca3edb3fa3e54013ddf66d3\output\AndroidManifest.xml:3:5-42
 MERGED from [com.google.firebase:firebase-core:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\ca0103f73658d0aeb320c92b3125f98f14eb2d5a\output\AndroidManifest.xml:4:5-42
 MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:17:5-42
 MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:17:5-42

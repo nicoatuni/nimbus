@@ -41,6 +41,7 @@
             android:name="nimbus.arcane.RegisterActivity"
             android:parentActivityName="nimbus.arcane.StartActivity" />
         <activity android:name="nimbus.arcane.LoginActivity" />
+        <activity android:name="nimbus.arcane.SettingsActivity" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
