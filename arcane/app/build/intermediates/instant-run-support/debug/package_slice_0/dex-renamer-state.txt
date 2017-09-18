@@ -1,4 +1,4 @@
-#Sun Sep 17 15:48:16 AEST 2017
+#Mon Sep 18 19:09:23 AEST 2017
 base.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_0
 renamed.0=classes.dex
 file.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_0\\classes.dex

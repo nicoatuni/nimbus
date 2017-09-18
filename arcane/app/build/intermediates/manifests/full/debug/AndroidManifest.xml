@@ -6,11 +6,15 @@
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="26" />
+        android:targetSdkVersion="25" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <meta-data
         android:name="android.support.VERSION"
-        android:value="26.0.0-alpha1" /> <!-- Required permission for App measurement to run. -->
+        android:value="25.3.1" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -23,6 +27,7 @@
     <uses-permission android:name="nimbus.arcane.permission.C2D_MESSAGE" />
 
     <application
+        android:name="nimbus.arcane.arcane"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -43,9 +48,23 @@
         <activity android:name="nimbus.arcane.LoginActivity" />
         <activity android:name="nimbus.arcane.SettingsActivity" />
         <activity
+            android:name="nimbus.arcane.StatusActivity"
+            android:parentActivityName="nimbus.arcane.SettingsActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name="nimbus.arcane.UsersActivity"
+            android:parentActivityName="nimbus.arcane.MainActivity" />
+        <activity android:name="nimbus.arcane.ProfileActivity" />
+        <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
@@ -101,10 +120,6 @@
             android:authorities="nimbus.arcane.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" />
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

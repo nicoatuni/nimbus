@@ -631,6 +631,19 @@
             
             <flag name="all" value="0x77"/>
         </attr></declare-styleable>
+    <declare-styleable name="CropImageView"><attr name="cropGuidelines">
+            <enum name="off" value="0"/>
+            <enum name="onTouch" value="1"/>
+            <enum name="on" value="2"/>
+        </attr><attr name="cropScaleType">
+            <enum name="fitCenter" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="centerCrop" value="2"/>
+            <enum name="centerInside" value="3"/>
+        </attr><attr name="cropShape">
+            <enum name="rectangle" value="0"/>
+            <enum name="oval" value="1"/>
+        </attr><attr format="boolean" name="cropAutoZoomEnabled"/><attr format="integer" name="cropMaxZoom"/><attr format="boolean" name="cropMultiTouchEnabled"/><attr format="boolean" name="cropFixAspectRatio"/><attr format="integer" name="cropAspectRatioX"/><attr format="integer" name="cropAspectRatioY"/><attr format="float" name="cropInitialCropWindowPaddingRatio"/><attr format="dimension" name="cropBorderLineThickness"/><attr format="color" name="cropBorderLineColor"/><attr format="dimension" name="cropBorderCornerThickness"/><attr format="dimension" name="cropBorderCornerOffset"/><attr format="dimension" name="cropBorderCornerLength"/><attr format="color" name="cropBorderCornerColor"/><attr format="dimension" name="cropGuidelinesThickness"/><attr format="color" name="cropGuidelinesColor"/><attr format="color" name="cropBackgroundColor"/><attr format="dimension" name="cropSnapRadius"/><attr format="dimension" name="cropTouchRadius"/><attr format="boolean" name="cropSaveBitmapToInstanceState"/><attr format="boolean" name="cropShowCropOverlay"/><attr format="boolean" name="cropShowProgressBar"/><attr format="dimension" name="cropMinCropWindowWidth"/><attr format="dimension" name="cropMinCropWindowHeight"/><attr format="float" name="cropMinCropResultWidthPX"/><attr format="float" name="cropMinCropResultHeightPX"/><attr format="float" name="cropMaxCropResultWidthPX"/><attr format="float" name="cropMaxCropResultHeightPX"/><attr format="boolean" name="cropFlipHorizontally"/><attr format="boolean" name="cropFlipVertically"/></declare-styleable>
     <declare-styleable name="DesignTheme"><attr format="reference" name="bottomSheetDialogTheme"/><attr format="reference" name="bottomSheetStyle"/><attr format="color" name="textColorError"/></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="arrowHeadLength"/><attr format="dimension" name="arrowShaftLength"/><attr format="dimension" name="barLength"/><attr format="dimension" name="thickness"/></declare-styleable>
     <declare-styleable name="FloatingActionButton"><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize">
@@ -672,13 +685,13 @@
             <flag name="withText" value="4"/>
             
             <flag name="collapseActionView" value="8"/>
-        </attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/><attr format="string" name="contentDescription"/><attr format="string" name="tooltipText"/></declare-styleable>
+        </attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/></declare-styleable>
     <declare-styleable name="MenuView"><attr name="android:itemTextAppearance"/><attr name="android:horizontalDivider"/><attr name="android:verticalDivider"/><attr name="android:headerBackground"/><attr name="android:itemBackground"/><attr name="android:windowAnimationStyle"/><attr name="android:itemIconDisabledAlpha"/><attr format="boolean" name="preserveIconSpacing"/><attr format="reference" name="subMenuArrow"/></declare-styleable>
     <declare-styleable name="NavigationView"><attr name="android:background"/><attr name="android:fitsSystemWindows"/><attr name="android:maxWidth"/><attr name="elevation"/><attr format="reference" name="menu"/><attr format="color" name="itemIconTint"/><attr format="color" name="itemTextColor"/><attr format="reference" name="itemBackground"/><attr format="reference" name="itemTextAppearance"/><attr format="reference" name="headerLayout"/></declare-styleable>
     <declare-styleable name="PopupWindow"><attr format="boolean" name="overlapAnchor"/><attr name="android:popupBackground"/><attr name="android:popupAnimationStyle"/></declare-styleable>
     <declare-styleable name="PopupWindowBackgroundState"><attr format="boolean" name="state_above_anchor"/></declare-styleable>
     <declare-styleable name="RecycleListView"><attr format="dimension" name="paddingBottomNoButtons"/><attr format="dimension" name="paddingTopNoTitle"/></declare-styleable>
-    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/><attr format="boolean" name="fastScrollEnabled"/><attr format="reference" name="fastScrollVerticalThumbDrawable"/><attr format="reference" name="fastScrollVerticalTrackDrawable"/><attr format="reference" name="fastScrollHorizontalThumbDrawable"/><attr format="reference" name="fastScrollHorizontalTrackDrawable"/></declare-styleable>
+    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/></declare-styleable>
     <declare-styleable name="ScrimInsetsFrameLayout"><attr format="color|reference" name="insetForeground"/></declare-styleable>
     <declare-styleable name="ScrollingViewBehavior_Layout"><attr format="dimension" name="behavior_overlapTop"/></declare-styleable>
     <declare-styleable name="SearchView"><attr format="reference" name="layout"/><attr format="boolean" name="iconifiedByDefault"/><attr name="android:maxWidth"/><attr format="string" name="queryHint"/><attr format="string" name="defaultQueryHint"/><attr name="android:imeOptions"/><attr name="android:inputType"/><attr format="reference" name="closeIcon"/><attr format="reference" name="goIcon"/><attr format="reference" name="searchIcon"/><attr format="reference" name="searchHintIcon"/><attr format="reference" name="voiceIcon"/><attr format="reference" name="commitIcon"/><attr format="reference" name="suggestionRowLayout"/><attr format="reference" name="queryBackground"/><attr format="reference" name="submitBackground"/><attr name="android:focusable"/></declare-styleable>
@@ -884,9 +897,6 @@
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="fastscroll_default_thickness">8dp</dimen>
-    <dimen name="fastscroll_margin">0dp</dimen>
-    <dimen name="fastscroll_minimum_range">50dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
@@ -927,6 +937,7 @@
     <dimen name="space_small">8dp</dimen>
     <dimen name="user_icon_height">36dp</dimen>
     <dimen name="user_icon_width">36dp</dimen>
+    <item name="crop_image_menu_crop" type="drawable">@drawable/crop_image_menu_crop_stub</item>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
     <item name="action_bar_activity_content" type="id"/>
@@ -941,7 +952,6 @@
     <item name="textinput_counter" type="id"/>
     <item name="textinput_error" type="id"/>
     <item name="transition_current_scene" type="id"/>
-    <item name="transition_layout_save" type="id"/>
     <item name="transition_scene_layoutid_cache" type="id"/>
     <item name="up" type="id"/>
     <item name="view_offset_helper" type="id"/>
@@ -1007,6 +1017,13 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="crop_image_activity_title"/>
+    <string name="crop_image_menu_crop">Crop</string>
+    <string name="crop_image_menu_flip">Flip</string>
+    <string name="crop_image_menu_flip_horizontally">Flip horizontally</string>
+    <string name="crop_image_menu_flip_vertically">Flip vertically</string>
+    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+    <string name="crop_image_menu_rotate_right">Rotate</string>
     <string name="default_web_client_id" translatable="false">361391464892-n0p9nucr740jdcf4rua937u57ecgjc6k.apps.googleusercontent.com</string>
     <string name="firebase_database_url" translatable="false">https://arcane-45638.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">361391464892</string>
@@ -1020,6 +1037,7 @@
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="pick_image_intent_chooser_title">Select source</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
