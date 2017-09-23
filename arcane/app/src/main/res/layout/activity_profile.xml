@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nimbus.arcane.ProfileActivity">
+
+    <ImageView
+        android:id="@+id/profile_display_image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/default_avatar" />
+
+    <TextView
+        android:id="@+id/profile_display_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/profile_display_image"
+        android:layout_marginTop="30dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:text="Display Name" />
+
+    <TextView
+        android:id="@+id/profile_display_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/profile_display_name"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:text="Current User Status" />
+
+    <TextView
+        android:id="@+id/profile_display_friends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/profile_request_btn"
+        android:textSize="16dp"
+        android:text="Total Friends" />
+
+    <Button
+        android:id="@+id/profile_request_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="SEND FRIEND REQUEST"
+        android:layout_above="@+id/profile_decline_btn"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/profile_decline_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="DECLINE FRIEND REQUEST"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
