@@ -1,7 +1,4 @@
-#Mon Sep 18 20:05:24 AEST 2017
-base.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_5ed58e1ef241931d1d5159b0e9be23db785087dc
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_403ebbb2e22d3525ba2c6aff4e9354cef7f4894c\\classes.dex
-base.1=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_403ebbb2e22d3525ba2c6aff4e9354cef7f4894c
-file.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_5ed58e1ef241931d1d5159b0e9be23db785087dc\\classes.dex
+#Sat Sep 23 21:32:26 AEST 2017
+base.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

@@ -80,16 +80,16 @@
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\58b3ba100d6d6f8a57212060c282efc488e7fe47\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\color\\design_tint_password_toggle.xml"
+    },
+    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\color\\design_tint_password_toggle.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",

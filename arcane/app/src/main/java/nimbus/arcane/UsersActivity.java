@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -25,6 +28,8 @@ public class UsersActivity extends AppCompatActivity {
     private RecyclerView mUsersList;
 
     private DatabaseReference mUsersDatabase;
+
+    private FirebaseUser mCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +47,19 @@ public class UsersActivity extends AppCompatActivity {
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        if (mCurrentUser != null) {
+
+            mUsersDatabase.child(mCurrentUser.getUid()).child("online").setValue("true");
+
+        }
 
         FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
                 Users.class, R.layout.users_single_layout, UsersViewHolder.class, mUsersDatabase) {
@@ -76,7 +89,7 @@ public class UsersActivity extends AppCompatActivity {
 
     }
 
-    private static class UsersViewHolder extends RecyclerView.ViewHolder {
+    public static class UsersViewHolder extends RecyclerView.ViewHolder {
 
         View mView;
 
@@ -108,4 +121,5 @@ public class UsersActivity extends AppCompatActivity {
 
         }
     }
+
 }

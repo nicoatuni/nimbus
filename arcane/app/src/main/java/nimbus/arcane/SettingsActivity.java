@@ -201,8 +201,8 @@ public class SettingsActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
 
-                            @SuppressWarnings("VisibleForTests") final
-                            String download_url = task.getResult().getDownloadUrl().toString();
+                            @SuppressWarnings("VisibleForTests")
+                            final String download_url = task.getResult().getDownloadUrl().toString();
 
                             UploadTask uploadTask = thumb_file_path.putBytes(thumb_byte);
                             uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -256,6 +256,17 @@ public class SettingsActivity extends AppCompatActivity {
                 Exception error = result.getError();
 
             }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mCurrentUser != null) {
+
+            mUserDatabase.child("online").setValue("true");
+
         }
     }
 }

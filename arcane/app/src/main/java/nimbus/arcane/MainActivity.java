@@ -12,6 +12,9 @@ import android.widget.TableLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,12 +26,24 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout mTabLayout;
 
+    private DatabaseReference mUserRef;
+
+    private FirebaseUser mCurrentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
+//        if (mCurrentUser != null) {
+//
+//            mUserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
+//
+//        }
+        mUserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
+
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
@@ -55,6 +70,24 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser == null) {
 
             send_to_start();
+
+        } else {
+
+            mUserRef.child("online").setValue("true");
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        // check if user is signed in (non-null) and update UI accordingly
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+
+//            mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
+//            mUserRef.child("online").setValue("false");
 
         }
     }
@@ -97,8 +130,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void send_to_start() {
+
         Intent startIntent = new Intent(MainActivity.this, StartActivity.class);
         startActivity(startIntent);
         finish();
+
     }
 }

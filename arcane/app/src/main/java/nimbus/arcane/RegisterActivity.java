@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
 
@@ -106,62 +107,66 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void register_user(final String display_name, String email, String password) {
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        // If sign in succeeds move to the main activity. If sign in fails, display
-                        // a message to the user.
-                        if (task.isSuccessful()) {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                // If sign in succeeds move to the main activity. If sign in fails, display
+                // a message to the user.
+                if (task.isSuccessful()) {
 
-                            FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
-                            String uid = current_user.getUid();
+                    FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = current_user.getUid();
+                    String deviceToken = FirebaseInstanceId.getInstance().getToken();
 
-                            mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
 
-                            HashMap<String, String> userMap = new HashMap<String, String>();
-                            userMap.put("name", display_name);
-                            userMap.put("status", "Hi there, I'm using ARCANE App !");
-                            userMap.put("image", "default");
-                            userMap.put("thumb_image", "default");
+                    HashMap<String, String> userMap = new HashMap<String, String>();
+                    userMap.put("name", display_name);
+                    userMap.put("status", "Hi there, I'm using ARCANE App !");
+                    userMap.put("image", "default");
+                    userMap.put("thumb_image", "default");
+                    userMap.put("device_token", deviceToken);
+                    userMap.put("last_seen", "");
+                    userMap.put("online", "false");
 
-                            mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                    mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
 
-                                    if (task.isSuccessful()) {
-                                        mRegProgress.dismiss();
+                            if (task.isSuccessful()) {
+                                mRegProgress.dismiss();
 
-                                        Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(mainIntent);
-                                        finish();
-                                    }
-                                }
-                            });
+                                Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(mainIntent);
+                                finish();
 
-                        } else {
+                            }
+                        }
+                    });
 
-                            mRegProgress.hide();
+                } else {
+
+                    mRegProgress.hide();
 //                            Toast.makeText(RegisterActivity.this, "Cannot Sign in. Please check the form and try again", Toast.LENGTH_LONG).show();
 
-                            String error = "";
-                            try {
-                                throw task.getException();
-                            } catch (FirebaseAuthWeakPasswordException e) {
-                                error = "Weak Password!";
-                            } catch (FirebaseAuthInvalidCredentialsException e) {
-                                error = "Invalid Email!";
-                            } catch (FirebaseAuthUserCollisionException e) {
-                                error = "Existing Account!";
-                            } catch (Exception e) {
-                                error = "Unknown Error!";
-                                e.printStackTrace();
-                            }
-                            Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_LONG).show();
-
-                        }
+                    String error = "";
+                    try {
+                        throw task.getException();
+                    } catch (FirebaseAuthWeakPasswordException e) {
+                        error = "Weak Password!";
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        error = "Invalid Email!";
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        error = "Existing Account!";
+                    } catch (Exception e) {
+                        error = "Unknown Error!";
+                        e.printStackTrace();
                     }
-                });
+                    Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
     }
 }

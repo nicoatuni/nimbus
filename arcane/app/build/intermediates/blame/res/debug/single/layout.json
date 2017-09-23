@@ -32,20 +32,20 @@
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\layout\\design_layout_snackbar.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\layout\\design_bottom_navigation_item.xml"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_users.xml",
         "source": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\src\\main\\res\\layout\\activity_users.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
@@ -112,12 +112,12 @@
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
@@ -172,32 +172,32 @@
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\crop_image_activity.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\23ce72b5876073739ade3317d316b2ccb248b153\\output\\res\\layout\\crop_image_activity.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\notification_template_media_custom.xml"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
         "source": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_expanded_menu_layout.xml"
-    },
-    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
@@ -206,6 +206,10 @@
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\message_single_layout.xml",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\src\\main\\res\\layout\\message_single_layout.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
@@ -222,6 +226,10 @@
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\chat_custom_bar.xml",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\src\\main\\res\\layout\\chat_custom_bar.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
@@ -254,6 +262,10 @@
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\\output\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chat.xml",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\src\\main\\res\\layout\\activity_chat.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
