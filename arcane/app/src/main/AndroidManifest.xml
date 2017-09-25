@@ -53,14 +53,14 @@
         </activity>
         <activity
             android:name=".ChatActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".GroupChatActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".GroupProfileActivity"
-            android:parentActivityName=".GroupChatActivity">
-        </activity>
+            android:parentActivityName=".GroupChatActivity"></activity>
+        <activity android:name=".CreateGroupActivity"></activity>
     </application>
 
 </manifest>

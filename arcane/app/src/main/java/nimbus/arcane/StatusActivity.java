@@ -28,7 +28,9 @@ public class StatusActivity extends AppCompatActivity {
     private Button mSavebtn;
 
     // Firebase
+    private DatabaseReference mRootRef;
     private DatabaseReference mStatusDatabase;
+    private DatabaseReference mGroupDatabase;
     private FirebaseUser mCurrentUser;
 
     // Progress Dialog
@@ -43,7 +45,9 @@ public class StatusActivity extends AppCompatActivity {
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         String current_uid = mCurrentUser.getUid();
 
-        mStatusDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+        mStatusDatabase = mRootRef.child("Users").child(current_uid);
+        mGroupDatabase = mRootRef.child("Groups");
 
         // Progress Dialog
         mProgressDialog = new ProgressDialog(this);
@@ -54,6 +58,7 @@ public class StatusActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String status_value = getIntent().getStringExtra("status_value");
+        final String database_used = getIntent().getStringExtra("database");
 
         mStatus = (TextInputLayout) findViewById(R.id.status_input);
         mStatus.getEditText().setText(status_value);
@@ -71,25 +76,49 @@ public class StatusActivity extends AppCompatActivity {
 
                 String status = mStatus.getEditText().getText().toString();
 
-                mStatusDatabase.child("status").setValue(status).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                if (database_used.equals("user")) {
+                    mStatusDatabase.child("status").setValue(status).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
 
-                        if (task.isSuccessful()) {
+                            if (task.isSuccessful()) {
 
-                            mProgressDialog.dismiss();
+                                mProgressDialog.dismiss();
 
-                            Intent settingsIntent = new Intent(StatusActivity.this, SettingsActivity.class);
-                            startActivity(settingsIntent);
-                            finish();
+                                Intent settingsIntent = new Intent(StatusActivity.this, SettingsActivity.class);
+                                startActivity(settingsIntent);
+                                finish();
 
-                        } else {
+                            } else {
 
-                            Toast.makeText(getApplicationContext(), "There was some error in saving Changes", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "There was some error in saving Changes", Toast.LENGTH_LONG).show();
 
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
+                if (database_used.equals("group")) {
+                    mGroupDatabase.child("status").setValue(status).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if (task.isSuccessful()) {
+
+                                mProgressDialog.dismiss();
+
+                                Intent groupProfileIntent = new Intent(StatusActivity.this, GroupProfileActivity.class);
+                                startActivity(groupProfileIntent);
+                                finish();
+
+                            } else {
+
+                                Toast.makeText(getApplicationContext(), "There was some error in saving Changes", Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+                    });
+                }
             }
         });
     }

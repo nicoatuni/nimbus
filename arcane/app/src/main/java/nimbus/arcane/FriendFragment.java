@@ -1,6 +1,7 @@
 package nimbus.arcane;
 
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,6 +51,10 @@ public class FriendFragment extends Fragment {
 
     private View mMainView;
 
+    private boolean state;
+    private final boolean NO_GROUP = false;
+    private final boolean GROUP = true;
+
     public FriendFragment() {
         // Required empty public constructor
     }
@@ -70,6 +76,8 @@ public class FriendFragment extends Fragment {
         mFriendsDatabase.keepSynced(true);
         mUsersDatabase = mRootRef.child("Users");
         mUsersDatabase.keepSynced(true);
+
+        state = NO_GROUP;
 
         mFriendsList.setHasFixedSize(true);
         mFriendsList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -140,9 +148,8 @@ public class FriendFragment extends Fragment {
 
                                         if (i == 2) {
 
-                                            addToGroup(list_user_id, mCurrentUserID);
-//                                            Intent groupIntent = new Intent(getContext(), GroupChatActivity.class);
-//                                            startActivity(groupIntent);
+                                            addToGroup(list_user_id);
+
 
                                         }
                                     }
@@ -167,11 +174,11 @@ public class FriendFragment extends Fragment {
 
     }
 
-    public void addToGroup(String user_id, String current_user_id) {
+    public void addToGroup(String user_id) {
+
 
         Map friendsMap = new HashMap();
         friendsMap.put("Groups/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
-        friendsMap.put("Groups/Members/" + current_user_id + "/date", ServerValue.TIMESTAMP);
 
         mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
             @Override
@@ -190,6 +197,54 @@ public class FriendFragment extends Fragment {
                 }
             }
         });
+
+//        final String user_key = user_id;
+//
+//        mRootRef.child("Groups").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if (!(dataSnapshot.child("Friends").hasChild(user_key)) && !state) {
+//
+//                    state = GROUP;
+//
+//                    Map friendsMap = new HashMap();
+//                    friendsMap.put("Groups/Members/" + user_key + "/date", ServerValue.TIMESTAMP);
+//
+//                    mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
+//                        @Override
+//                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+//
+//                            if (databaseError == null) {
+//
+//                                Toast.makeText(getContext(), "Friend added to group", Toast.LENGTH_LONG).show();
+//
+//                            } else {
+//
+//                                String error = databaseError.getMessage();
+//
+//                                Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+//
+//                            }
+//                        }
+//                    });
+//                } else if (dataSnapshot.child("Friends").hasChild(user_key)) {
+//
+//                    Toast.makeText(getContext(), "Friend already in group", Toast.LENGTH_LONG).show();
+//
+//                } else {
+//
+//                    Toast.makeText(getContext(), "No Group Exists", Toast.LENGTH_LONG).show();
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     public static class FriendsViewHolder extends RecyclerView.ViewHolder {

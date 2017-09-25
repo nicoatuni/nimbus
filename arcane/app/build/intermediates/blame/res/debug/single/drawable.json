@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\58b3ba100d6d6f8a57212060c282efc488e7fe47\\output\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_btn_radio_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
@@ -28,12 +28,12 @@
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\58b3ba100d6d6f8a57212060c282efc488e7fe47\\output\\res\\drawable\\common_google_signin_btn_icon_light.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_ratingbar_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_ratingbar_material.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
@@ -60,24 +60,24 @@
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_switch_thumb_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\58b3ba100d6d6f8a57212060c282efc488e7fe47\\output\\res\\drawable\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
         "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
+        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\abe1af01b55a9448b8f3eb0b44acc0d27d440399\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_dark_focused.xml",

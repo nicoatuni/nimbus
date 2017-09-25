@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.main_group_btn) {
 
-            Intent groupIntent = new Intent(MainActivity.this, GroupProfileActivity.class);
+            Intent groupIntent = new Intent(MainActivity.this, CreateGroupActivity.class);
             startActivity(groupIntent);
 
         }

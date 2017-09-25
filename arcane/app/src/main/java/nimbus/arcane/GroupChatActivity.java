@@ -156,7 +156,7 @@ public class GroupChatActivity extends AppCompatActivity {
             messageMap.put("from", mCurrentUserId);
 
             Map messageUserMap = new HashMap();
-            messageUserMap.put("Groups/Chats" + push_id, messageMap);
+            messageUserMap.put("Groups/Chats/" + push_id, messageMap);
 
             mChatMessageView.setText("");
 

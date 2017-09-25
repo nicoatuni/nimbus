@@ -133,6 +133,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                 Intent statusIntent = new Intent(SettingsActivity.this, StatusActivity.class);
                 statusIntent.putExtra("status_value", status_value);
+                statusIntent.putExtra("database", "user");
                 startActivity(statusIntent);
 
             }
