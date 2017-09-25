@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,8 +23,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -52,6 +57,7 @@ public class FriendFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // Inflate the layout for this fragment
         mMainView = inflater.inflate(R.layout.fragment_friend, container, false);
 
         mFriendsList = (RecyclerView) mMainView.findViewById(R.id.friends_list);
@@ -68,7 +74,6 @@ public class FriendFragment extends Fragment {
         mFriendsList.setHasFixedSize(true);
         mFriendsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Inflate the layout for this fragment
         return mMainView;
     }
 
@@ -106,7 +111,7 @@ public class FriendFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
 
-                                CharSequence options[] = new CharSequence[]{"Open Profile", "Send Message"};
+                                CharSequence options[] = new CharSequence[]{"Open Profile", "Send Message", "Add to Group"};
 
                                 final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
@@ -132,6 +137,14 @@ public class FriendFragment extends Fragment {
                                             startActivity(chatIntent);
 
                                         }
+
+                                        if (i == 2) {
+
+                                            addToGroup(list_user_id, mCurrentUserID);
+//                                            Intent groupIntent = new Intent(getContext(), GroupChatActivity.class);
+//                                            startActivity(groupIntent);
+
+                                        }
                                     }
                                 });
 
@@ -152,6 +165,31 @@ public class FriendFragment extends Fragment {
 
         mFriendsList.setAdapter(friendsRecyclerViewAdapter);
 
+    }
+
+    public void addToGroup(String user_id, String current_user_id) {
+
+        Map friendsMap = new HashMap();
+        friendsMap.put("Groups/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
+        friendsMap.put("Groups/Members/" + current_user_id + "/date", ServerValue.TIMESTAMP);
+
+        mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+                if (databaseError == null) {
+
+                    Toast.makeText(getContext(), "Friend added to group", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    String error = databaseError.getMessage();
+
+                    Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 
     public static class FriendsViewHolder extends RecyclerView.ViewHolder {

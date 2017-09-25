@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/chat_app_bar"
         android:layout_above="@+id/chat_linear_layout"
-        android:id="@+id/chat_message_list">
+        android:id="@+id/chat_message_list" >
     </android.support.v7.widget.RecyclerView>
 
     <LinearLayout

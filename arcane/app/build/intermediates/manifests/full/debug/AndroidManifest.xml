@@ -74,7 +74,13 @@
         </activity>
         <activity
             android:name="nimbus.arcane.ChatActivity"
-            android:parentActivityName="nimbus.arcane.MainActivity" >
+            android:parentActivityName="nimbus.arcane.MainActivity" />
+        <activity
+            android:name="nimbus.arcane.GroupChatActivity"
+            android:parentActivityName="nimbus.arcane.MainActivity" />
+        <activity
+            android:name="nimbus.arcane.GroupProfileActivity"
+            android:parentActivityName="nimbus.arcane.GroupChatActivity" >
         </activity>
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"

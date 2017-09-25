@@ -1,6 +1,7 @@
 package nimbus.arcane;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +10,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
 
     private DatabaseReference mUserRef;
+    private DatabaseReference mRootRef;
 
     private FirebaseUser mCurrentUser;
 
@@ -42,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
 //            mUserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
 //
 //        }
-        mUserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
-
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+        mUserRef = mRootRef.child("Users").child(mCurrentUser.getUid());
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
@@ -123,6 +132,13 @@ public class MainActivity extends AppCompatActivity {
 
             Intent usersIntent = new Intent(MainActivity.this, UsersActivity.class);
             startActivity(usersIntent);
+
+        }
+
+        if (item.getItemId() == R.id.main_group_btn) {
+
+            Intent groupIntent = new Intent(MainActivity.this, GroupProfileActivity.class);
+            startActivity(groupIntent);
 
         }
 
