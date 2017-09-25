@@ -1,28 +1,28 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:1-60:12
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:2:1-66:12
 	package
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:3:5-28
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:3:5-28
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:5:5-80
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:5:5-80
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:5:22-77
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:5:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:6:5-81
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:6:5-81
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:6:22-78
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:6:22-78
 application
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:8:5-58:19
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:8:5-64:19
 MERGED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\bab79331b973ab00a8cafa09bf6f34a056483deb\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:9:5-20
@@ -49,105 +49,121 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Richard Aldric
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\026526e0365a271100da0bad41dbb5686ee4b68c\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\4a1607fb85631bce78523e606f674ce5e7645506\output\AndroidManifest.xml:29:5-20
 	android:label
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:12:9-41
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:12:9-41
 	android:supportsRtl
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:14:9-35
 	android:roundIcon
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:13:9-54
 	android:allowBackup
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:10:9-35
 	android:icon
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:11:9-43
 	android:theme
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:15:9-40
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:15:9-40
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:9:9-31
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:9:9-31
 service#nimbus.arcane.FirebaseMessagingService
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:9-20:19
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:16:9-20:19
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:18-58
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:16:18-58
 intent-filter#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:17:13-19:29
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:17:13-19:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:18:17-78
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:18:17-78
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:18:25-75
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:18:25-75
 activity#nimbus.arcane.MainActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:22:9-28:20
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:22:9-28:20
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:22:19-47
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:22:19-47
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:13-27:29
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:24:17-69
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:24:25-66
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:26:17-77
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:26:27-74
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:26:27-74
 activity#nimbus.arcane.StartActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:29:9-51
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:29:9-51
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:29:19-48
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:29:19-48
 activity#nimbus.arcane.RegisterActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:30:9-32:59
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:30:9-32:59
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:32:13-56
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:32:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:31:13-45
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:31:13-45
 activity#nimbus.arcane.LoginActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:33:9-35:59
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:33:9-35:59
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:35:13-56
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:35:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:34:13-42
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:34:13-42
 activity#nimbus.arcane.SettingsActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:36:9-54
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:36:9-54
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:36:19-51
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:36:19-51
 activity#nimbus.arcane.StatusActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:37:9-39:62
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:37:9-39:62
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:39:13-59
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:39:13-59
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:38:13-43
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:38:13-43
 activity#com.theartofdev.edmodo.cropper.CropImageActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:40:9-42:59
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:40:9-42:59
 	android:theme
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:42:13-56
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:42:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:41:13-76
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:41:13-76
 activity#nimbus.arcane.UsersActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:43:9-45:58
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:43:9-45:58
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:45:13-55
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:45:13-55
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:44:13-42
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:44:13-42
 activity#nimbus.arcane.ProfileActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:46:9-53:20
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:46:9-53:20
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:48:13-56
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:48:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:47:13-44
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:47:13-44
 intent-filter#android.intent.category.DEFAULT+nimbus.arcane_TARGET_NOTIFICATION
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:49:13-52:29
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:49:13-52:29
 action#nimbus.arcane_TARGET_NOTIFICATION
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:50:17-76
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:50:17-76
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:50:25-73
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:50:25-73
 action#android.intent.category.DEFAULT
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:51:17-74
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:51:17-74
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:51:25-71
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:51:25-71
 activity#nimbus.arcane.ChatActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:54:9-57:20
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:54:9-56:58
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:56:13-55
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:56:13-55
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:55:13-41
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:55:13-41
+activity#nimbus.arcane.GroupChatActivity
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:57:9-59:58
+	android:parentActivityName
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:59:13-55
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:58:13-46
+activity#nimbus.arcane.GroupProfileActivity
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:60:9-62:72
+	android:parentActivityName
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:62:13-60
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:61:13-49
+activity#nimbus.arcane.CreateGroupActivity
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:63:9-66
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:63:19-54
 uses-sdk
-INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\bab79331b973ab00a8cafa09bf6f34a056483deb\output\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:5:5-7:41
@@ -183,11 +199,11 @@ MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Richard Aldrich
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
 meta-data#android.support.VERSION
 ADDED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\bab79331b973ab00a8cafa09bf6f34a056483deb\output\AndroidManifest.xml:22:5-24:34

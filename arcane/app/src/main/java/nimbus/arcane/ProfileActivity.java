@@ -269,6 +269,8 @@ public class ProfileActivity extends AppCompatActivity {
 //                    friendsMap.put("Friends/" +  user_key + "/" + mCurrentUser.getUid() + "/date", ServerValue.TIMESTAMP);
                     friendsMap.put("Users/" + user_id + "/Friends/" + user_key + "/date", ServerValue.TIMESTAMP);
                     friendsMap.put("Users/" + user_key + "/Friends/" + user_id + "/date", ServerValue.TIMESTAMP);
+//                    friendsMap.put("Users/" + user_id + "/Groups/Members/" + user_key + "/date", ServerValue.TIMESTAMP);
+//                    friendsMap.put("Users/" + user_key + "/Groups/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
                     friendsMap.put("Friend_Request/" + user_id + "/" + user_key, null);
                     friendsMap.put("Friend_Request/" + user_key + "/" + user_id, null);
 
@@ -302,8 +304,8 @@ public class ProfileActivity extends AppCompatActivity {
                     Map unfriendMap = new HashMap();
                     unfriendMap.put("Users/" + user_key + "/Friends/" + user_id, null);
                     unfriendMap.put("Users/" + user_id + "/Friends/" + user_key, null);
-//                    unfriendMap.put("Friends/" + mCurrentUser.getUid() + "/" + user_key, null);
-//                    unfriendMap.put("Friends/" + user_key + "/" + mCurrentUser.getUid(), null);
+//                    unfriendMap.put("Users/" + user_key + "/Groups/Members/" + user_id, null);
+//                    unfriendMap.put("Users/" + user_id + "/Groups/Members/" + user_key, null);
 
                     mRootRef.updateChildren(unfriendMap, new DatabaseReference.CompletionListener() {
                         @Override
