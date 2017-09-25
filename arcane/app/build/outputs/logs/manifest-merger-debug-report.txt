@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:2:1-60:12
 	package
 		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:3:5-28
 		INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:6:22-78
 application
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:8:5-39:19
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:8:5-58:19
 MERGED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\bab79331b973ab00a8cafa09bf6f34a056483deb\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:9:5-20
@@ -34,6 +34,7 @@ MERGED from [com.firebaseui:firebase-ui-database:1.0.1] C:\Users\Richard Aldrich
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\abe1af01b55a9448b8f3eb0b44acc0d27d440399\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\40b6690283213b478b77d38424a9c66be8b77bf8\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\9701f8dbd53fde2fef39569ebdbf09e3065dfe09\output\AndroidManifest.xml:26:5-20
+MERGED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\6e8cabf2011d38a793b01807054d70f92326a826\output\AndroidManifest.xml:19:5-29:19
 MERGED from [com.google.firebase:firebase-core:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\ca0103f73658d0aeb320c92b3125f98f14eb2d5a\output\AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:24:5-33:19
 MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:24:5-28:19
@@ -48,73 +49,103 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Richard Aldric
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\026526e0365a271100da0bad41dbb5686ee4b68c\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\4a1607fb85631bce78523e606f674ce5e7645506\output\AndroidManifest.xml:29:5-20
 	android:label
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:12:9-41
 	android:supportsRtl
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:14:9-35
 	android:roundIcon
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:12:9-54
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:13:9-54
 	android:allowBackup
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:9:9-35
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:10:9-35
 	android:icon
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:10:9-43
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:11:9-43
 	android:theme
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:14:9-40
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:15:9-40
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:15:9-31
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:9:9-31
+service#nimbus.arcane.FirebaseMessagingService
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:9-20:19
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:18-58
+intent-filter#com.google.firebase.MESSAGING_EVENT
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:17:13-19:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:18:17-78
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:18:25-75
 activity#nimbus.arcane.MainActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:9-22:20
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:22:9-28:20
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:16:19-47
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:22:19-47
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:17:13-21:29
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:18:17-69
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:18:25-66
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:20:17-77
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:20:27-74
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:26:27-74
 activity#nimbus.arcane.StartActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:9-51
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:29:9-51
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:23:19-48
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:29:19-48
 activity#nimbus.arcane.RegisterActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:24:9-26:59
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:30:9-32:59
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:26:13-56
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:32:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:25:13-45
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:31:13-45
 activity#nimbus.arcane.LoginActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:27:9-51
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:33:9-35:59
+	android:parentActivityName
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:35:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:27:19-48
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:34:13-42
 activity#nimbus.arcane.SettingsActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:28:9-54
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:36:9-54
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:28:19-51
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:36:19-51
 activity#nimbus.arcane.StatusActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:29:9-31:62
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:37:9-39:62
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:31:13-59
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:39:13-59
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:30:13-43
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:38:13-43
 activity#com.theartofdev.edmodo.cropper.CropImageActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:32:9-34:59
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:40:9-42:59
 	android:theme
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:34:13-56
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:42:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:33:13-76
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:41:13-76
 activity#nimbus.arcane.UsersActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:35:9-37:58
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:43:9-45:58
 	android:parentActivityName
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:37:13-55
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:45:13-55
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:36:13-42
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:44:13-42
 activity#nimbus.arcane.ProfileActivity
-ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:38:9-62
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:46:9-53:20
+	android:parentActivityName
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:48:13-56
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:38:19-50
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:47:13-44
+intent-filter#android.intent.category.DEFAULT+nimbus.arcane_TARGET_NOTIFICATION
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:49:13-52:29
+action#nimbus.arcane_TARGET_NOTIFICATION
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:50:17-76
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:50:25-73
+action#android.intent.category.DEFAULT
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:51:17-74
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:51:25-71
+activity#nimbus.arcane.ChatActivity
+ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:54:9-57:20
+	android:parentActivityName
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:56:13-55
+	android:name
+		ADDED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml:55:13-41
 uses-sdk
 INJECTED from C:\Users\Richard Aldrich\Documents\COMP30022\arcane\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:21:5-23:62
@@ -135,6 +166,7 @@ MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\Richard Aldric
 MERGED from [com.google.firebase:firebase-database:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\dbc40e620d96a85d8e8a8c255ee66b9622ae2b01\output\AndroidManifest.xml:3:5-42
 MERGED from [com.google.firebase:firebase-database-connection:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\0e92b8efff9e60baaca3edb3fa3e54013ddf66d3\output\AndroidManifest.xml:3:5-42
 MERGED from [id.zelory:compressor:2.1.0] C:\Users\Richard Aldrich\.android\build-cache\6bbc5321a55608a2efa9758aa0375a055b66d426\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\6e8cabf2011d38a793b01807054d70f92326a826\output\AndroidManifest.xml:17:5-42
 MERGED from [com.google.firebase:firebase-core:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\ca0103f73658d0aeb320c92b3125f98f14eb2d5a\output\AndroidManifest.xml:4:5-42
 MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:17:5-42
 MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:17:5-42
@@ -196,6 +228,12 @@ MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Rich
 		ADDED from [com.firebaseui:firebase-ui-database:1.0.1] C:\Users\Richard Aldrich\.android\build-cache\7b55e32be0d144bc9c50f0dee15a32282d411444\output\AndroidManifest.xml:16:13-66
 	android:name
 		ADDED from [com.firebaseui:firebase-ui-database:1.0.1] C:\Users\Richard Aldrich\.android\build-cache\7b55e32be0d144bc9c50f0dee15a32282d411444\output\AndroidManifest.xml:15:13-58
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\6e8cabf2011d38a793b01807054d70f92326a826\output\AndroidManifest.xml:23:9-27:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\6e8cabf2011d38a793b01807054d70f92326a826\output\AndroidManifest.xml:23:88-111
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\6e8cabf2011d38a793b01807054d70f92326a826\output\AndroidManifest.xml:23:18-87
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\719bb415a874879e97d69525780c198ca4fc00fd\output\AndroidManifest.xml:21:5-78
 MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Richard Aldrich\.android\build-cache\d1291d4a2f953efbad3166a282d06dc3e2dae344\output\AndroidManifest.xml:21:5-78

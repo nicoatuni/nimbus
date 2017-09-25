@@ -7,13 +7,16 @@
     android:layout_height="match_parent"
     tools:context="nimbus.arcane.ProfileActivity">
 
+    <include layout="@layout/app_bar_layout" android:id="@+id/profile_bar" />
+
     <ImageView
         android:id="@+id/profile_display_image"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@drawable/default_avatar" />
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/default_avatar"
+        android:layout_below="@+id/profile_bar" />
 
     <TextView
         android:id="@+id/profile_display_name"

@@ -27,12 +27,19 @@
     <uses-permission android:name="nimbus.arcane.permission.C2D_MESSAGE" />
 
     <application
+        android:name="nimbus.arcane.arcane"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <service android:name="nimbus.arcane.FirebaseMessagingService" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity android:name="nimbus.arcane.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +51,9 @@
         <activity
             android:name="nimbus.arcane.RegisterActivity"
             android:parentActivityName="nimbus.arcane.StartActivity" />
-        <activity android:name="nimbus.arcane.LoginActivity" />
+        <activity
+            android:name="nimbus.arcane.LoginActivity"
+            android:parentActivityName="nimbus.arcane.StartActivity" />
         <activity android:name="nimbus.arcane.SettingsActivity" />
         <activity
             android:name="nimbus.arcane.StatusActivity"
@@ -56,6 +65,18 @@
             android:name="nimbus.arcane.UsersActivity"
             android:parentActivityName="nimbus.arcane.MainActivity" />
         <activity
+            android:name="nimbus.arcane.ProfileActivity"
+            android:parentActivityName="nimbus.arcane.UsersActivity" >
+            <intent-filter>
+                <action android:name="nimbus.arcane_TARGET_NOTIFICATION" />
+                <action android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="nimbus.arcane.ChatActivity"
+            android:parentActivityName="nimbus.arcane.MainActivity" >
+        </activity>
+        <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -63,6 +84,17 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <!--
+ FirebaseMessagingService performs security checks at runtime,
+             no need for explicit permissions despite exported="true"
+        -->
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="true" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
