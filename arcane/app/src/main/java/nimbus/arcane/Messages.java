@@ -6,16 +6,25 @@ package nimbus.arcane;
 
 public class Messages {
 
-    private String message, type, from;
+    private String message, type, from, name;
     private long time;
     private boolean seen;
 
-    public Messages(String message, boolean seen, long time, String type, String from) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Messages(String message, boolean seen, long time, String type, String from, String name) {
         this.message = message;
         this.seen = seen;
         this.time = time;
         this.type = type;
         this.from = from;
+        this.name = name;
     }
 
     public Messages() {

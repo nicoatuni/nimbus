@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:2:1-66:12
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:2:1-69:12
 	package
 		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:3:5-28
 		INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\
 	android:name
 		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:6:22-78
 application
-ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:8:5-64:19
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:8:5-67:19
 MERGED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\bab79331b973ab00a8cafa09bf6f34a056483deb\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Richard Aldrich\.android\build-cache\39b7bab2fb36c707bac602ac2b79484afc3d08f2\output\AndroidManifest.xml:9:5-20
@@ -159,9 +159,11 @@ ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\
 	android:name
 		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:61:13-49
 activity#nimbus.arcane.CreateGroupActivity
-ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:63:9-66
+ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:63:9-66:20
+	android:parentActivityName
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:65:13-55
 	android:name
-		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:63:19-54
+		ADDED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml:64:13-48
 uses-sdk
 INJECTED from C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.1] C:\Users\Richard Aldrich\.android\build-cache\e53d1508de21e15fd12c7fe37ae43dc87ebeb61b\output\AndroidManifest.xml:21:5-23:62
