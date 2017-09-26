@@ -112,8 +112,8 @@ public class CreateGroupActivity extends AppCompatActivity {
                 Map groupMap = new HashMap();
                 groupMap.put("name", group_name);
                 groupMap.put("status", group_status);
-                groupMap.put("image", "");
-                groupMap.put("thumb_image", "");
+                groupMap.put("image", "default");
+                groupMap.put("thumb_image", "default");
 
                 create_group(groupMap);
 

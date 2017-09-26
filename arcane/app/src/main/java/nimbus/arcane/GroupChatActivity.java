@@ -37,13 +37,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GroupChatActivity extends AppCompatActivity {
 
-    private Toolbar mChatToolbar;
+    private Toolbar mToolbar;
 
     private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
     private String mCurrentUserId;
-
-    private TextView mTitleView;
 
     private ImageButton mChatSendBtn;
     private EditText mChatMessageView;
@@ -59,21 +57,16 @@ public class GroupChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_chat);
 
-        mChatToolbar = (Toolbar) findViewById(R.id.chat_group_app_bar);
-        setSupportActionBar(mChatToolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowCustomEnabled(true);
+        String group_name = getIntent().getStringExtra("group_name");
+
+        mToolbar = (Toolbar) findViewById(R.id.chat_group_app_bar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("group_name");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         mCurrentUserId = mAuth.getCurrentUser().getUid();
-
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View action_bar_view = inflater.inflate(R.layout.group_custom_bar, null);
-        actionBar.setCustomView(action_bar_view);
-
-        mTitleView = (TextView) findViewById(R.id.custom_bar_title);
 
         mChatSendBtn = (ImageButton) findViewById(R.id.chat_group_send_btn);
         mChatMessageView = (EditText) findViewById(R.id.chat_group_field);
@@ -88,8 +81,6 @@ public class GroupChatActivity extends AppCompatActivity {
         mMessagesList.setAdapter(mAdapter);
 
         loadMessages();
-
-        mTitleView.setText("Group Chat");
 
         mChatSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override

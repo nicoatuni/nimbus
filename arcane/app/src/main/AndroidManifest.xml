@@ -60,7 +60,10 @@
         <activity
             android:name=".GroupProfileActivity"
             android:parentActivityName=".GroupChatActivity"></activity>
-        <activity android:name=".CreateGroupActivity"></activity>
+        <activity
+            android:name=".CreateGroupActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

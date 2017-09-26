@@ -10,13 +10,14 @@ import android.widget.TextView;
 import android.text.format.DateFormat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by AkshayeJH on 24/07/17.
+ * Created by Richard Aldrich on 19/9/2017.
  */
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>{
@@ -47,12 +48,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         public TextView messageText;
         public CircleImageView profileImage;
         public TextView messageTime;
+        private TextView messageFrom;
         public RelativeLayout relativeLayout;
 
         public MessageViewHolder(View view) {
             super(view);
 
             messageText = (TextView) view.findViewById(R.id.message_text_layout);
+            messageFrom = (TextView) view.findViewById(R.id.message_from);
             profileImage = (CircleImageView) view.findViewById(R.id.message_profile_layout);
             messageTime = (TextView) view.findViewById(R.id.message_time_layout);
             relativeLayout = (RelativeLayout) view.findViewById(R.id.message_single_layout);
@@ -72,11 +75,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             viewHolder.messageText.setBackgroundResource(R.drawable.message_text_background_sender);
             viewHolder.messageText.setTextColor(Color.BLACK);
+            viewHolder.messageFrom.setVisibility(View.INVISIBLE);
 
         } else {
 
             viewHolder.messageText.setBackgroundResource(R.drawable.message_text_background_receiver);
             viewHolder.messageText.setTextColor(Color.WHITE);
+            viewHolder.messageFrom.setText(c.getName());
 
         }
 

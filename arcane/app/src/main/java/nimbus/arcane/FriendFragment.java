@@ -150,7 +150,6 @@ public class FriendFragment extends Fragment {
 
                                             addToGroup(list_user_id);
 
-
                                         }
                                     }
                                 });
