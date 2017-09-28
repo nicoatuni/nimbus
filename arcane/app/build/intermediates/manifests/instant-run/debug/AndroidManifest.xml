@@ -11,12 +11,24 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <meta-data
         android:name="android.support.VERSION"
         android:value="25.3.1" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Include required permissions for Google Maps API to run. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
@@ -74,12 +86,26 @@
         </activity>
         <activity
             android:name="nimbus.arcane.ChatActivity"
+            android:parentActivityName="nimbus.arcane.MainActivity" />
+        <activity
+            android:name="nimbus.arcane.GroupChatActivity"
+            android:parentActivityName="nimbus.arcane.MainActivity" />
+        <activity
+            android:name="nimbus.arcane.GroupProfileActivity"
+            android:parentActivityName="nimbus.arcane.GroupChatActivity" />
+        <activity
+            android:name="nimbus.arcane.CreateGroupActivity"
+            android:parentActivityName="nimbus.arcane.MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBSnsLyuSvsibC-uXK8ydoo07eqYvq9mzQ" />
+
+        <activity
+            android:name="nimbus.arcane.MapsActivity"
+            android:label="@string/title_activity_maps"
             android:parentActivityName="nimbus.arcane.MainActivity" >
         </activity>
-        <activity
-            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -95,6 +121,11 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
