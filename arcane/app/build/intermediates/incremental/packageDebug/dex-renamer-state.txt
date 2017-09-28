@@ -1,7 +1,7 @@
-#Thu Sep 28 08:57:56 AEST 2017
-base.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_5ed58e1ef241931d1d5159b0e9be23db785087dc
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_403ebbb2e22d3525ba2c6aff4e9354cef7f4894c\\classes.dex
-base.1=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_403ebbb2e22d3525ba2c6aff4e9354cef7f4894c
-file.0=C\:\\Users\\Richard Aldrich\\Documents\\COMP30022\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_5ed58e1ef241931d1d5159b0e9be23db785087dc\\classes.dex
+#Thu Sep 28 17:00:29 AEST 2017
+base.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_7b4a8c925905e5d75212ae8d2e0a6d3a3c949ae2
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_77b6edf76a97a006a58119bd5ea6f297040bbd7d\\classes.dex
+base.1=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_77b6edf76a97a006a58119bd5ea6f297040bbd7d
+file.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_7b4a8c925905e5d75212ae8d2e0a6d3a3c949ae2\\classes.dex
