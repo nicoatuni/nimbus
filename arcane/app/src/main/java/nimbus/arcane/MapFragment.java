@@ -2,6 +2,7 @@ package nimbus.arcane;
 
 
 import android.*;
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,7 +29,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -43,6 +50,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     LocationManager locationManager;
     LocationListener locationListener;
 
+    private DatabaseReference mRootRef;
+    private DatabaseReference mUsersRef;
+
+    private FirebaseUser mCurrentUser;
+
     public MapFragment() {
         // Required empty public constructor
     }
@@ -52,6 +64,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View mMainView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+        mUsersRef = mRootRef.child("Users");
+
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         return mMainView;
     }
@@ -63,6 +80,36 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                    Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                    if (lastKnownLocation != null) {
+
+                        LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+                        mMap.clear();
+                        mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+
+                    }
+
+                    LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
+                    mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+                }
+            }
+        }
     }
 
     /**
@@ -78,12 +125,31 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
 
                 LatLng userLocation = new LatLng(location.getLatitude(),location.getLongitude());
+
+                Map userLocationMap = new HashMap();
+                userLocationMap.put(mCurrentUser.getUid() + "/latlng", userLocation);
+
+                mUsersRef.updateChildren(userLocationMap, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+                        if (databaseError != null) {
+
+                            Toast.makeText(getContext(), "Error in putting user location to database", Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+                });
+
 //                Toast.makeText(getContext(), location.toString(), Toast.LENGTH_SHORT).show();
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
@@ -129,16 +195,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             } else {
 
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
-                Location laskKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                if (laskKnownLocation!=null) {
+                if (lastKnownLocation!=null) {
 
-                    LatLng userLocation = new LatLng(laskKnownLocation.getLatitude(),laskKnownLocation.getLongitude());
+                    LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
                     mMap.clear();
                     mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,15));
 
                 }
+
+                LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
+                mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
             }
         }
     }
