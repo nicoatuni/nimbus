@@ -10,14 +10,6 @@ public class Messages {
     private long time;
     private boolean seen;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Messages(String message, boolean seen, long time, String type, String from, String name) {
         this.message = message;
         this.seen = seen;
@@ -29,6 +21,14 @@ public class Messages {
 
     public Messages() {
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMessage() {

@@ -45,12 +45,17 @@ public class ProfileActivity extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
     private Toolbar mToolbar;
 
-    private String current_state;
     private int mCurrentState;
     private static final int FRIENDS = 3;
     private static final int REQUEST_RECEIVED = 2;
     private static final int REQUEST_SENT = 1;
     private static final int NO_FRIENDS = 0;
+
+    public Users currentUser;
+
+    public void ProfileActivity() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +85,6 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCurrentState = NO_FRIENDS;
-        current_state = "not_friends";
 
         mProfileDeclineBtn.setVisibility(View.INVISIBLE);
         mProfileDeclineBtn.setEnabled(false);
@@ -98,6 +102,8 @@ public class ProfileActivity extends AppCompatActivity {
                 String display_name = dataSnapshot.child("name").getValue().toString();
                 String display_status = dataSnapshot.child("status").getValue().toString();
                 String display_image = dataSnapshot.child("image").getValue().toString();
+
+                currentUser = new Users(display_name, display_status, display_image, display_image);
 
                 mDisplayName.setText(display_name);
                 mDisplayStatus.setText(display_status);
@@ -372,5 +378,9 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public Users getUser() {
+        return currentUser;
     }
 }

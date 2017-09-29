@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -34,6 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static nimbus.arcane.R.id.map;
 
 public class GroupChatActivity extends AppCompatActivity {
 
@@ -61,7 +64,7 @@ public class GroupChatActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.chat_group_app_bar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("group_name");
+        getSupportActionBar().setTitle(group_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -132,36 +135,49 @@ public class GroupChatActivity extends AppCompatActivity {
 
     private void sendMessage() {
 
-        String message = mChatMessageView.getText().toString();
+        final String message = mChatMessageView.getText().toString();
 
         if (!TextUtils.isEmpty(message)) {
 
             DatabaseReference user_message_push = mRootRef.child("Groups").child("Chats").push();
-            String push_id = user_message_push.getKey();
+            final String push_id = user_message_push.getKey();
 
-            Map messageMap = new HashMap();
-            messageMap.put("message", message);
-            messageMap.put("seen", false);
-            messageMap.put("type", "text");
-            messageMap.put("time", ServerValue.TIMESTAMP);
-            messageMap.put("from", mCurrentUserId);
-
-            Map messageUserMap = new HashMap();
-            messageUserMap.put("Groups/Chats/" + push_id, messageMap);
-
-            mChatMessageView.setText("");
-
-            mRootRef.updateChildren(messageUserMap, new DatabaseReference.CompletionListener() {
+            mRootRef.child("Users").child(mCurrentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    if (databaseError != null) {
+                    String userName = dataSnapshot.child("name").getValue().toString();
 
-                        Log.d("CHAT_LOG", databaseError.getMessage().toString());
-                    }
+                    Map messageMap = new HashMap();
+                    messageMap.put("message", message);
+                    messageMap.put("seen", false);
+                    messageMap.put("type", "text");
+                    messageMap.put("time", ServerValue.TIMESTAMP);
+                    messageMap.put("from", mCurrentUserId);
+                    messageMap.put("name", userName);
+
+                    Map messageUserMap = new HashMap();
+                    messageUserMap.put("Groups/Chats/" + push_id, messageMap);
+
+                    mChatMessageView.setText("");
+
+                    mRootRef.updateChildren(messageUserMap, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+                            if (databaseError != null) {
+
+                                Log.d("CHAT_LOG", databaseError.getMessage().toString());
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
                 }
             });
-
         }
     }
 }

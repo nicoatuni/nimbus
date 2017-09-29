@@ -2,22 +2,274 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\c7c6f2c1b5f4ac90917cfacda3d8e943d4594988\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_7b4a8c925905e5d75212ae8d2e0a6d3a3c949ae2\classes.dex" />
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_b8bf97c5996f927125a381e4257dca6be4f75eb0.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\5723eb05ae87b1c4ee8216badc9e8857c24960e2\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="94eacfee9705f2ebd79a9da32a06ed50bb4249b5">
-        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_77b6edf76a97a006a58119bd5ea6f297040bbd7d\classes.dex" />
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_616c6cfa878610530802205c100d72f1bdd0102b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\d9d87e77586da7050fdb48e76fa02a1765fbb61c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_748d112c1093d638ecbfa1432f4347e53103c7d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\dffd5b1c025e1d53cc4200160e8d62e25ac8fc80\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_d62ec75bf9273b968658504c851cb70a1f83b375.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_749f92721abc8a389255a48e6bc4f467c7c672e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\e830ad82ef5393798d9f73150c3b9cf1ed5559c1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_25cd43eeea351e3bbc782dfe530518d6f79fde5a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\fe8d455a78fe8b009583f766328822168ea1bdd7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_f0869f12e23472db3ef67c9da37f473f48abba95.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\8097c865e0a99e0814a49ffe6c804a3147690263\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_90554ddd1349b707f5882d119a79b0ef2a7ab032.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\68bc75be3f56683774862665a00d3d111da1bf29\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_58aa286ef494661b0121a5cc80deb4abdaeb0745.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\33730318c85742770d8b5d928d035f54a0ef67e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_ffee9cf2b59f1fa5da8ce9a521ad45f63ddc1a1e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\9696a723ca433c1d5628050dd8ac39a67039693e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_51541765213acc9cc61677e102d9c3c982a9f05a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\4468bd0d6d8d485b2e7ef92ea7c77c37266df085\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_efa17648024fa7dabddd1890499bdfdb572930a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\356c5969d3bc37051628bd76f882722f721bf3d2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_936952071e609c01ff06998a4a6406e10269fda0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\480f9b659736c2808b28be91769a6bf65f046ca9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_5f8d987fe850cf446fab10ff16b8f0a71c2539b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\2ba97183450360f4d03bb8e49dce0232f368862c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_22a66b7f740a2b288c2e6fa41f46b2585bc0d882.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\370a42e7d6ca7c3a003db3c70c59e14b020e8811\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_ab5d6cbb1b482df1f797768bca74ce431171ef5f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\badb705784db88b67520f978bb3ed7c476264674\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_b0bdede44fbd9718bf80a58dda0014d04365d14c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\1fc92c0fd695e12ecf7581727e9a5da9e09ff6d3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_a2b82e31fdf6c5e066c20afdf5149d1776da37f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\a686ee583fe4ddd094186f7b1edf5063435243af\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_29df8ea0c67027fe0bb21574da3661337225ac8f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\226d4712170530062597f09acd52f939974484c4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_cc728cc00668d12456f314376c1632e822a89788.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_dce0f5dc4ec87302d879250c45fe5f3f72f02917.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\0358cd5838846219c9d23dcb8b0d779e7ca3998c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_cb45fe49d4b0203770f88f021e3a10f181faaffd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\82447e31f78a8c833dfe7334415737794a3306d2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_1e1dc79b8747bf0efa22298673d918c5765d10c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\008100fea0bdd4dbfa70b9496b78944091d6c40e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_0ef718eab741a394c73828089c02b6f1218f0d6d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\84ee104bb46e3780df6a1402098888e6d2aa980a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_79d9a446b5b49adaa3f0f8ab2c52c88e0510518f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\47b0ecb392b1c50ab62187334517900de4efb491\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_796ffc63f1856e2982bc801f395935b6e122ed7e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\f8615611323d4a490c95b741e61da942abca8cba\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_a66f776b94bb1cc0e87c8cff58eafb77dedaf12d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\a0245ec32034bf5fb853aa9df464f3a68f59a725\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_d8386224d74c8c778413cbb496165c5f4b3962cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\c6c2454dc716cd795be34ea5dde719cd987f4a43\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6bd32b72098fecf44dcab3808a11e6b9fcb86b7b">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_aaa9bdd0c8b383a2bf989a2c8e46bd26c47ee2d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Richard Aldrich\.android\build-cache\29e96fb85b252166046d2254c8e315a041b1b8aa\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\pre-dexed\debug\classes_4708c131a8b7957ad5a97094abba5d596614f3b2.jar" />
     </item>
 
 </items>
