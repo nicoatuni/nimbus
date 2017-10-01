@@ -17,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +32,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +58,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private FirebaseUser mCurrentUser;
 
+    private static View mMainView;
+
     public MapFragment() {
         // Required empty public constructor
     }
@@ -62,8 +67,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View mMainView = inflater.inflate(R.layout.fragment_map, container, false);
+        if (mMainView != null) {
+
+            ViewGroup parent = (ViewGroup) mMainView.getParent();
+            if (parent != null) {
+
+                parent.removeView(mMainView);
+
+            }
+        }
+
+        try {
+
+            // Inflate the layout for this fragment
+            mMainView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        } catch (InflateException e) {
+
+            // Map is already there, return main view as it is
+
+        }
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mUsersRef = mRootRef.child("Users");
@@ -101,6 +124,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         mMap.clear();
                         mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+
+                    } else {
+
+                        getLocationFromDatabase(mCurrentUser.getUid());
 
                     }
 
@@ -184,7 +211,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         if (Build.VERSION.SDK_INT < 23) {
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
         } else {
 
@@ -197,12 +224,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
                 Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                if (lastKnownLocation!=null) {
+                if (lastKnownLocation != null) {
 
                     LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
                     mMap.clear();
                     mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,15));
+
+                } else {
+
+                    getLocationFromDatabase(mCurrentUser.getUid());
 
                 }
 
@@ -211,5 +242,33 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             }
         }
+    }
+
+    public void getLocationFromDatabase(String userId) {
+
+        mUsersRef.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.hasChild("latlng")) {
+
+                    double lat = (double) dataSnapshot.child("latlng").child("latitude").getValue();
+                    double lng = (double) dataSnapshot.child("latlng").child("longitude").getValue();
+
+                    LatLng userLocation = new LatLng(lat, lng);
+                    mMap.clear();
+                    mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }

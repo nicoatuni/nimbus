@@ -1,16 +1,24 @@
 package nimbus.arcane;
 
 import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.text.format.DateFormat;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -48,7 +56,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         public TextView messageText;
         public CircleImageView profileImage;
         public TextView messageTime;
-        private TextView messageFrom;
+        public TextView messageFrom;
         public RelativeLayout relativeLayout;
 
         public MessageViewHolder(View view) {
@@ -75,7 +83,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             viewHolder.messageText.setBackgroundResource(R.drawable.message_text_background_sender);
             viewHolder.messageText.setTextColor(Color.BLACK);
-            viewHolder.messageFrom.setVisibility(View.INVISIBLE);
+            viewHolder.messageFrom.setText("");
 
         } else {
 
@@ -86,7 +94,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         }
 
         viewHolder.messageText.setText(c.getMessage());
-//        viewHolder.messageTime.setText(mTime.getTimeAgo(c.getTime()));
         viewHolder.messageTime.setText(DateFormat.format("HH:mm", c.getTime()));
 
     }
@@ -94,5 +101,27 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     @Override
     public int getItemCount() {
         return mMessageList.size();
+    }
+
+    private String getUserName(String uid) {
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+        final String name[] = new String[1];
+
+        userRef.child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                name[0] = dataSnapshot.getValue().toString();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        return name[0];
     }
 }

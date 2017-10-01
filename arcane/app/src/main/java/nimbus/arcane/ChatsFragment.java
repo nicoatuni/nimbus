@@ -73,11 +73,11 @@ public class ChatsFragment extends Fragment {
 
                 if (dataSnapshot.hasChild("name")) {
 
-                    String userName = dataSnapshot.child("name").getValue().toString();
+                    String groupName = dataSnapshot.child("name").getValue().toString();
                     String userStatus = dataSnapshot.child("status").getValue().toString();
                     String userThumbImage = dataSnapshot.child("thumb_image").getValue().toString();
 
-                    mGroupName.setText(userName);
+                    mGroupName.setText(groupName);
                     mStatus.setText(userStatus);
                     Picasso.with(getContext()).load(userThumbImage).placeholder(R.drawable.default_avatar).into(mImageView);
 

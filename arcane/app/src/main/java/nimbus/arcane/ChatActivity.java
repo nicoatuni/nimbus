@@ -223,7 +223,6 @@ public class ChatActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(message)) {
 
             DatabaseReference user_message_push = mRootRef.child("Users").child(mCurrentUserId).child("Friends").child(mChatUser).child("Chat").push();
-//            DatabaseReference user_message_push = mRootRef.child("messages").child(mCurrentUserId).child(mChatUser).push();
             String push_id = user_message_push.getKey();
 
             String current_user_ref = "Users/" + mCurrentUserId + "/Friends/" + mChatUser + "/Chats";
