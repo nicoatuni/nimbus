@@ -127,12 +127,32 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                     } else {
 
-                        getLocationFromDatabase(mCurrentUser.getUid());
+                        mUsersRef.child(mCurrentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                if (dataSnapshot.child("latlng").hasChild("latitude")) {
+
+                                    getLocationFromDatabase(mCurrentUser.getUid());
+
+                                } else {
+
+                                    Toast.makeText(getContext(), "Please turn on your location service", Toast.LENGTH_LONG).show();
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
 
                     }
 
-                    LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
-                    mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+//                    LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
+//                    mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
                 }
             }
@@ -188,8 +208,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 }
 
-                LatLng unimelb = new LatLng(-37.7963646,144.9589851);
-                mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+//                LatLng unimelb = new LatLng(-37.7963646,144.9589851);
+//                mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
             }
 
@@ -233,12 +253,32 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 } else {
 
-                    getLocationFromDatabase(mCurrentUser.getUid());
+                    mUsersRef.child(mCurrentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            if (dataSnapshot.child("latlng").hasChild("latitude")) {
+
+                                getLocationFromDatabase(mCurrentUser.getUid());
+
+                            } else {
+
+                                Toast.makeText(getContext(), "Please turn on your location service", Toast.LENGTH_LONG).show();
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
 
                 }
 
-                LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
-                mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+//                LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
+//                mMap.addMarker(new MarkerOptions().position(unimelb).title("University of Melbourne").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
             }
         }
@@ -269,6 +309,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             }
         });
+
+        return;
 
     }
 }

@@ -103,25 +103,4 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         return mMessageList.size();
     }
 
-    private String getUserName(String uid) {
-
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-        final String name[] = new String[1];
-
-        userRef.child("name").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                name[0] = dataSnapshot.getValue().toString();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        return name[0];
-    }
 }

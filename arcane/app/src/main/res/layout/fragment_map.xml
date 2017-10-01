@@ -14,6 +14,6 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="nimbus.arcane.MapsActivity" />
+        tools:context="nimbus.arcane.MapFragment" />
 
 </FrameLayout>
