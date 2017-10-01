@@ -1,10 +1,13 @@
 package nimbus.arcane;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -174,6 +178,34 @@ public class ChatActivity extends AppCompatActivity {
 
                 sendMessage();
 
+            }
+        });
+
+        mChatAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(ChatActivity.this, "This is an add button", Toast.LENGTH_LONG).show();
+
+                CharSequence options[] = new CharSequence[]{"Send Location"};
+
+//                final AlertDialog.Builder builder = new AlertDialog.Builder(ChatActivity.this);
+//
+//                builder.setTitle("Select Options");
+//                builder.setItems(options, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int position) {
+//
+//                        // Click Event for each item
+//                        if (position == 0) {
+//
+//                            Toast.makeText(ChatActivity.this, "this is a test", Toast.LENGTH_LONG).show();
+//
+//                        }
+//
+//                    }
+//                });
+//
             }
         });
     }
