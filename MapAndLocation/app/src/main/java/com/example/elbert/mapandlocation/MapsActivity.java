@@ -1,12 +1,16 @@
 package com.example.elbert.mapandlocation;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -52,6 +56,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationManager locationManager;
     LocationListener locationListener;
 
+    Context context = this;
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -79,8 +85,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+        checkGPSorNetwork();
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -106,6 +121,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         locationManager=(LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+
+        //checkGPSorNetwork();
 
         locationListener= new LocationListener() {
             @Override
@@ -152,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             else{
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
                 Location laskKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                Toast.makeText(MapsActivity.this,"test",Toast.LENGTH_SHORT).show();
+
                 if(laskKnownLocation!=null){
                     userLocation = new LatLng(laskKnownLocation.getLatitude(),laskKnownLocation.getLongitude());
                     mMap.clear();
@@ -223,6 +240,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+
     }
 
 
@@ -282,6 +300,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             // Start downloading json data from Google Directions API
             downloadTask.execute(url);
+        }
+    }
+
+    public void trackCurrentLocation(){
+
+    }
+
+    public void checkGPSorNetwork(){
+
+        locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+        // Getting GPS Status
+        Boolean isGPSEnabled = locationManager.isProviderEnabled(locationManager.GPS_PROVIDER);
+        //Getting Network Status
+        Boolean isNetworkEnabled = locationManager.isProviderEnabled(locationManager.NETWORK_PROVIDER);
+
+        String gpsMsg = "Please Enable your GPS/Location Service";
+        String netMsg = "Please Enable your Network Service";
+
+        if(!isGPSEnabled){
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setMessage(gpsMsg);
+
+            dialog.setPositiveButton("GPS Settings", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent gpsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    context.startActivity(gpsIntent);
+                }
+            });
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            dialog.show();
         }
     }
 
