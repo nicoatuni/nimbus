@@ -21,6 +21,35 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.GradientDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+//import android.graphics.Matrix;
+import android.widget.TextView;
+import java.lang.*;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by ntdat on 1/13/17.
@@ -29,6 +58,12 @@ import android.widget.Toast;
 /**
  * Edited by Arnold on 9/26/17
  */
+
+
+/* Notes for this activity :
+*  - Need to connect this one with map activity, where the AR Points of this activity
+*    are generated from the pathways points(latitude,longitude) from the map feature */
+
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener, LocationListener {
 
@@ -39,6 +74,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Camera camera; //Camera to access camera view and it's features
     private CameraPreview arCamera; //???
     private TextView tvCurrentLocation; //Text containing current location
+    private TextView pointsLeft;
+
+    private ImageView compass;
+    private ImageView objectDir;
+    private ImageView objectCompass;
+    private float azimuth = 0f;
+    private float currentAzimuth = 0f;
+
+    private float[] mGravity = new float[3]; //Accelerometer Array
+    private float[] mGeomagnetic = new float[3]; //Magnetometer Array
+    //Angle between position to destination
+    float angle;
 
     private SensorManager sensorManager; //Sensor manager to access the device's sensor
     private final static int REQUEST_CAMERA_PERMISSIONS_CODE = 11;
@@ -62,6 +109,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);
         surfaceView = (SurfaceView) findViewById(R.id.surface_view);
         tvCurrentLocation = (TextView) findViewById(R.id.current_location);
+
+        //msensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+
+        compass = (ImageView) findViewById(R.id.arrow);
+        objectDir = (ImageView) findViewById(R.id.arrow2);
+        objectCompass = (ImageView) findViewById(R.id.arrow3);
+
+        pointsLeft = (TextView) findViewById(R.id.points_left);
         arOverlayView = new ARView(this);
     }
 
@@ -80,6 +135,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onPause();
     }
 
+    private double angleFromCoordinate(double lat1, double long1, double lat2, double long2) {
+        double dLon = (long2 - long1);
+
+        double y = Math.sin(dLon) * Math.cos(lat2);
+        double x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+
+        double brng = Math.atan2(y, x);
+
+        brng = Math.toDegrees(brng);
+        brng = (brng + 360) % 360;
+
+        return brng;
+    }
+
     //Request to use Camera when Activity start
     public void requestCameraPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
@@ -90,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    //Request to access Location/GPS when Activity start
+    //Request to access Location/GPS when Activity start -- Might not be necessary since Map already get locationar
     public void requestLocationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                 this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -156,6 +225,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.registerListener(this,
                 sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR),
                 SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_GAME);
+
     }
 
     @Override
@@ -165,15 +237,65 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float[] projectionMatrix = new float[16];
             float[] rotatedProjectionMatrix = new float[16];
 
+            //Change rotation vector to rotation matrix
             SensorManager.getRotationMatrixFromVector(rotationMatrixFromVector, sensorEvent.values);
 
             if (arCamera != null) {
                 projectionMatrix = arCamera.getProjectionMatrix();
             }
 
+            //Multiply the Projection Matrix of the AR Camera and the
             Matrix.multiplyMM(rotatedProjectionMatrix, 0, projectionMatrix, 0, rotationMatrixFromVector, 0);
             this.arOverlayView.updateRotatedProjectionMatrix(rotatedProjectionMatrix);
         }
+
+        final float alpha = 0.97f;
+
+        synchronized (this) {
+            if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                mGravity[0] = alpha * mGravity[0] + (1 - alpha) * sensorEvent.values[0];
+                mGravity[1] = alpha * mGravity[1] + (1 - alpha) * sensorEvent.values[1];
+                mGravity[2] = alpha * mGravity[2] + (1 - alpha) * sensorEvent.values[2];
+            }
+
+            if (sensorEvent.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                mGeomagnetic[0] = alpha * mGeomagnetic[0] + (1 - alpha) * sensorEvent.values[0];
+                mGeomagnetic[1] = alpha * mGeomagnetic[1] + (1 - alpha) * sensorEvent.values[1];
+                mGeomagnetic[2] = alpha * mGeomagnetic[2] + (1 - alpha) * sensorEvent.values[2];
+            }
+
+            float R[] = new float[9];
+            float T[] = new float[9];
+            boolean success = SensorManager.getRotationMatrix(R, T, mGravity, mGeomagnetic);
+
+            if (success) {
+                float orientation[] = new float[3];
+                SensorManager.getOrientation(R, orientation);
+                azimuth = (float) Math.toDegrees(orientation[0]);
+                azimuth = (azimuth + 360) % 360;
+
+                Animation anim = new RotateAnimation(currentAzimuth, azimuth, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                currentAzimuth = azimuth;
+
+                float dAngle = angle - azimuth;
+                if (dAngle < 0) { //If left rotation
+                    dAngle = 360 - Math.abs(dAngle);
+                }
+
+                anim.setDuration(500);
+                anim.setFillAfter(true);
+
+
+                Log.d("Azimuth","Azimuth = "+azimuth);
+                Log.d("Angle","Angle = "+dAngle);
+                Log.d("Object","Object = "+angle);
+                compass.startAnimation(anim); //Your Phone orientation based on the NSEW
+                objectDir.setRotation(dAngle); //Where you should turn your phone
+                objectCompass.setRotation(angle);
+
+            }
+        }
+
     }
 
     @Override
@@ -213,7 +335,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     //Get latest location
                     location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     //Updates the TextView with latest location
-                    updateLatestLocation();
+                    updateLatestLocation(location);
                 }
             }
 
@@ -227,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     //Get latest location
                     location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     //Updates the TextView with latest location
-                    updateLatestLocation();
+                    updateLatestLocation(location);
                 }
             }
         } catch (Exception ex)  {
@@ -236,8 +358,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    private void updateLatestLocation() {
+    private void updateLatestLocation(Location location) {
         if (arOverlayView !=null) {
+
+            this.location = location;
 
             if(arOverlayView.getIndex()<arOverlayView.getSize()) {
                 ARPoint nextpoint = arOverlayView.getARPoint();
@@ -246,18 +370,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     arOverlayView.incrementIndex();
                 }
 
+                angle = (float) angleFromCoordinate(location.getLatitude(),location.getLongitude(),arOverlayView.getARPoint().getLocation().getLatitude(),arOverlayView.getARPoint().getLocation().getLongitude());
             }
+
+
             //Send the current location to AROverlayView Class, which will render the target
             arOverlayView.updateCurrentLocation(location);
             //Update the current location to TextView
-            tvCurrentLocation.setText(String.format("lat: %s \nlon: %s \naltitude: %s \n",
-                    location.getLatitude(), location.getLongitude(), location.getAltitude()));
+            tvCurrentLocation.setText(String.format("My Position \nLatitude: %s \nLongitude: %s \n",
+                    location.getLatitude(), location.getLongitude()));
+            pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getSize()-arOverlayView.getIndex())));
         }
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        updateLatestLocation();
+        updateLatestLocation(location);
     }
 
     @Override
