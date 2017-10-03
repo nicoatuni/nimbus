@@ -11,6 +11,7 @@ public class LocationHelper {
     private final static double WGS84_A = 6378137.0;                  // WGS 84 semi-major axis constant in meters
     private final static double WGS84_E2 = 0.00669437999014;          // square of WGS 84 eccentricity
 
+    //Converting Latitude Longitude Position to Earth Centered-Earth Fixed Position (In metres)
     public static float[] WSG84toECEF(Location location) {
         double radLat = Math.toRadians(location.getLatitude());
         double radLon = Math.toRadians(location.getLongitude());
@@ -22,13 +23,15 @@ public class LocationHelper {
 
         float N = (float) (WGS84_A / Math.sqrt(1.0 - WGS84_E2 * slat * slat));
 
-        float x = (float) ((N + location.getAltitude()) * clat * clon);
-        float y = (float) ((N + location.getAltitude()) * clat * slon);
-        float z = (float) ((N * (1.0 - WGS84_E2) + location.getAltitude()) * slat);
+        //No Altitude
+        float x = (float) ((N) * clat * clon);
+        float y = (float) ((N) * clat * slon);
+        float z = (float) ((N * (1.0 - WGS84_E2)) * slat);
 
         return new float[] {x , y, z};
     }
 
+    //Converting Earth Centered-Earth Fixed to East North Up Position
     public static float[] ECEFtoENU(Location currentLocation, float[] ecefCurrentLocation, float[] ecefPOI) {
         double radLat = Math.toRadians(currentLocation.getLatitude());
         double radLon = Math.toRadians(currentLocation.getLongitude());
@@ -49,5 +52,12 @@ public class LocationHelper {
         float up = clat*clon*dx + clat*slon*dy + slat*dz;
 
         return new float[] {east , north, up, 1};
+    }
+
+    public static float distanceFromECEF(float[] currentLocation, float[] nextPoint) {
+        double distance;
+        //Still without z which is the altitude
+        distance = Math.sqrt(Math.pow((nextPoint[0]-currentLocation[0]),2)+Math.pow((nextPoint[1]-currentLocation[1]),2));
+        return (float)distance;
     }
 }
