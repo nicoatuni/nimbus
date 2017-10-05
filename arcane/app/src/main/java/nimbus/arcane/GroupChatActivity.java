@@ -1,9 +1,12 @@
 package nimbus.arcane;
 
 import android.content.Context;
+import android.content.Intent;
+import android.location.Location;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,12 +17,15 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +61,12 @@ public class GroupChatActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayout;
     private MessageAdapter mAdapter;
 
+    private GPSTracker gpsTracker;
+    private Location mLocation;
+    private double latitude;
+    private double longitude;
+    private LatLng mUserLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +94,8 @@ public class GroupChatActivity extends AppCompatActivity {
         mMessagesList.setHasFixedSize(true);
         mMessagesList.setLayoutManager(mLinearLayout);
         mMessagesList.setAdapter(mAdapter);
+
+        gpsTracker = new GPSTracker(GroupChatActivity.this);
 
         loadMessages();
 
@@ -180,4 +194,72 @@ public class GroupChatActivity extends AppCompatActivity {
             });
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.user_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == R.id.user_menu_location) {
+
+            gpsTracker.checkGPS();
+
+            int permission_all = 1;
+            int check_permission;
+            String[] permissions = {android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION};
+
+            // checking permission
+            check_permission = MapFragment.hasPermissions(GroupChatActivity.this, permissions);
+            if (check_permission == 1) {
+
+                ActivityCompat.requestPermissions(GroupChatActivity.this, permissions, permission_all);
+
+            }
+
+            mLocation = gpsTracker.getLocation();
+
+            if (mLocation != null) {
+
+                latitude = mLocation.getLatitude();
+                longitude = mLocation.getLongitude();
+                mUserLocation = new LatLng(latitude, longitude);
+                Toast.makeText(GroupChatActivity.this, mUserLocation.toString(), Toast.LENGTH_LONG).show();
+
+            } else {
+
+                Toast.makeText(GroupChatActivity.this, "no location available", Toast.LENGTH_LONG).show();
+
+            /*
+                get location from database
+             */
+
+            }
+
+        }
+
+        if (item.getItemId() == R.id.user_menu_destination) {
+
+            Intent mapIntent = new Intent(GroupChatActivity.this, MapActivity.class);
+            startActivity(mapIntent);
+
+        }
+
+//        if (item.getItemId() == R.id.main_all_btn) {
+//
+//            Intent usersIntent = new Intent(MainActivity.this, UsersActivity.class);
+//            startActivity(usersIntent);
+//
+//        }
+
+        return true;
+    }
+
 }

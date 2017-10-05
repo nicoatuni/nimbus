@@ -96,7 +96,7 @@ public class ChatsFragment extends Fragment {
             }
         });
 
-        mMainView.setOnClickListener(new View.OnClickListener() {
+        mMainView.findViewById(R.id.group_chat_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -129,8 +129,6 @@ public class ChatsFragment extends Fragment {
 //                            startActivity(groupIntent);
 //
 //                        }
-//
-//
 //
 //                    }
 //                });
