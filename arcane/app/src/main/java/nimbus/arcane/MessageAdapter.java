@@ -44,20 +44,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.message_single_layout, parent, false);
+        View v1 = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_single_layout, parent, false);
 
-        return new MessageViewHolder(v);
+        return new MessageViewHolder(v1);
 
     }
 
     public class MessageViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView messageText;
+        public TextView messageText, senderText;
         public CircleImageView profileImage;
-        public TextView messageTime;
+        public TextView messageTime, senderTime;
         public TextView messageFrom;
-        public RelativeLayout relativeLayout;
+        public RelativeLayout relativeLayout, senderLayout;
 
         public MessageViewHolder(View view) {
             super(view);
@@ -67,6 +66,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             profileImage = (CircleImageView) view.findViewById(R.id.message_profile_layout);
             messageTime = (TextView) view.findViewById(R.id.message_time_layout);
             relativeLayout = (RelativeLayout) view.findViewById(R.id.message_single_layout);
+
+            senderText = (TextView) view.findViewById(R.id.sender_text_layout);
+            senderTime = (TextView) view.findViewById(R.id.sender_time_layout);
+            senderLayout = (RelativeLayout) view.findViewById(R.id.message_sender_single_layout);
 
         }
     }
@@ -78,23 +81,28 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         String current_user_id = mAuth.getCurrentUser().getUid();
         Messages c = mMessageList.get(i);
         String from_user = c.getFrom();
+        String message_type = c.getType();
 
         if (from_user.equals(current_user_id)) {
 
-            viewHolder.messageText.setBackgroundResource(R.drawable.message_text_background_sender);
-            viewHolder.messageText.setTextColor(Color.BLACK);
-            viewHolder.messageFrom.setText("");
+            viewHolder.messageFrom.setVisibility(View.INVISIBLE);
+            viewHolder.messageText.setVisibility(View.INVISIBLE);
+            viewHolder.messageTime.setVisibility(View.INVISIBLE);
+            viewHolder.profileImage.setVisibility(View.INVISIBLE);
+
+            viewHolder.senderText.setText(c.getMessage());
+            viewHolder.senderTime.setText(DateFormat.format("HH:mm", c.getTime()));
 
         } else {
 
-            viewHolder.messageText.setBackgroundResource(R.drawable.message_text_background_receiver);
-            viewHolder.messageText.setTextColor(Color.WHITE);
+            viewHolder.senderText.setVisibility(View.INVISIBLE);
+            viewHolder.senderTime.setVisibility(View.INVISIBLE);
+
             viewHolder.messageFrom.setText(c.getName());
+            viewHolder.messageText.setText(c.getMessage());
+            viewHolder.messageTime.setText(DateFormat.format("HH:mm", c.getTime()));
 
         }
-
-        viewHolder.messageText.setText(c.getMessage());
-        viewHolder.messageTime.setText(DateFormat.format("HH:mm", c.getTime()));
 
     }
 

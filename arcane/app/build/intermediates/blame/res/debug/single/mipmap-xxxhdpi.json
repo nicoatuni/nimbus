@@ -1,5 +1,13 @@
 [
     {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\compass_arrow.png",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxxhdpi\\compass_arrow.png"
+    },
+    {
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\compass_bg.png",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxxhdpi\\compass_bg.png"
+    },
+    {
         "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher_round.png",
         "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
