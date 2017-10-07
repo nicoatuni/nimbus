@@ -1,4 +1,4 @@
-#Sat Oct 07 22:14:00 AEDT 2017
+#Sat Oct 07 22:36:38 AEDT 2017
 file.9=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_9094b0105af8ed640e5a471ccfd82933a2878385\\classes.dex
 base.10=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_8cc820dbe9692fd0822b9ac3bc12e2101e1f2d29
 file.8=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\support-annotations-25.3.1_6964f95dbe20f34f9a4c15b3ea414ed00e34daae\\classes.dex
