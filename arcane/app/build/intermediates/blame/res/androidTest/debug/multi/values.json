@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\181aa824b6675a55949535a03805e544d65cedf9\\output\\res\\values\\values.xml",
+                    "file": "C:\\Users\\DELL\\.android\\build-cache\\6d7a23eab8297f092aaf11858e75ade10309548b\\output\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

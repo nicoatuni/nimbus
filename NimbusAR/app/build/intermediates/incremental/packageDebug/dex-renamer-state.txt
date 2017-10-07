@@ -1,0 +1,7 @@
+#Tue Oct 03 22:46:20 AEDT 2017
+base.0=E\:\\Sample AR\\NimbusAR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c9d88cd9f4bb2200156b8fc6f7d85cb3a9a62311
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=E\:\\Sample AR\\NimbusAR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_cc070cb0e60a6f5229a0e9868b8ab4e0d2fe2a39\\classes.dex
+base.1=E\:\\Sample AR\\NimbusAR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_cc070cb0e60a6f5229a0e9868b8ab4e0d2fe2a39
+file.0=E\:\\Sample AR\\NimbusAR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c9d88cd9f4bb2200156b8fc6f7d85cb3a9a62311\\classes.dex
