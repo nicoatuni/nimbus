@@ -61,8 +61,14 @@ import org.w3c.dom.Text;
  */
 
 /**
- * Last Edited by Arnold on 10/7/17
+ * Edited by Arnold on 9/26/17
  */
+
+
+/* Notes for this activity :
+*  - Need to connect this one with map activity, where the AR Points of this activity
+*    are generated from the pathways points(latitude,longitude) from the map feature */
+
 
 public class ARActivity extends AppCompatActivity implements SensorEventListener, LocationListener {
 
@@ -100,6 +106,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
     private Toolbar mToolbar;
 
+    public static List<List<HashMap<String, String>>> routePoints;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,6 +124,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);
         surfaceView = (SurfaceView) findViewById(R.id.surface_view);
         tvCurrentLocation = (TextView) findViewById(R.id.current_location);
+
+//        routePoints = MapFragment.routePoints;
 
         compass = (ImageView) findViewById(R.id.arrow);
         objectDir = (ImageView) findViewById(R.id.arrow2);
@@ -290,9 +300,9 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                 anim.setFillAfter(true);
 
 
-                //Log.d("Azimuth","Azimuth = "+azimuth);
-                //Log.d("Angle","Angle = "+dAngle);
-                //Log.d("Object","Object = "+angle);
+                Log.d("Azimuth","Azimuth = "+azimuth);
+                Log.d("Angle","Angle = "+dAngle);
+                Log.d("Object","Object = "+angle);
                 compass.startAnimation(anim); //Your Phone orientation based on the NSEW
                 objectDir.setRotation(dAngle); //Where you should turn your phone
 
@@ -380,7 +390,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             //Send the current location to AROverlayView Class, which will render the target
             arOverlayView.updateCurrentLocation(location);
             //Update the current location to TextView
-            tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
+            tvCurrentLocation.setText(String.format("My Position \nLatitude: %s \nLongitude: %s \n",
                     location.getLatitude(), location.getLongitude()));
             pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getSize()-arOverlayView.getIndex())));
         }

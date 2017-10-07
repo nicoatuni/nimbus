@@ -7,20 +7,17 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.location.Location;
 import android.opengl.Matrix;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
 /**
  * Created by ntdat on 1/13/17.
  */
-
 /**
- * Last Edited by Arnold on 10/7/17.
+ * Edited by Arnold on 9/26/2017.
  */
 
 public class ARView extends View{
@@ -29,36 +26,17 @@ public class ARView extends View{
     private float[] rotatedProjectionMatrix = new float[16];
     private Location currentLocation;
     private List<ARPoint> arPoints;
-    public static List<List<HashMap<String, String>>> routePoints;
     private int i = 0;
 
     //Initializing the AR Points
     public ARView(Context context) {
         super(context);
+
         this.context = context;
-
-        routePoints = MapFragment.routePoints;
-        final List<HashMap<String,String>> pointList = routePoints.get(0);
-        final int pointLength = pointList.size();
-
-        //Log.d("Test","Route = "+pointList);
 
         //Pass the Array of Locations into here to be rendered later
         arPoints = new ArrayList<ARPoint>() {{
-            for (int j=0;j<pointLength;j++) {
-                double lat=0;
-                double lng=0;
-                for (String key : pointList.get(j).keySet()) {
-                    Log.d("COOR",key);
-                    Log.d("VAL","val = "+(pointList.get(j).get(key)));
-                    if (key=="lat") {
-                        lat = Double.parseDouble(pointList.get(j).get(key));
-                    } else if (key=="lng"){
-                        lng = Double.parseDouble(pointList.get(j).get(key));
-                    }
-                }
-                add(new ARPoint(lat,lng));
-            }
+            add(new ARPoint("First Point", -37.8, 144.959, 0));
         }};
     }
 

@@ -6,10 +6,6 @@ import android.location.Location;
  * Created by ntdat on 1/13/17.
  */
 
-/**
- * Last Edited by Arnold on 10/7/17
- */
-
 //Class with functions to calculate coordinates in which the object will be rendered in the ARView
 public class LocationHelper {
     private final static double WGS84_A = 6378137.0;                  // WGS 84 semi-major axis constant in meters

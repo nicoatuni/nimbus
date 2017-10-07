@@ -1,4 +1,0 @@
-#Tue Oct 03 23:47:39 AEDT 2017
-base.0=E\:\\Sample AR\\NimbusAR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1
-renamed.0=classes.dex
-file.0=E\:\\Sample AR\\NimbusAR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1\\classes.dex
