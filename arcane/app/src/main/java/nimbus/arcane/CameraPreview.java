@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 /**
- * Edited by Arnold on 9/26/17
+ * Last Edited by Arnold on 9/26/17
  */
 
 public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
