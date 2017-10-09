@@ -36,7 +36,24 @@ public class ARView extends View{
 
         //Pass the Array of Locations into here to be rendered later
         arPoints = new ArrayList<ARPoint>() {{
+<<<<<<< HEAD
             add(new ARPoint("First Point", -37.8, 144.959, 0));
+=======
+            for (int j=0;j<pointLength;j++) {
+                double lat=0;
+                double lng=0;
+                for (String key : pointList.get(j).keySet()) {
+                    //Log.d("COOR",key);
+                    //Log.d("VAL","val = "+(pointList.get(j).get(key)));
+                    if (key=="lat") {
+                        lat = Double.parseDouble(pointList.get(j).get(key));
+                    } else if (key=="lng"){
+                        lng = Double.parseDouble(pointList.get(j).get(key));
+                    }
+                }
+                add(new ARPoint(lat,lng));
+            }
+>>>>>>> parent of e9c3833... Revert "Comment the Log.d"
         }};
     }
 

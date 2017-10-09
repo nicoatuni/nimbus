@@ -3212,9 +3212,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nimbus/arcane/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="275">
           <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
           <folding />
+=======
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding>
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+          </folding>
+>>>>>>> parent of e9c3833... Revert "Comment the Log.d"
         </state>
       </provider>
     </entry>
