@@ -1,4 +1,0 @@
-#Wed Oct 04 01:02:40 AEDT 2017
-base.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2
-renamed.0=classes.dex
-file.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2\\classes.dex
