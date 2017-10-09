@@ -12,12 +12,12 @@
         "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\chat_custom_bar.xml",
-        "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\layout\\chat_custom_bar.xml"
-    },
-    {
         "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
         "source": "C:\\Users\\DELL\\.android\\build-cache\\eb7f71de14a4976b33bc9e2910e1d6e6ab7c977d\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\chat_custom_bar.xml",
+        "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\layout\\chat_custom_bar.xml"
     },
     {
         "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
