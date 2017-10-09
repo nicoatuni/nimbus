@@ -6,7 +6,7 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1507376335199"
+    timestamp="1507363176391"
     token="5424248302223829685"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -18,47 +18,51 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="3260" />
     <task
         name="verifier"
-        duration="0" />
+        duration="726" />
+
+    <artifact
+        location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1507376181641"
+        timestamp="1507357333320"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\outputs\apk\app-debug.apk"
@@ -66,7 +70,11 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1507376335199"
-        verifier="COLD_SWAP_REQUESTED" />
+        timestamp="1507363176391"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\DELL\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+    </build>
 
 </instant-run>

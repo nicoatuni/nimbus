@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\Sample AR\NimbusAR\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="E:\Sample AR\NimbusAR\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_cc070cb0e60a6f5229a0e9868b8ab4e0d2fe2a39\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Sample AR\NimbusAR\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6b125378d3c1e78e331670bb2b0e1da8d458ced6">
+        <dex dex="E:\Sample AR\NimbusAR\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_c9d88cd9f4bb2200156b8fc6f7d85cb3a9a62311\classes.dex" />
+    </item>
+
+</items>

@@ -5,12 +5,15 @@ import android.location.Location;
 /**
  * Created by ntdat on 1/16/17.
  */
+
 /**
  * Last Edited by Arnold 10/7/17
  */
 
 public class ARPoint {
     Location location;
+
+    String name;
 
     public ARPoint(double lat, double lon) {
         location = new Location("ARPoint");
@@ -20,5 +23,9 @@ public class ARPoint {
 
     public Location getLocation() {
         return location;
+    }
+
+    public String getName() {
+        return name;
     }
 }

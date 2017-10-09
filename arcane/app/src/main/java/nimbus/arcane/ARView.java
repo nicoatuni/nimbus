@@ -18,8 +18,9 @@ import java.util.List;
 /**
  * Created by ntdat on 1/13/17.
  */
+
 /**
- * Last Edited by Arnold 10/7/17
+ * Last Edited by Arnold on 10/7/17.
  */
 
 public class ARView extends View{
@@ -34,9 +35,7 @@ public class ARView extends View{
     //Initializing the AR Points
     public ARView(Context context) {
         super(context);
-
         this.context = context;
-
 
         routePoints = MapFragment.routePoints;
         final List<HashMap<String,String>> pointList = routePoints.get(0);
@@ -62,7 +61,6 @@ public class ARView extends View{
             }
         }};
     }
-
 
     public void updateRotatedProjectionMatrix(float[] rotatedProjectionMatrix) {
         this.rotatedProjectionMatrix = rotatedProjectionMatrix;

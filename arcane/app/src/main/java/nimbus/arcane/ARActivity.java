@@ -59,10 +59,10 @@ import org.w3c.dom.Text;
 /**
  * Created by ntdat on 1/13/17.
  */
+
 /**
  * Last Edited by Arnold on 10/7/17
  */
-
 
 public class ARActivity extends AppCompatActivity implements SensorEventListener, LocationListener {
 
@@ -99,7 +99,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     boolean locationServiceAvailable;
 
     private Toolbar mToolbar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
