@@ -100,12 +100,12 @@
         "source": "C:\\Users\\DELL\\.android\\build-cache\\eb7f71de14a4976b33bc9e2910e1d6e6ab7c977d\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
-        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
-        "source": "C:\\Users\\DELL\\.android\\build-cache\\eb7f71de14a4976b33bc9e2910e1d6e6ab7c977d\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
-    },
-    {
         "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\default_avatar.png",
         "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\drawable\\default_avatar.png"
+    },
+    {
+        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
+        "source": "C:\\Users\\DELL\\.android\\build-cache\\eb7f71de14a4976b33bc9e2910e1d6e6ab7c977d\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
         "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
