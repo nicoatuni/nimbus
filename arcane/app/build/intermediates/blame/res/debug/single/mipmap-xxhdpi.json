@@ -1,18 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher_round.png",
-        "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
-        "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher_round.png",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\compass_bg.png",
-        "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\compass_bg.png"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\compass_bg.png",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\compass_bg.png"
     },
     {
-        "merged": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\compass_arrow.png",
-        "source": "C:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\compass_arrow.png"
+        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\compass_arrow.png",
+        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\mipmap-xxhdpi\\compass_arrow.png"
     }
 ]

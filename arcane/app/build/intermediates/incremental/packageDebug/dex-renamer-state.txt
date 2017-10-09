@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Sat Oct 07 16:51:25 AEDT 2017
 base.0=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_34566ef27e353a883e7474cff07ca90f46bf939f
 renamed.1=classes.dex
@@ -5,3 +6,12 @@ renamed.0=classes2.dex
 file.1=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_102c49a05a842809874f76f32ce39d953c2690f2\\classes.dex
 base.1=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_102c49a05a842809874f76f32ce39d953c2690f2
 file.0=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_34566ef27e353a883e7474cff07ca90f46bf939f\\classes.dex
+=======
+#Wed Oct 04 01:02:41 AEDT 2017
+base.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_7b4a8c925905e5d75212ae8d2e0a6d3a3c949ae2
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_77b6edf76a97a006a58119bd5ea6f297040bbd7d\\classes.dex
+base.1=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_77b6edf76a97a006a58119bd5ea6f297040bbd7d
+file.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_7b4a8c925905e5d75212ae8d2e0a6d3a3c949ae2\\classes.dex
+>>>>>>> parent of 75cb8ed... Connect AR with Map Fragment Data

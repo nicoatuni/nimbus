@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #Thu Oct 05 15:54:32 AEDT 2017
 base.0=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3
+=======
+#Thu Sep 28 17:00:27 AEST 2017
+base.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3
+>>>>>>> parent of 75cb8ed... Connect AR with Map Fragment Data
 renamed.0=classes.dex
-file.0=C\:\\Users\\DELL\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3\\classes.dex
+file.0=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3\\classes.dex
