@@ -50,8 +50,8 @@ public class ARView extends View{
                 double lat=0;
                 double lng=0;
                 for (String key : pointList.get(j).keySet()) {
-                    //Log.d("COOR",key);
-                    //Log.d("VAL","val = "+(pointList.get(j).get(key)));
+                    Log.d("COOR",key);
+                    Log.d("VAL","val = "+(pointList.get(j).get(key)));
                     if (key=="lat") {
                         lat = Double.parseDouble(pointList.get(j).get(key));
                     } else if (key=="lng"){
