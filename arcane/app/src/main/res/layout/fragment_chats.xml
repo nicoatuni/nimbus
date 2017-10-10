@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     tools:context="nimbus.arcane.ChatsFragment">
 
-    <include layout="@layout/users_single_layout" android:id="@+id/group_chat_layout" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/groups_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

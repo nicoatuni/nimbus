@@ -14,6 +14,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -93,7 +94,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private DatabaseReference mUserRef;
     private FirebaseUser mCurrentUser;
 
-    private ArrayList<String> mFriendsLocation;
+    private HashMap<String, String> mFriendsLocation = new HashMap<String, String>();
 
     public MapFragment() {
         // Required empty public constructor
@@ -130,21 +131,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mUserRef = mRootRef.child("Users").child(mCurrentUser.getUid());
-        mUserRef.child("Friends").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        getFriendsLocation();
 
         return mMainView;
+    }
+
+    public void getFriendsLocation() {
+
+
+
     }
 
     @Override
@@ -154,18 +150,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         gpsTracker = new GPSTracker(getContext());
         // checking whether gps is enabled or not
         gpsTracker.checkGPS();
-
-        int permission_all = 1;
-        int check_permission;
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
-
-        // checking permission
-        check_permission = hasPermissions(getContext(), permissions);
-        if (check_permission == 1) {
-
-            ActivityCompat.requestPermissions(getActivity(), permissions, permission_all);
-
-        }
 
         mLocation = gpsTracker.getLocation();
 
@@ -184,6 +168,58 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+    }
+
+    public void addMarker() {
+
+        mRootRef.child("Groups").child("-Kw2VGxV01m_oJqGa9qs").child("Members").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Iterable<DataSnapshot> members = dataSnapshot.getChildren();
+                for (DataSnapshot member : members) {
+
+                    String user_id = member.getKey();
+                    if (!user_id.equals(mCurrentUser.getUid())) {
+
+                        String user_name = member.child("name").getValue().toString();
+                        if (member.hasChild("latlng")) {
+
+                            double user_latitude = (double) member.child("latlng").child("latitude").getValue();
+                            double user_longitude = (double) member.child("latlng").child("longitude").getValue();
+                            LatLng user_location = new LatLng(user_latitude, user_longitude);
+
+                            mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    public void addUserLocation(LatLng location) {
+
+        Map locationMap = new HashMap();
+        locationMap.put("Users/" + mCurrentUser.getUid() + "/latlng", location);
+        locationMap.put("Groups/" + "-Kw2VGxV01m_oJqGa9qs" + "/Members/" + mCurrentUser.getUid() + "/latlng", location);
+
+        mRootRef.updateChildren(locationMap, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+                if (databaseError != null) {
+
+                    Toast.makeText(getContext(), "Error in putting user location to database", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
 
     }
 
@@ -207,12 +243,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
 
+                        // add user location to database
+                        addUserLocation(userLocation);
+
                     }
 
-                    LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
-                    mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                    LatLng mock = new LatLng(-37.8, 144.968);
-                    mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                    addMarker();
 
                 }
             }
@@ -231,7 +267,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
 
@@ -243,6 +278,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
 
+                // add user location to database
+                addUserLocation(mUserLocation);
+
                 if (firstTime) {
 
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
@@ -250,13 +288,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 }
 
-                // Add a marker as a mock destination
-                LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
-                mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                LatLng mock = new LatLng(-37.8, 144.968);
-                mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                addMarker();
 
                 makeRoute(mUserLocation, mDestination);
+
             }
 
             @Override
@@ -275,16 +310,56 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         };
 
-        mUserLocation = new LatLng(latitude, longitude);
-        mMap.clear();
-        mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+        int permission_all = 1;
+        int check_permission;
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
-        // Add a marker as a mock destination
-        LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
-        mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination 1").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-        LatLng mock = new LatLng(-37.8, 144.968);
-        mMap.addMarker(new MarkerOptions().position(mock).title("set as destination 2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+
+        } else {
+
+            for (String permission : permissions) {
+
+                if (ActivityCompat.checkSelfPermission(getContext(), permission) != PackageManager.PERMISSION_GRANTED) {
+
+                    ActivityCompat.requestPermissions(getActivity(), permissions, permission_all);
+
+                } else {
+
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                    Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                    if (lastKnownLocation != null) {
+
+                        LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+                        mMap.clear();
+                        mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+
+                        // add user location to database
+                        addUserLocation(userLocation);
+
+                    }
+
+//                    addMarker();
+
+                }
+
+            }
+
+        }
+
+//        mUserLocation = new LatLng(latitude, longitude);
+//        mMap.clear();
+//        mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+
+//        // add user location to database
+//        addUserLocation(mUserLocation);
+
+        addMarker();
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
@@ -301,7 +376,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onClick(View v) {
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+                if (mUserLocation != null) {
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+
+                }
 
             }
         });
@@ -313,7 +392,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-            return 2;
+            return 0;
 
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
 
@@ -381,10 +460,38 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
 
-            LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
-            mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-            LatLng mock = new LatLng(-37.8, 144.968);
-            mMap.addMarker(new MarkerOptions().position(mock).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+            mRootRef.child("Groups").child("-Kw2VGxV01m_oJqGa9qs").child("Members").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Iterable<DataSnapshot> members = dataSnapshot.getChildren();
+                    for (DataSnapshot member : members) {
+
+                        String user_id = member.getKey();
+                        if (!user_id.equals(mCurrentUser.getUid())) {
+
+                            String user_name = member.child("name").getValue().toString();
+                            if (member.hasChild("latlng")) {
+
+                                double user_latitude = (double) member.child("latlng").child("latitude").getValue();
+                                double user_longitude = (double) member.child("latlng").child("longitude").getValue();
+                                LatLng user_location = new LatLng(user_latitude, user_longitude);
+
+                                mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+//            LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
+//            mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+//            LatLng mock = new LatLng(-37.8, 144.968);
+//            mMap.addMarker(new MarkerOptions().position(mock).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
             //Getting URL to the Google Directions API
             String url = getDirectionsUrl(origin, dest);

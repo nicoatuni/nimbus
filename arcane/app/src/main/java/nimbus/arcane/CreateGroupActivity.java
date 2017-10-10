@@ -109,50 +109,68 @@ public class CreateGroupActivity extends AppCompatActivity {
                 String group_name = mDisplayName.getEditText().getText().toString();
                 String group_status = mStatus.getEditText().getText().toString();
 
+                DatabaseReference group_push = mGroupDatabase.push();
+                String push_id = group_push.getKey();
+
                 Map groupMap = new HashMap();
                 groupMap.put("name", group_name);
                 groupMap.put("status", group_status);
                 groupMap.put("image", "default");
                 groupMap.put("thumb_image", "default");
 
-                create_group(groupMap);
+                create_group(groupMap, push_id, group_name);
 
             }
         });
     }
 
-    public void create_group(Map groupMap) {
+    public void create_group(Map groupMap, final String push_id, final String group_name) {
 
-        mGroupDatabase.setValue(groupMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mGroupDatabase.child(push_id).setValue(groupMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
                 if (task.isSuccessful()) {
 
-                    Map adminMap = new HashMap();
-                    adminMap.put("Groups/Members/" + mCurrentUser.getUid() + "/date", ServerValue.TIMESTAMP);
-                    adminMap.put("Groups/Admin/" + mCurrentUser.getUid(), "");
-
-                    mRootRef.updateChildren(adminMap, new DatabaseReference.CompletionListener() {
+                    mRootRef.child("Users").child(mCurrentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            if (databaseError == null) {
+                            String user_name = dataSnapshot.child("name").getValue().toString();
 
-                                mProgress.dismiss();
-                                Toast.makeText(CreateGroupActivity.this, "Group created", Toast.LENGTH_LONG).show();
+                            Map adminMap = new HashMap();
+                            adminMap.put("Groups/" + push_id + "/Members/" + mCurrentUser.getUid() + "/date", ServerValue.TIMESTAMP);
+                            adminMap.put("Groups/" + push_id + "/Members/" + mCurrentUser.getUid() + "/name", user_name);
+                            adminMap.put("Groups/" + push_id + "/Admin/" + mCurrentUser.getUid(), "");
+                            adminMap.put("Users/" + mCurrentUser.getUid() + "/Groups/" + push_id + "/date", ServerValue.TIMESTAMP);
 
-                                Intent groupIntent = new Intent(CreateGroupActivity.this, GroupChatActivity.class);
-                                startActivity(groupIntent);
-                                finish();
+                            mRootRef.updateChildren(adminMap, new DatabaseReference.CompletionListener() {
+                                @Override
+                                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
 
-                            } else {
+                                    if (databaseError == null) {
 
-                                String error = databaseError.getMessage();
+                                        mProgress.dismiss();
+                                        Toast.makeText(CreateGroupActivity.this, "Group created", Toast.LENGTH_LONG).show();
 
-                                Toast.makeText(CreateGroupActivity.this, error, Toast.LENGTH_SHORT).show();
+                                        Intent groupIntent = new Intent(CreateGroupActivity.this, GroupChatActivity.class);
+                                        startActivity(groupIntent);
+                                        finish();
 
-                            }
+                                    } else {
+
+                                        String error = databaseError.getMessage();
+
+                                        Toast.makeText(CreateGroupActivity.this, error, Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
                         }
                     });
                 }

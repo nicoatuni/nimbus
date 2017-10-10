@@ -1,20 +1,29 @@
 package nimbus.arcane;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,15 +42,23 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ChatsFragment extends Fragment {
 
     private RelativeLayout mGroupList;
+    private RecyclerView mGroupsList;
 
     private View mMainView;
 
+    private View mLayout;
     private TextView mGroupName;
     private TextView mStatus;
     private CircleImageView mImageView;
 
+    private FirebaseUser mCurrentUser;
     private DatabaseReference mRootRef;
     private DatabaseReference mGroupRef;
+    private DatabaseReference mGroupsDatabase;
+    private DatabaseReference mAllGroupsDatabase;
+
+    private Iterable<DataSnapshot> mGroups;
+    private String group_id;
 
     public ChatsFragment() {
         // Required empty public constructor
@@ -53,12 +70,20 @@ public class ChatsFragment extends Fragment {
         // Inflate the layout for this fragment
         mMainView = inflater.inflate(R.layout.fragment_chats, container, false);
 
-        mGroupName = (TextView) mMainView.findViewById(R.id.users_display_name);
-        mImageView = (CircleImageView) mMainView.findViewById(R.id.users_image);
-        mStatus = (TextView) mMainView.findViewById(R.id.users_status);
+        mGroupsList = (RecyclerView) mMainView.findViewById(R.id.groups_list);
+
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mGroupRef = mRootRef.child("Groups");
+
+        mAllGroupsDatabase = mRootRef.child("Groups");
+        mAllGroupsDatabase.keepSynced(true);
+        mGroupsDatabase = mRootRef.child("Users").child(mCurrentUser.getUid()).child("Groups");
+        mGroupsDatabase.keepSynced(true);
+
+        mGroupsList.setHasFixedSize(true);
+        mGroupsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return mMainView;
     }
@@ -67,72 +92,116 @@ public class ChatsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        mGroupRef.addValueEventListener(new ValueEventListener() {
+        FirebaseRecyclerAdapter<Groups, ChatsFragment.ChatsViewHolder> groupsRecyclerViewAdapter = new FirebaseRecyclerAdapter<Groups, ChatsViewHolder>(
+                Groups.class, R.layout.group_single_layout, ChatsFragment.ChatsViewHolder.class, mGroupsDatabase) {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            protected void populateViewHolder(final ChatsFragment.ChatsViewHolder chatsViewHolder, Groups groups, int position) {
 
-                if (dataSnapshot.hasChild("name")) {
+                final String list_group_id = getRef(position).getKey();
 
-                    String groupName = dataSnapshot.child("name").getValue().toString();
-                    String userStatus = dataSnapshot.child("status").getValue().toString();
-                    String userThumbImage = dataSnapshot.child("thumb_image").getValue().toString();
+                mAllGroupsDatabase.child(list_group_id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    mGroupName.setText(groupName);
-                    mStatus.setText(userStatus);
-                    Picasso.with(getContext()).load(userThumbImage).placeholder(R.drawable.default_avatar).into(mImageView);
+                        final String groupName = dataSnapshot.child("name").getValue().toString();
+                        String groupStatus = dataSnapshot.child("status").getValue().toString();
+                        String groupThumbImage = dataSnapshot.child("thumb_image").getValue().toString();
 
-                } else {
+                        chatsViewHolder.setName(groupName);
+                        chatsViewHolder.setDisplayImage(groupThumbImage, getContext());
+                        chatsViewHolder.setStatus(groupStatus);
 
-                    mGroupName.setVisibility(View.INVISIBLE);
-                    mStatus.setVisibility(View.INVISIBLE);
-                    mImageView.setVisibility(View.INVISIBLE);
+                        chatsViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
 
-                }
+                                CharSequence options[] = new CharSequence[]{"Open Profile", "Open Chat", "Add to Group"};
+
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                                builder.setTitle("Select Options");
+                                builder.setItems(options, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        // Click Event for each item
+                                        if (i == 0) {
+
+                                            Intent profileIntent = new Intent(getContext(), GroupProfileActivity.class);
+                                            profileIntent.putExtra("group_id", list_group_id);
+                                            startActivity(profileIntent);
+
+                                        }
+
+                                        if (i == 1) {
+
+                                            Intent chatGroupIntent = new Intent(getContext(), GroupChatActivity.class);
+                                            chatGroupIntent.putExtra("group_id", list_group_id);
+                                            chatGroupIntent.putExtra("group_name", groupName);
+                                            startActivity(chatGroupIntent);
+
+                                        }
+
+                                        if (i == 2) {
+
+                                            Intent addToGroupIntent = new Intent(getContext(), AddToGroupActivity.class);
+                                            addToGroupIntent.putExtra("group_id", list_group_id);
+                                            addToGroupIntent.putExtra("group_name", groupName);
+                                            startActivity(addToGroupIntent);
+
+                                        }
+                                    }
+                                });
+
+                                builder.show();
+
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
+        };
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        mGroupsList.setAdapter(groupsRecyclerViewAdapter);
 
-            }
-        });
+    }
 
-        mMainView.findViewById(R.id.group_chat_layout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    public static class ChatsViewHolder extends RecyclerView.ViewHolder {
 
-                Intent groupIntent = new Intent(getContext(), GroupChatActivity.class);
-                groupIntent.putExtra("group_name", mGroupName.getText().toString());
-                startActivity(groupIntent);
+        View mView;
 
-//                CharSequence options[] = new CharSequence[]{"Open Profile", "Send Message"};
-//
-//                final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//
-//                builder.setTitle("Select Options");
-//                builder.setItems(options, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                        // Click Event for each item
-//                        if (i == 0) {
-//
-//                            Intent profileIntent = new Intent(getContext(), GroupProfileActivity.class);
-//                            profileIntent.putExtra("group_name", mGroupName.getText().toString());
-//                            startActivity(profileIntent);
-//
-//                        }
-//
-//                        if (i == 1) {
-//
-//                            Intent groupIntent = new Intent(getContext(), GroupChatActivity.class);
-//                            groupIntent.putExtra("group_name", mGroupName.getText().toString());
-//                            startActivity(groupIntent);
-//
-//                        }
-//
-//                    }
-//                });
-            }
-        });
+        public ChatsViewHolder(View itemView) {
+            super(itemView);
+
+            mView = itemView;
+
+        }
+
+        public void setStatus(String status) {
+
+            TextView userStatusView = (TextView) mView.findViewById(R.id.users_status);
+            userStatusView.setText(status);
+
+        }
+
+        public void setName(String name) {
+
+            TextView userNameView = (TextView) mView.findViewById(R.id.users_display_name);
+            userNameView.setText(name);
+
+        }
+
+        public void setDisplayImage(String thumb_image, Context ctx) {
+
+            CircleImageView userImage_view = (CircleImageView) mView.findViewById(R.id.users_image);
+            Picasso.with(ctx).load(thumb_image).placeholder(R.drawable.default_avatar).into(userImage_view);
+
+        }
     }
 }
