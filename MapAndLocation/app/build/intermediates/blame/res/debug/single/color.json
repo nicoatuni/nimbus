@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\b26d7de91ddf87cce82857f4be09417dd12df3ef\\output\\res\\color\\common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\b26d7de91ddf87cce82857f4be09417dd12df3ef\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\b26d7de91ddf87cce82857f4be09417dd12df3ef\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\color\\switch_thumb_material_dark.xml"
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\Elbert\\AndroidStudioProjects\\MapAndLocation\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\5bac823385ee14d23bfa5b4e1bb9d57706c68887\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]

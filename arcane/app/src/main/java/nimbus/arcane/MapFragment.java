@@ -74,6 +74,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private static View mMainView;
 
     public static List<List<HashMap<String, String>>> routePoints = null;
+    private ArrayList<String> availableGroupIDList=new ArrayList<String>();
 
     private GoogleMap mMap;
     private Boolean firstTime = true;
@@ -139,8 +140,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         return mMainView;
     }
 
-    public void getFriendsLocation() {
+    public void getGroups(){
+        mUserRef.child("Groups").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                   for(DataSnapshot postSnapShot:dataSnapshot.getChildren()) {
+                       //Groups group=postSnapShot.getValue(Groups.class);
+                       availableGroupIDList.add(postSnapShot.getKey());
+                       // adapter.notifyDataSetChanged();
+                       Log.d("TESTGROUP",postSnapShot.getKey());
+                   }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
     }
 
     @Override
@@ -291,6 +308,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        getGroups();
+
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
 
         locationListener = new LocationListener() {
@@ -319,6 +338,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 addMarker();
 
                 makeRoute(mUserLocation, mDestination);
+
+                Log.d("GROUPS",availableGroupIDList.toString());
 
             }
 

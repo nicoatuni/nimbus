@@ -1,14 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main_menu.xml",
-        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\menu\\main_menu.xml"
+        "merged": "C:\\Users\\Elbert\\Desktop\\For Google Drive\\it project\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\menu\\crop_image_menu.xml",
+        "source": "C:\\Users\\Elbert\\.android\\build-cache\\1917cbdb6527f9287dc12a48bba1361313ea8068\\output\\res\\menu\\crop_image_menu.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\menu\\user_menu.xml",
-        "source": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\src\\main\\res\\menu\\user_menu.xml"
+        "merged": "C:\\Users\\Elbert\\Desktop\\For Google Drive\\it project\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\menu\\user_menu.xml",
+        "source": "C:\\Users\\Elbert\\Desktop\\For Google Drive\\it project\\arcane\\app\\src\\main\\res\\menu\\user_menu.xml"
     },
     {
-        "merged": "C:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\menu\\crop_image_menu.xml",
-        "source": "C:\\Users\\Richard Aldrich\\.android\\build-cache\\23ce72b5876073739ade3317d316b2ccb248b153\\output\\res\\menu\\crop_image_menu.xml"
+        "merged": "C:\\Users\\Elbert\\Desktop\\For Google Drive\\it project\\arcane\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main_menu.xml",
+        "source": "C:\\Users\\Elbert\\Desktop\\For Google Drive\\it project\\arcane\\app\\src\\main\\res\\menu\\main_menu.xml"
     }
 ]
