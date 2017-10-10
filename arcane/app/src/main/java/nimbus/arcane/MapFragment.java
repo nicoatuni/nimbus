@@ -132,14 +132,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mUserRef = mRootRef.child("Users").child(mCurrentUser.getUid());
 
-//        getFriendsLocation();
-
         return mMainView;
     }
 
     public void getFriendsLocation() {
-
-
 
     }
 

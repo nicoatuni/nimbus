@@ -2,6 +2,7 @@ package nimbus.arcane;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Observable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -26,6 +27,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import org.reactivestreams.Subscriber;
 
 import java.util.HashMap;
 
@@ -105,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void register_user(final String display_name, String email, String password) {
+    public void register_user(final String display_name, String email, String password) {
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
