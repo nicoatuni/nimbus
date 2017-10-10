@@ -66,10 +66,14 @@ public class GroupProfileActivity extends AppCompatActivity {
     // Progress Dialog
     private ProgressDialog mProgress;
 
+    private String group_key;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_profile);
+
+        group_key = getIntent().getStringExtra("group_id");
 
         mToolbar = (Toolbar) findViewById(R.id.group_profile_app_bar);
         setSupportActionBar(mToolbar);
@@ -95,7 +99,7 @@ public class GroupProfileActivity extends AppCompatActivity {
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mGroupDatabase = mRootRef.child("Groups");
         mGroupDatabase.keepSynced(true);
-        mGroupDatabase.addValueEventListener(new ValueEventListener() {
+        mGroupDatabase.child(group_key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -143,6 +147,7 @@ public class GroupProfileActivity extends AppCompatActivity {
                 Intent statusIntent = new Intent(GroupProfileActivity.this, StatusActivity.class);
                 statusIntent.putExtra("status_value", status_value);
                 statusIntent.putExtra("database", "group");
+                statusIntent.putExtra("group_id", group_key);
                 startActivity(statusIntent);
 
             }
@@ -228,7 +233,7 @@ public class GroupProfileActivity extends AppCompatActivity {
                                         update_hashMap.put("image", download_url);
                                         update_hashMap.put("thumb_image", thumb_download_url);
 
-                                        mGroupDatabase.updateChildren(update_hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        mGroupDatabase.child(group_key).updateChildren(update_hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
 

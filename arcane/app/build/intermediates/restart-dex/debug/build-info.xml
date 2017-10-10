@@ -6,49 +6,34 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1507039347718"
+    timestamp="1507610660206"
     token="-8603585785709175696"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="2643" />
+        duration="830" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="401" />
+        duration="18" />
     <task
         name="verifier"
-        duration="119" />
+        duration="6" />
 
-    <artifact
-        location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-        type="SPLIT" />
     <artifact
         location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
         type="SPLIT" />
-    <artifact
-        location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\outputs\apk\app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1507038329358"
+        timestamp="1507602048132"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
@@ -60,9 +45,6 @@
             type="SPLIT" />
         <artifact
             location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
@@ -77,34 +59,22 @@
             location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1507039347718"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
         <artifact
             location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1507610660206"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Richard Aldrich\Documents\GitHub\nimbus\arcane\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

@@ -111,8 +111,8 @@
             android:parentActivityName="nimbus.arcane.ChatActivity" />
         <activity
             android:name="nimbus.arcane.ARActivity"
-            android:parentActivityName="nimbus.arcane.MainActivity" >
-        </activity>
+            android:parentActivityName="nimbus.arcane.MainActivity" />
+        <activity android:name="nimbus.arcane.AddToGroupActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"

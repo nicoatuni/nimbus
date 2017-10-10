@@ -119,7 +119,7 @@ public class FriendFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
 
-                                CharSequence options[] = new CharSequence[]{"Open Profile", "Send Message", "Add to Group"};
+                                CharSequence options[] = new CharSequence[]{"Open Profile", "Send Message"};
 
                                 final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
@@ -146,11 +146,6 @@ public class FriendFragment extends Fragment {
 
                                         }
 
-                                        if (i == 2) {
-
-                                            addToGroup(list_user_id);
-
-                                        }
                                     }
                                 });
 

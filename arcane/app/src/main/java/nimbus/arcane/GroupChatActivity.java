@@ -73,6 +73,7 @@ public class GroupChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group_chat);
 
         String group_name = getIntent().getStringExtra("group_name");
+        final String group_key = getIntent().getStringExtra("group_id");
 
         mToolbar = (Toolbar) findViewById(R.id.chat_group_app_bar);
         setSupportActionBar(mToolbar);
@@ -97,23 +98,23 @@ public class GroupChatActivity extends AppCompatActivity {
 
         gpsTracker = new GPSTracker(GroupChatActivity.this);
 
-        loadMessages();
+        loadMessages(group_key);
 
         mChatSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                sendMessage();
+                sendMessage(group_key);
 
             }
         });
     }
 
-    private void loadMessages() {
+    private void loadMessages(String group_key) {
 
         DatabaseReference group_database = mRootRef.child("Groups");
 
-        group_database.child("Chats").addChildEventListener(new ChildEventListener() {
+        group_database.child(group_key).child("Chats").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
@@ -147,7 +148,7 @@ public class GroupChatActivity extends AppCompatActivity {
 
     }
 
-    private void sendMessage() {
+    private void sendMessage(final String group_key) {
 
         final String message = mChatMessageView.getText().toString();
 
@@ -171,7 +172,7 @@ public class GroupChatActivity extends AppCompatActivity {
                     messageMap.put("name", userName);
 
                     Map messageUserMap = new HashMap();
-                    messageUserMap.put("Groups/Chats/" + push_id, messageMap);
+                    messageUserMap.put("Groups/" + group_key + "/Chats/" + push_id, messageMap);
 
                     mChatMessageView.setText("");
 

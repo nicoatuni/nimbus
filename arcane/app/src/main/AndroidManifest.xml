@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.location.gps" />
 
@@ -81,11 +82,11 @@
 
         <activity
             android:name=".MapActivity"
-            android:parentActivityName=".ChatActivity"></activity>
+            android:parentActivityName=".ChatActivity" />
         <activity
             android:name=".ARActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".AddToGroupActivity"></activity>
     </application>
 
 </manifest>

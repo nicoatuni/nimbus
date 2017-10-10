@@ -1,4 +1,4 @@
-#Thu Sep 28 17:00:27 AEST 2017
+#Tue Oct 10 10:38:08 AEDT 2017
 file.9=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_f0869f12e23472db3ef67c9da37f473f48abba95\\classes.dex
 base.10=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_d8386224d74c8c778413cbb496165c5f4b3962cd
 file.8=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_4708c131a8b7957ad5a97094abba5d596614f3b2\\classes.dex

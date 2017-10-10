@@ -36,6 +36,8 @@ public class StatusActivity extends AppCompatActivity {
     // Progress Dialog
     private ProgressDialog mProgressDialog;
 
+    private String group_key;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,11 @@ public class StatusActivity extends AppCompatActivity {
 
         String status_value = getIntent().getStringExtra("status_value");
         final String database_used = getIntent().getStringExtra("database");
+        if (database_used == "group") {
+
+            group_key = getIntent().getStringExtra("group_id");
+
+        }
 
         mStatus = (TextInputLayout) findViewById(R.id.status_input);
         mStatus.getEditText().setText(status_value);
@@ -99,7 +106,7 @@ public class StatusActivity extends AppCompatActivity {
                 }
 
                 if (database_used.equals("group")) {
-                    mGroupDatabase.child("status").setValue(status).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mGroupDatabase.child(group_key).child("status").setValue(status).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -108,6 +115,7 @@ public class StatusActivity extends AppCompatActivity {
                                 mProgressDialog.dismiss();
 
                                 Intent groupProfileIntent = new Intent(StatusActivity.this, GroupProfileActivity.class);
+                                groupProfileIntent.putExtra("group_id", group_key);
                                 startActivity(groupProfileIntent);
                                 finish();
 
