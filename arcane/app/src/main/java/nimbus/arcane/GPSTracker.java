@@ -78,34 +78,6 @@ public class GPSTracker extends Service implements LocationListener {
 
             dialog.show();
 
-        } else if (!isNetworkEnabled) {
-
-            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setMessage(net_message);
-
-            dialog.setPositiveButton("Network Settings", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                    Intent netIntent = new Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS);
-                    context.startActivity(netIntent);
-
-                }
-            });
-
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                    /*
-                        take the last known location from database
-                     */
-
-                }
-            });
-
-            dialog.show();
-
         }
 
     }
@@ -140,7 +112,6 @@ public class GPSTracker extends Service implements LocationListener {
                 if (location == null) {
 
                     if (isNetworkEnabled) {
-
 
                         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
 

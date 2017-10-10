@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Oct 10 15:54:21 AEDT 2017
+#Tue Oct 10 17:35:52 AEDT 2017
 20.base=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\resources-debug.ap_
 493.base=C\:\\Users\\Richard Aldrich\\Documents\\GitHub\\nimbus\\arcane\\app\\build\\intermediates\\res\\resources-debug.ap_
