@@ -33,6 +33,7 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -41,6 +42,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -81,6 +83,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private GPSTracker gpsTracker;
     private Location mLocation;
+    private Marker mUser;
+    private Polyline mLine;
 
     private LatLng mUserLocation;
     private LatLng mDestination;
@@ -156,9 +160,27 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         } else {
 
-            /*
-                get location from database
-             */
+            mUserRef.child("latlng").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    latitude = (double) dataSnapshot.child("latitude").getValue();
+                    longitude = (double) dataSnapshot.child("longitude").getValue();
+
+                    mUserLocation = new LatLng(latitude, longitude);
+                    mMap.clear();
+                    mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+
+                    addMarker();
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
         }
 
@@ -229,22 +251,27 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
                     Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                     if (lastKnownLocation != null) {
 
                         LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-                        mMap.clear();
-                        mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+//                        mMap.clear();
+                        if (mUser != null) {
+
+                            mUser.remove();
+
+                        }
+                        mUser = mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
+//                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
 
                         // add user location to database
                         addUserLocation(userLocation);
 
                     }
 
-                    addMarker();
+//                    addMarker();
 
                 }
             }
@@ -271,8 +298,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onLocationChanged(Location location) {
 
                 mUserLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
+//                mMap.clear();
+                if (mUser != null) {
+
+                    mUser.remove();
+
+                }
+                mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
 
                 // add user location to database
                 addUserLocation(mUserLocation);
@@ -312,7 +344,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
 
         } else {
 
@@ -324,15 +356,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 } else {
 
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
                     Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                     if (lastKnownLocation != null) {
 
                         LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-                        mMap.clear();
-                        mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+//                        mMap.clear();
+                        if (mUser != null) {
+
+                            mUser.remove();
+
+                        }
+                        mUser = mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
+//                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
 
                         // add user location to database
                         addUserLocation(userLocation);
@@ -346,14 +383,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
 
         }
-
-//        mUserLocation = new LatLng(latitude, longitude);
-//        mMap.clear();
-//        mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
-
-//        // add user location to database
-//        addUserLocation(mUserLocation);
 
         addMarker();
 
@@ -386,7 +415,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M && context != null && permissions != null) {
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
 
             return 0;
 
@@ -452,42 +481,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         } else {
 
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+//            mMap.clear();
+            if (mUser != null) {
 
-            mRootRef.child("Groups").child("-Kw2VGxV01m_oJqGa9qs").child("Members").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                mUser.remove();
 
-                    Iterable<DataSnapshot> members = dataSnapshot.getChildren();
-                    for (DataSnapshot member : members) {
-
-                        String user_id = member.getKey();
-                        if (!user_id.equals(mCurrentUser.getUid())) {
-
-                            String user_name = member.child("name").getValue().toString();
-                            if (member.hasChild("latlng")) {
-
-                                double user_latitude = (double) member.child("latlng").child("latitude").getValue();
-                                double user_longitude = (double) member.child("latlng").child("longitude").getValue();
-                                LatLng user_location = new LatLng(user_latitude, user_longitude);
-
-                                mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-//            LatLng unimelb = new LatLng(-37.7963646, 144.9589851);
-//            mMap.addMarker(new MarkerOptions().position(unimelb).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-//            LatLng mock = new LatLng(-37.8, 144.968);
-//            mMap.addMarker(new MarkerOptions().position(mock).title("set as destination").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+            }
+            mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+//            addMarker();
 
             //Getting URL to the Google Directions API
             String url = getDirectionsUrl(origin, dest);
@@ -646,8 +648,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             }
 
+            if (mLine != null) {
+
+                mLine.remove();
+
+            }
+
             // Drawing polyline in the Google Map for the i-th route
-            mMap.addPolyline(lineOptions);
+            mLine = mMap.addPolyline(lineOptions);
         }
     }
 }
