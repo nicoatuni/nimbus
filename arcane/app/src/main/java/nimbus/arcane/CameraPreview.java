@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 /**
- * Last Edited by Arnold on 9/26/17
+ * Last Edited by Arnold on 10/12/17
  */
 
 public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
@@ -73,7 +73,8 @@ public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
         setMeasuredDimension(width, height);
 
         if (supportedPreviewSizes != null) {
-            previewSize = getOptimalPreviewSize(supportedPreviewSizes, width, height);
+            previewSize = supportedPreviewSizes.get(0);
+            //previewSize = getOptimalPreviewSize(supportedPreviewSizes, width, height);
         }
     }
 

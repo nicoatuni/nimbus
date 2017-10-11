@@ -19,7 +19,7 @@ import java.util.List;
  * Created by ntdat on 1/13/17.
  */
 /**
- * Last Edited by Arnold 10/7/17
+ * Last Edited by Arnold 10/12/17
  */
 
 public class ARView extends View{
@@ -29,7 +29,7 @@ public class ARView extends View{
     private Location currentLocation;
     private List<ARPoint> arPoints;
     public static List<List<HashMap<String, String>>> routePoints;
-    private int i = 0;
+    private int i = 1;
 
     //Initializing the AR Points
     public ARView(Context context) {
@@ -84,7 +84,7 @@ public class ARView extends View{
         return this.i;
     }
 
-    public int getSize() {
+    public int getARPointsSize() {
         return arPoints.size();
     }
 
@@ -124,7 +124,7 @@ public class ARView extends View{
                 canvas.drawCircle(x,y,radius+20,paint);
                 paint.setColor(Color.RED);
                 canvas.drawCircle(x, y, radius, paint);
-                canvas.drawText("Checkpoint "+(i+1), x - (30*6), y-160, paint);
+                canvas.drawText("Checkpoint "+(i), x - (30*6), y-160, paint);
                 canvas.drawText("Distance : " + LocationHelper.distanceFromECEF(currentLocationInECEF,pointInECEF) + " m", x - (30 * 11), y - 80, paint);
             }
         }
