@@ -60,7 +60,7 @@ import org.w3c.dom.Text;
  * Created by ntdat on 1/13/17.
  */
 /**
- * Last Edited by Arnold on 10/7/17
+ * Last Edited by Arnold on 10/12/17
  */
 
 
@@ -166,11 +166,13 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
     //Request to access Location/GPS when Activity start -- Might not be necessary since Map already get locationar
     public void requestLocationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
-                this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSIONS_CODE);
-        } else {
-            initLocationService();
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+        for (String permission : permissions) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && this.checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+                this.requestPermissions(permissions, REQUEST_LOCATION_PERMISSIONS_CODE);
+            } else {
+                initLocationService();
+            }
         }
     }
 
@@ -290,10 +292,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                 anim.setDuration(500);
                 anim.setFillAfter(true);
 
-
-                //Log.d("Azimuth","Azimuth = "+azimuth);
-                //Log.d("Angle","Angle = "+dAngle);
-                //Log.d("Object","Object = "+angle);
                 compass.startAnimation(anim); //Your Phone orientation based on the NSEW
                 objectDir.setRotation(dAngle); //Where you should turn your phone
 
@@ -309,10 +307,15 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
     //Initiate the location service and get our position (latitude, longitude) and pass it to variable "location"
     private void initLocationService() {
-        //Only works for SDK version below 23 --See Android Studio Documentation for more info--
-        if ( Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
-            return  ;
+
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+        for (String permission : permissions) {
+            //Only works for SDK version below 23 --See Android Studio Documentation for more info--
+            if (Build.VERSION.SDK_INT >= 23 &&
+                    ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+
         }
 
         try   {
@@ -367,13 +370,17 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
             this.location = location;
 
-            if(arOverlayView.getIndex()<arOverlayView.getSize()) {
+            if(arOverlayView.getIndex()<arOverlayView.getARPointsSize()) {
                 ARPoint nextpoint = arOverlayView.getARPoint();
+                float[] curLoc = LocationHelper.WSG84toECEF(location);
+                float[] targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
+                float distance = LocationHelper.distanceFromECEF(curLoc,targetLoc);
 
-                if (nextpoint.getLocation().getLatitude() == location.getLatitude() && nextpoint.getLocation().getLongitude() == location.getLongitude()) {
+                if (distance<20.0f) {
                     arOverlayView.incrementIndex();
                 }
 
+                //Log.d("INCINDEX","INDEX = "+arOverlayView.getIndex());
                 angle = (float) angleFromCoordinate(location.getLatitude(),location.getLongitude(),arOverlayView.getARPoint().getLocation().getLatitude(),arOverlayView.getARPoint().getLocation().getLongitude());
             }
 
@@ -383,7 +390,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             //Update the current location to TextView
             tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
                     location.getLatitude(), location.getLongitude()));
-            pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getSize()-arOverlayView.getIndex())));
+            pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getARPointsSize()-arOverlayView.getIndex())));
         }
     }
 

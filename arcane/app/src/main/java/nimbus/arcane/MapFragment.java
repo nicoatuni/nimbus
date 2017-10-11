@@ -675,8 +675,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             }
 
-            // Drawing polyline in the Google Map for the i-th route
-            mLine = mMap.addPolyline(lineOptions);
+            if (lineOptions!=null) {
+                // Drawing polyline in the Google Map for the i-th route
+                mLine = mMap.addPolyline(lineOptions);
+            }
         }
     }
 }
