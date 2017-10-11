@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressDialog mRegProgress;
 
     // Related to Firebase Authentication
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
 
     // Related to Firebase Real Time Database
     private DatabaseReference mDatabase;
