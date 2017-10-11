@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/default_avatar"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/users_image" />
+
+    <TextView
+        android:id="@+id/users_display_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/users_image"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/users_image"
+        android:text="Display Name"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/users_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_alignStart="@+id/users_display_name"
+        android:layout_below="@+id/users_display_name"
+        android:text="Default Status" />
+
+    <ImageView
+        android:id="@+id/users_online_icon"
+        android:layout_width="13dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/users_display_name"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/users_display_name"
+        app:srcCompat="@android:drawable/presence_online"
+        android:visibility="invisible" />
+
+    <CheckBox
+        android:id="@+id/users_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="17dp"
+        android:text=""
+        android:visibility="invisible" />
+
+</RelativeLayout>
