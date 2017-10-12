@@ -30,6 +30,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Created by Richard Aldrich on 21/09/2017.
+ *
+ * Last edited by Richard Aldrich on 12/10/2017
+ *
+ * this class functions as a group profile
+ */
 public class ProfileActivity extends AppCompatActivity {
 
     private ImageView mDisplayImage;

@@ -42,6 +42,10 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
 
+/**
+ * Created by Richard Aldrich on 04/10/2017
+ *
+ */
 public class CreateGroupActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
@@ -124,6 +128,12 @@ public class CreateGroupActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *    this method will create a new group based on the parameter.
+     *    @param groupMap the basic variable needed by the group such as name, status, image, etc.
+     *    @param push_id the id of the group on the database.
+     *    @param group_name the name of the group.
+     */
     public void create_group(Map groupMap, final String push_id, final String group_name) {
 
         mGroupDatabase.child(push_id).setValue(groupMap).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -42,6 +42,13 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
 
+/**
+ * Created by Richard Aldrich on 09/10/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions as a group profile
+ */
 public class GroupProfileActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;

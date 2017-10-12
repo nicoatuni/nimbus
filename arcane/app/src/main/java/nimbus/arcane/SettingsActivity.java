@@ -47,6 +47,13 @@ import id.zelory.compressor.Compressor;
 import static android.R.attr.data;
 import static android.R.attr.thumb;
 
+/**
+ * Created by Richard Aldrich on 19/09/2017.
+ *
+ * Last edited by Richard Aldrich on 12/10/2017
+ *
+ * this class functions as an account settings for user
+ */
 public class SettingsActivity extends AppCompatActivity {
 
     private TextView mDisplayName;
