@@ -84,7 +84,7 @@ public class ChatActivity extends AppCompatActivity {
         mChatToolbar = (Toolbar) findViewById(R.id.chat_app_bar);
         setSupportActionBar(mChatToolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowCustomEnabled(true);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();

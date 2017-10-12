@@ -6,8 +6,10 @@ import android.graphics.Bitmap;
 import android.media.audiofx.BassBoost;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
@@ -66,10 +68,19 @@ public class SettingsActivity extends AppCompatActivity {
     // Progress Dialog
     private ProgressDialog mProgress;
 
+    private Toolbar mSettingsToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        mSettingsToolbar = (Toolbar) findViewById(R.id.settings_bar);
+        setSupportActionBar(mSettingsToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Account Settings");
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
 
         // Account Settings
         mDisplayName = (TextView) findViewById(R.id.settings_display_name);
