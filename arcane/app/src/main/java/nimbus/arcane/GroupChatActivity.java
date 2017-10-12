@@ -44,6 +44,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static nimbus.arcane.R.id.map;
 
+/**
+ * Created by Richard Aldrich on 09/10/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions as a group chat container
+ */
 public class GroupChatActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
@@ -78,7 +85,6 @@ public class GroupChatActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.chat_group_app_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(group_name);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -109,6 +115,7 @@ public class GroupChatActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void loadMessages(String group_key) {
 

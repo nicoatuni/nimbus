@@ -22,6 +22,13 @@ import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * Created by Richard Aldrich on 19/09/2017.
+ *
+ * Last edited by Richard Aldrich on 12/10/2017
+ *
+ * this class functions as container to show all of the user on the database
+ */
 public class UsersActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
@@ -61,6 +68,7 @@ public class UsersActivity extends AppCompatActivity {
 
         }
 
+        // get all of the users on the database
         FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
                 Users.class, R.layout.users_single_layout, UsersViewHolder.class, mUsersDatabase) {
             @Override
@@ -89,6 +97,7 @@ public class UsersActivity extends AppCompatActivity {
 
     }
 
+    // a view holder for each user that will be used in the recycler view
     public static class UsersViewHolder extends RecyclerView.ViewHolder {
 
         View mView;

@@ -20,6 +20,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+/**
+ * Created by Richard Aldrich on 16/09/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions when the user want to change the user's profile status
+ */
 public class StatusActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;

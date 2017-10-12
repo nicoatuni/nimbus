@@ -32,6 +32,13 @@ import org.reactivestreams.Subscriber;
 
 import java.util.HashMap;
 
+/**
+ * Created by Richard Aldrich on 16/09/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions as a register activity
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private TextInputLayout mDisplayName;
@@ -108,6 +115,12 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * registering the user to the database with their email, password and name.
+     * @param display_name the display name that will be used by the user on the app
+     * @param email the email that the user uses for register.
+     * @param password the password for the corresponding email that the user typed in.
+     */
     public void register_user(final String display_name, String email, String password) {
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

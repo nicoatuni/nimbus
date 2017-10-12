@@ -24,6 +24,13 @@ import com.google.firebase.database.ServerValue;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Created by Richard Aldrich on 16/09/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions as a main activity where the user will be directed to after login and signup
+ */
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -146,6 +153,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * this method will set the layout to the starting layout (login and signup)
+     */
     private void send_to_start() {
 
         Intent startIntent = new Intent(MainActivity.this, StartActivity.class);

@@ -92,6 +92,7 @@ public class ChatsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        // get all of the groups that the current user is/are member(s) of
         FirebaseRecyclerAdapter<Groups, ChatsFragment.ChatsViewHolder> groupsRecyclerViewAdapter = new FirebaseRecyclerAdapter<Groups, ChatsViewHolder>(
                 Groups.class, R.layout.group_single_layout, ChatsFragment.ChatsViewHolder.class, mGroupsDatabase) {
             @Override
@@ -172,6 +173,7 @@ public class ChatsFragment extends Fragment {
 
     }
 
+    // a view holder for each group that will be used in the recycler view
     public static class ChatsViewHolder extends RecyclerView.ViewHolder {
 
         View mView;

@@ -47,6 +47,13 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * Created by Richard Aldrich on 21/9/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions as a personal chat container
+ */
 public class ChatActivity extends AppCompatActivity {
 
     private String mChatUser;
@@ -84,7 +91,6 @@ public class ChatActivity extends AppCompatActivity {
         mChatToolbar = (Toolbar) findViewById(R.id.chat_app_bar);
         setSupportActionBar(mChatToolbar);
         ActionBar actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowCustomEnabled(true);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -197,6 +203,9 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * load all the message that the current user and the user chosen and show the message.
+     */
     private void loadMessages() {
 
         DatabaseReference friends_database = mRootRef.child("Users").child(mCurrentUserId).child("Friends");
@@ -235,6 +244,11 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * save the message sent to the database and show it in the chat message.
+     * @param type the type of message to be sent
+     * @param msg the message that the user type on the input text layout
+     */
     private void sendMessage(String type, String msg) {
 
         String message;
@@ -257,6 +271,7 @@ public class ChatActivity extends AppCompatActivity {
             String current_user_ref = "Users/" + mCurrentUserId + "/Friends/" + mChatUser + "/Chats";
             String chat_user_ref = "Users/" + mChatUser + "/Friends/" + mCurrentUserId + "/Chats";
 
+            // a new map that will be put into database
             Map messageMap = new HashMap();
             messageMap.put("message", message);
             messageMap.put("seen", false);

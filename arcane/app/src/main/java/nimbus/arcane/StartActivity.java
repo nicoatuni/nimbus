@@ -6,6 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Created by Richard Aldrich on 16/09/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions as a start activity where the user will be sent to when the user is not
+ * logged in or the first time the device start the app.
+ */
 public class StartActivity extends AppCompatActivity {
 
     private Button mRegBtn;

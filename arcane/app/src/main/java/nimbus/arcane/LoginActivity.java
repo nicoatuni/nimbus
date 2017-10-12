@@ -22,6 +22,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+/**
+ * Created by Richard Aldrich on 16/09/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
+ *
+ * this class functions as a login activity
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private TextInputLayout mLoginEmail;
@@ -91,6 +98,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * users login with an email and password that the user typed in.
+     * @param email the email that the user uses for login.
+     * @param password the password for the corresponding email that the user typed in.
+     */
     private void login_user(String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
