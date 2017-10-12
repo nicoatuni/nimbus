@@ -60,7 +60,7 @@ public class AddToGroupActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.add_to_group_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Add to Group");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAddToGroupBtn = (Button) findViewById(R.id.add_to_group_btn);
 

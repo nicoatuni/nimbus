@@ -78,7 +78,7 @@ public class GroupChatActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.chat_group_app_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(group_name);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
