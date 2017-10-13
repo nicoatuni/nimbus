@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.Manifest;
@@ -98,7 +99,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
 
-    private Toolbar mToolbar;
+    private Switch mSwitch;
 
 
     @Override
@@ -116,6 +117,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
         pointsLeft = (TextView) findViewById(R.id.points_left);
         arOverlayView = new ARView(this);
+
+        mSwitch = (Switch) findViewById(R.id.switch_ar);
     }
 
     @Override

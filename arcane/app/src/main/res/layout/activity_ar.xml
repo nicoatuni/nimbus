@@ -24,7 +24,11 @@
         android:id="@+id/current_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
         android:textColor="@android:color/white"
         android:text="Loading GPS..." />
 
@@ -32,10 +36,23 @@
         android:id="@+id/points_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="end"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
         android:textColor="@android:color/white"
         android:text="Fetching data..."/>
+
+    <Switch
+        android:id="@+id/switch_ar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
+        android:text="Switch"
+        android:textOff=""
+        android:textOn=""
+        android:textColor="@color/white"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -62,7 +79,7 @@
             android:layout_alignTop="@+id/compass"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="20dp"
             android:text="Object Direction"
             android:textAllCaps="true"
             android:textColor="@android:color/white" />
