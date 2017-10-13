@@ -61,6 +61,8 @@ public class ARView extends View{
                 add(new ARPoint(lat,lng));
             }
         }};
+
+        i = arPoints.size()-1;
     }
 
 

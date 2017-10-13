@@ -106,13 +106,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
 
-        mToolbar = (Toolbar) findViewById(R.id.ar_bar_layout);
-        setSupportActionBar(mToolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("AR Navigation");
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);
         surfaceView = (SurfaceView) findViewById(R.id.surface_view);
