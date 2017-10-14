@@ -21,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -51,6 +52,9 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 //import android.graphics.Matrix;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
+
 import java.lang.*;
 import java.util.HashMap;
 import java.util.List;
@@ -99,13 +103,24 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
 
+    public static LatLng destinationPoint=null;
+    public static ARPoint destinationARPoint;
     private Switch mSwitch;
+    private boolean isRouting = true;
+    private boolean destinationReached = false;
+
+    private float DISTANCE_THRESHOLD = 15.0f;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
+
+        destinationPoint = (LatLng)getIntent().getExtras().get("destination");
+        destinationARPoint = new ARPoint(destinationPoint.latitude,destinationPoint.longitude);
+
+        //Log.d("DESTINATION","Destination : "+destinationPoint);
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);
@@ -119,6 +134,23 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         arOverlayView = new ARView(this);
 
         mSwitch = (Switch) findViewById(R.id.switch_ar);
+
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    isRouting = false;
+                    arOverlayView.setType(isRouting);
+                    mSwitch.setChecked(true);
+
+                } else {
+                    isRouting = true;
+                    arOverlayView.setType(isRouting);
+                    mSwitch.setChecked(false);
+                }
+            }
+        });
     }
 
     @Override
@@ -128,6 +160,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         requestCameraPermission();
         registerSensors();
         initAROverlayView();
+
     }
 
     @Override
@@ -365,28 +398,71 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         if (arOverlayView !=null) {
 
             this.location = location;
+            ARPoint nextpoint;
+            float[] curLoc;
+            float[] targetLoc;
+            float distance;
 
-            if(arOverlayView.getIndex()<arOverlayView.getARPointsSize()) {
-                ARPoint nextpoint = arOverlayView.getARPoint();
-                float[] curLoc = LocationHelper.WSG84toECEF(location);
-                float[] targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
-                float distance = LocationHelper.distanceFromECEF(curLoc,targetLoc);
+            //When in Routing Mode
+            if (isRouting==true) {
+                //When haven't reached all checkpoints
+                if (arOverlayView.getIndex() < arOverlayView.getARPointsSize()) {
+                    nextpoint = arOverlayView.getARPoint();
 
-                if (distance<20.0f) {
-                    arOverlayView.incrementIndex();
+                    curLoc = LocationHelper.WSG84toECEF(location);
+                    targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
+                    distance = LocationHelper.distanceFromECEF(curLoc, targetLoc);
+
+                    if (distance < DISTANCE_THRESHOLD) {
+                        arOverlayView.incrementIndex();
+                    }
+
+                    if (arOverlayView.getIndex() < arOverlayView.getARPointsSize()) { //When haven't reached all checkpoints after increment
+                        //Log.d("INCINDEX","INDEX = "+arOverlayView.getIndex());
+                        angle = (float) angleFromCoordinate(location.getLatitude(), location.getLongitude(), arOverlayView.getARPoint().getLocation().getLatitude(), arOverlayView.getARPoint().getLocation().getLongitude());
+
+                    } else { //When have reached all checkpoints
+                        angle = currentAzimuth;
+
+                    }
+
+                } else {
+                    angle =currentAzimuth;
                 }
 
-                //Log.d("INCINDEX","INDEX = "+arOverlayView.getIndex());
-                angle = (float) angleFromCoordinate(location.getLatitude(),location.getLongitude(),arOverlayView.getARPoint().getLocation().getLatitude(),arOverlayView.getARPoint().getLocation().getLongitude());
+                //Send the current location to AROverlayView Class, which will render the target
+                arOverlayView.updateCurrentLocation(location);
+                //Update the current location to TextView
+                tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
+                        location.getLatitude(), location.getLongitude()));
+                pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getARPointsSize()-arOverlayView.getIndex())));
+
+            }
+            else { //in Destination Target Mode
+                nextpoint = destinationARPoint;
+
+                curLoc = LocationHelper.WSG84toECEF(location);
+                targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
+
+                //if distanceReached() -> distanceReached = true;
+                distance = LocationHelper.distanceFromECEF(curLoc,targetLoc);
+
+                if (distance < 5.0f) {
+                    destinationReached = true;
+                    arOverlayView.setIndex(arOverlayView.getARPointsSize());
+                }
+
+                angle = (float) angleFromCoordinate(location.getLatitude(),location.getLongitude(),nextpoint.getLocation().getLatitude(),nextpoint.getLocation().getLongitude());
+
+                //Send the current location to AROverlayView Class, which will render the target
+                arOverlayView.updateCurrentLocation(location);
+                //Update the current location to TextView
+                tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
+                        location.getLatitude(), location.getLongitude()));
+                pointsLeft.setText(String.format("DestinationTarget Mode"));
+
             }
 
-
-            //Send the current location to AROverlayView Class, which will render the target
-            arOverlayView.updateCurrentLocation(location);
-            //Update the current location to TextView
-            tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
-                    location.getLatitude(), location.getLongitude()));
-            pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getARPointsSize()-arOverlayView.getIndex())));
         }
     }
 

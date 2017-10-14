@@ -560,6 +560,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                     if (isChecked) {
 
+                        //Log.d("DESTINATION","Destination : "+mDestination);
                         Intent arIntent = new Intent(getContext(), ARActivity.class);
                         arIntent.putExtra("destination", mDestination);
 //                        arIntent.putExtra("routing_points", routePoints.toString());
