@@ -50,7 +50,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by Richard Aldrich on 21/9/2017.
  *
- * Last edited by Richard Aldrich on 10/10/2017
+ * Last edited by Richard Aldrich 14/10/2017
  *
  * this class functions as a personal chat container
  */
@@ -112,7 +112,7 @@ public class ChatActivity extends AppCompatActivity {
         mChatSendBtn = (ImageButton) findViewById(R.id.chat_send_btn);
         mChatMessageView = (EditText) findViewById(R.id.chat_field);
 
-        mAdapter = new MessageAdapter(messagesList);
+        mAdapter = new MessageAdapter(messagesList, mChatUser);
 
         mMessagesList = (RecyclerView) findViewById(R.id.chat_message_list);
         mLinearLayout = new LinearLayoutManager(this);
@@ -335,7 +335,8 @@ public class ChatActivity extends AppCompatActivity {
                 latitude = mLocation.getLatitude();
                 longitude = mLocation.getLongitude();
                 mUserLocation = new LatLng(latitude, longitude);
-                Toast.makeText(ChatActivity.this, mUserLocation.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(ChatActivity.this, mUserLocation.toString(), Toast.LENGTH_LONG).show();
+                sendMessage("location", mUserLocation.toString());
 
             } else {
 
@@ -349,13 +350,23 @@ public class ChatActivity extends AppCompatActivity {
 
         }
 
-        if (item.getItemId() == R.id.user_menu_destination) {
-
-            Intent mapIntent = new Intent(ChatActivity.this, MapActivity.class);
-            startActivity(mapIntent);
-
-        }
+//        if (item.getItemId() == R.id.user_menu_destination) {
+//
+//            Intent mapIntent = new Intent(ChatActivity.this, MapActivity.class);
+//            startActivity(mapIntent);
+//
+//        }
 
         return true;
+    }
+
+    public void sendToMap(View view) {
+
+        Intent mapIntent = new Intent(ChatActivity.this, MapActivity.class);
+        mapIntent.putExtra("user", mChatUser);
+        startActivity(mapIntent);
+
+//        Log.d("LOCATION FROM Chat", mChatUser);
+
     }
 }

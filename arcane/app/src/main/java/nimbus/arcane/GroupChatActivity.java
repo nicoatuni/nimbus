@@ -47,7 +47,7 @@ import static nimbus.arcane.R.id.map;
 /**
  * Created by Richard Aldrich on 09/10/2017.
  *
- * Last edited by Richard Aldrich on 10/10/2017
+ * Last edited by Richard Aldrich on 14/10/2017
  *
  * this class functions as a group chat container
  */
@@ -93,7 +93,7 @@ public class GroupChatActivity extends AppCompatActivity {
         mChatSendBtn = (ImageButton) findViewById(R.id.chat_group_send_btn);
         mChatMessageView = (EditText) findViewById(R.id.chat_group_field);
 
-        mAdapter = new MessageAdapter(messagesList);
+        mAdapter = new MessageAdapter(messagesList, null);
 
         mMessagesList = (RecyclerView) findViewById(R.id.chat_group_message_list);
         mLinearLayout = new LinearLayoutManager(this);
@@ -203,71 +203,71 @@ public class GroupChatActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-
-        getMenuInflater().inflate(R.menu.user_menu, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        if (item.getItemId() == R.id.user_menu_location) {
-
-            gpsTracker.checkGPS();
-
-            int permission_all = 1;
-            int check_permission;
-            String[] permissions = {android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION};
-
-            // checking permission
-            check_permission = MapFragment.hasPermissions(GroupChatActivity.this, permissions);
-            if (check_permission == 1) {
-
-                ActivityCompat.requestPermissions(GroupChatActivity.this, permissions, permission_all);
-
-            }
-
-            mLocation = gpsTracker.getLocation();
-
-            if (mLocation != null) {
-
-                latitude = mLocation.getLatitude();
-                longitude = mLocation.getLongitude();
-                mUserLocation = new LatLng(latitude, longitude);
-                Toast.makeText(GroupChatActivity.this, mUserLocation.toString(), Toast.LENGTH_LONG).show();
-
-            } else {
-
-                Toast.makeText(GroupChatActivity.this, "no location available", Toast.LENGTH_LONG).show();
-
-            /*
-                get location from database
-             */
-
-            }
-
-        }
-
-        if (item.getItemId() == R.id.user_menu_destination) {
-
-            Intent mapIntent = new Intent(GroupChatActivity.this, MapActivity.class);
-            startActivity(mapIntent);
-
-        }
-
-//        if (item.getItemId() == R.id.main_all_btn) {
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        super.onCreateOptionsMenu(menu);
 //
-//            Intent usersIntent = new Intent(MainActivity.this, UsersActivity.class);
-//            startActivity(usersIntent);
+//        getMenuInflater().inflate(R.menu.user_menu, menu);
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        super.onOptionsItemSelected(item);
+//
+//        if (item.getItemId() == R.id.user_menu_location) {
+//
+//            gpsTracker.checkGPS();
+//
+//            int permission_all = 1;
+//            int check_permission;
+//            String[] permissions = {android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION};
+//
+//            // checking permission
+//            check_permission = MapFragment.hasPermissions(GroupChatActivity.this, permissions);
+//            if (check_permission == 1) {
+//
+//                ActivityCompat.requestPermissions(GroupChatActivity.this, permissions, permission_all);
+//
+//            }
+//
+//            mLocation = gpsTracker.getLocation();
+//
+//            if (mLocation != null) {
+//
+//                latitude = mLocation.getLatitude();
+//                longitude = mLocation.getLongitude();
+//                mUserLocation = new LatLng(latitude, longitude);
+//                Toast.makeText(GroupChatActivity.this, mUserLocation.toString(), Toast.LENGTH_LONG).show();
+//
+//            } else {
+//
+//                Toast.makeText(GroupChatActivity.this, "no location available", Toast.LENGTH_LONG).show();
+//
+//            /*
+//                get location from database
+//             */
+//
+//            }
 //
 //        }
-
-        return true;
-    }
+//
+//        if (item.getItemId() == R.id.user_menu_destination) {
+//
+//            Intent mapIntent = new Intent(GroupChatActivity.this, MapActivity.class);
+//            startActivity(mapIntent);
+//
+//        }
+//
+////        if (item.getItemId() == R.id.main_all_btn) {
+////
+////            Intent usersIntent = new Intent(MainActivity.this, UsersActivity.class);
+////            startActivity(usersIntent);
+////
+////        }
+//
+//        return true;
+//    }
 
 }
