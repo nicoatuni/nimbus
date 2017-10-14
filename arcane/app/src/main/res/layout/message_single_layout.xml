@@ -14,4 +14,12 @@
         layout="@layout/message_sender_single_layout"
         android:id="@+id/message_sender" />
 
+    <include
+        layout="@layout/location_receiver_single_layout"
+        android:id="@+id/location_receiver" />
+
+    <include
+        layout="@layout/location_sender_single_layout"
+        android:id="@+id/location_sender" />
+
 </RelativeLayout>
