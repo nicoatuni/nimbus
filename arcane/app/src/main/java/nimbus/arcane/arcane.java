@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 /**
  * Created by Richard Aldrich on 18/9/2017.
+ *
+ * Last edited by Richard Aldrich on 10/10/2017
  */
 
 public class arcane extends Application {

@@ -3,6 +3,7 @@ package nimbus.arcane;
 
 import android.*;
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -100,6 +101,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private FirebaseUser mCurrentUser;
 
     private HashMap<String, String> mFriendsLocation = new HashMap<String, String>();
+    private HashMap mMarkerMap = new HashMap();
+
+    private ProgressDialog mProgress;
 
     public MapFragment() {
         // Required empty public constructor
@@ -137,6 +141,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mUserRef = mRootRef.child("Users").child(mCurrentUser.getUid());
 
+        mProgress = new ProgressDialog(getContext());
+
         return mMainView;
     }
 
@@ -170,6 +176,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mLocation = gpsTracker.getLocation();
 
+        mProgress.setTitle("Fetching GPS location");
+        mProgress.setMessage("Please wait while we fetch your location");
+        mProgress.setCanceledOnTouchOutside(false);
+        mProgress.show();
+
         if (mLocation != null) {
 
             latitude = mLocation.getLatitude();
@@ -186,7 +197,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                     mUserLocation = new LatLng(latitude, longitude);
                     mMap.clear();
-                    mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
+                    mProgress.dismiss();
+                    mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
 
                     addMarker();
@@ -200,6 +212,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             });
 
         }
+
+        mSwitch.setChecked(false);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -225,7 +239,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                             double user_longitude = (double) member.child("latlng").child("longitude").getValue();
                             LatLng user_location = new LatLng(user_latitude, user_longitude);
 
-                            mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                            Marker marker = mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+                            verifyMarker(marker, user_name);
+
+                            mMarkerMap.put(user_name, marker);
                         }
                     }
                 }
@@ -238,6 +256,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
 
     }
+
+    private void verifyMarker(Marker marker, String user_name) {
+
+        Marker tMarker = (Marker) mMarkerMap.get(user_name);
+        if (tMarker != null) {
+
+            marker.remove();
+            mMarkerMap.remove(user_name);
+
+        }
+
+    }
+
     public void addUserLocation(LatLng location) {
 
         Map locationMap = new HashMap();
@@ -330,6 +361,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 if (firstTime) {
 
+                    mProgress.dismiss();
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
                     firstTime = false;
 
@@ -529,10 +561,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     if (isChecked) {
 
                         Intent arIntent = new Intent(getContext(), ARActivity.class);
+                        arIntent.putExtra("destination", mDestination);
 //                        arIntent.putExtra("routing_points", routePoints.toString());
                         startActivity(arIntent);
 
                         Toast.makeText(getContext(), "Opening AR Activity", Toast.LENGTH_LONG).show();
+                        mSwitch.setChecked(false);
 
                     } else {
 

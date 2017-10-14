@@ -1,12 +1,15 @@
 package nimbus.arcane;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.text.format.DateFormat;
@@ -26,18 +29,21 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Richard Aldrich on 19/9/2017.
+ *
+ * Last edited by Richard Aldrich 14/10/2017
  */
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>{
 
-
     private List<Messages> mMessageList;
     private FirebaseAuth mAuth;
     private GetTimeAgo mTime;
+    private String mChatUser;
 
-    public MessageAdapter(List<Messages> mMessageList) {
+    public MessageAdapter(List<Messages> mMessageList, String chat_user) {
 
         this.mMessageList = mMessageList;
+        this.mChatUser = chat_user;
 
     }
 
@@ -53,10 +59,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public class MessageViewHolder extends RecyclerView.ViewHolder {
 
         public TextView messageText, senderText;
-        public CircleImageView profileImage;
-        public TextView messageTime, senderTime;
-        public TextView messageFrom;
-        public RelativeLayout relativeLayout, senderLayout;
+        public CircleImageView profileImage, locationProfile;
+        public Button locationReceiverText, locationSenderText;
+        public TextView messageTime, senderTime, locationReceiverTime, locationSenderTime;
+        public TextView messageFrom, locationReceiverFrom;
+        public RelativeLayout relativeLayout;
 
         public MessageViewHolder(View view) {
             super(view);
@@ -65,11 +72,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             messageFrom = (TextView) view.findViewById(R.id.message_from);
             profileImage = (CircleImageView) view.findViewById(R.id.message_profile_layout);
             messageTime = (TextView) view.findViewById(R.id.message_time_layout);
-            relativeLayout = (RelativeLayout) view.findViewById(R.id.message_single_layout);
 
             senderText = (TextView) view.findViewById(R.id.sender_text_layout);
             senderTime = (TextView) view.findViewById(R.id.sender_time_layout);
-            senderLayout = (RelativeLayout) view.findViewById(R.id.message_sender_single_layout);
+
+            locationReceiverText = (Button) view.findViewById(R.id.location_receiver_text_layout);
+            locationReceiverTime = (TextView) view.findViewById(R.id.location_receiver_time_layout);
+            locationProfile = (CircleImageView) view.findViewById(R.id.location_receiver_profile_layout);
+            locationReceiverFrom = (TextView) view.findViewById(R.id.location_receiver_from);
+
+            locationSenderText = (Button) view.findViewById(R.id.location_sender_text_layout);
+            locationSenderTime = (TextView) view.findViewById(R.id.location_sender_time_layout);
+
+            relativeLayout = (RelativeLayout) view.findViewById(R.id.message_single_layout);
 
         }
     }
@@ -90,17 +105,62 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             viewHolder.messageTime.setVisibility(View.INVISIBLE);
             viewHolder.profileImage.setVisibility(View.INVISIBLE);
 
-            viewHolder.senderText.setText(c.getMessage());
-            viewHolder.senderTime.setText(DateFormat.format("HH:mm", c.getTime()));
+            viewHolder.locationReceiverText.setVisibility(View.INVISIBLE);
+            viewHolder.locationReceiverTime.setVisibility(View.INVISIBLE);
+            viewHolder.locationReceiverFrom.setVisibility(View.INVISIBLE);
+            viewHolder.locationProfile.setVisibility(View.INVISIBLE);
+
+            if (message_type.equals("text")) {
+
+                viewHolder.senderText.setText(c.getMessage());
+                viewHolder.senderTime.setText(DateFormat.format("HH:mm", c.getTime()));
+
+                viewHolder.locationSenderText.setVisibility(View.INVISIBLE);
+                viewHolder.locationSenderTime.setVisibility(View.INVISIBLE);
+
+            } else {
+
+                viewHolder.senderText.setVisibility(View.INVISIBLE);
+                viewHolder.senderTime.setVisibility(View.INVISIBLE);
+
+                viewHolder.locationSenderText.setText("location");
+                viewHolder.locationSenderTime.setText(DateFormat.format("HH:mm", c.getTime()));
+
+            }
 
         } else {
 
             viewHolder.senderText.setVisibility(View.INVISIBLE);
             viewHolder.senderTime.setVisibility(View.INVISIBLE);
 
-            viewHolder.messageFrom.setText(c.getName());
-            viewHolder.messageText.setText(c.getMessage());
-            viewHolder.messageTime.setText(DateFormat.format("HH:mm", c.getTime()));
+            viewHolder.locationSenderText.setVisibility(View.INVISIBLE);
+            viewHolder.locationSenderTime.setVisibility(View.INVISIBLE);
+
+            if (message_type.equals("text")) {
+
+                viewHolder.locationReceiverText.setVisibility(View.INVISIBLE);
+                viewHolder.locationReceiverTime.setVisibility(View.INVISIBLE);
+                viewHolder.locationReceiverFrom.setVisibility(View.INVISIBLE);
+                viewHolder.locationProfile.setVisibility(View.INVISIBLE);
+
+                viewHolder.messageText.setText(c.getMessage());
+                viewHolder.messageFrom.setText(c.getName());
+                viewHolder.messageTime.setText(DateFormat.format("HH:mm", c.getTime()));
+//                viewHolder.profileImage.
+
+            } else {
+
+                viewHolder.messageFrom.setVisibility(View.INVISIBLE);
+                viewHolder.messageText.setVisibility(View.INVISIBLE);
+                viewHolder.messageTime.setVisibility(View.INVISIBLE);
+                viewHolder.profileImage.setVisibility(View.INVISIBLE);
+
+                viewHolder.locationReceiverText.setText(c.getMessage());
+                viewHolder.locationReceiverTime.setText(c.getName());
+                viewHolder.locationReceiverFrom.setText(DateFormat.format("HH:mm", c.getTime()));
+//                viewHolder.locationProfile.setVisibility(View.INVISIBLE);
+
+            }
 
         }
 

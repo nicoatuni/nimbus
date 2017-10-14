@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.Manifest;
@@ -98,20 +99,13 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
 
-    private Toolbar mToolbar;
+    private Switch mSwitch;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
-
-        mToolbar = (Toolbar) findViewById(R.id.ar_bar_layout);
-        setSupportActionBar(mToolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("AR Navigation");
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);
@@ -123,6 +117,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
         pointsLeft = (TextView) findViewById(R.id.points_left);
         arOverlayView = new ARView(this);
+
+        mSwitch = (Switch) findViewById(R.id.switch_ar);
     }
 
     @Override

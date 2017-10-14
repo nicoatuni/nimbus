@@ -89,6 +89,7 @@ public class FriendFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        // get all friends that the current user is/are member(s) of
         FirebaseRecyclerAdapter<Friends, FriendsViewHolder> friendsRecyclerViewAdapter = new FirebaseRecyclerAdapter<Friends, FriendsViewHolder>(
                 Friends.class, R.layout.users_single_layout, FriendsViewHolder.class, mFriendsDatabase) {
             @Override
@@ -168,79 +169,7 @@ public class FriendFragment extends Fragment {
 
     }
 
-    public void addToGroup(String user_id) {
-
-
-        Map friendsMap = new HashMap();
-        friendsMap.put("Groups/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
-
-        mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-
-                if (databaseError == null) {
-
-                    Toast.makeText(getContext(), "Friend added to group", Toast.LENGTH_LONG).show();
-
-                } else {
-
-                    String error = databaseError.getMessage();
-
-                    Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-
-//        final String user_key = user_id;
-//
-//        mRootRef.child("Groups").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                if (!(dataSnapshot.child("Friends").hasChild(user_key)) && !state) {
-//
-//                    state = GROUP;
-//
-//                    Map friendsMap = new HashMap();
-//                    friendsMap.put("Groups/Members/" + user_key + "/date", ServerValue.TIMESTAMP);
-//
-//                    mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
-//                        @Override
-//                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-//
-//                            if (databaseError == null) {
-//
-//                                Toast.makeText(getContext(), "Friend added to group", Toast.LENGTH_LONG).show();
-//
-//                            } else {
-//
-//                                String error = databaseError.getMessage();
-//
-//                                Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
-//
-//                            }
-//                        }
-//                    });
-//                } else if (dataSnapshot.child("Friends").hasChild(user_key)) {
-//
-//                    Toast.makeText(getContext(), "Friend already in group", Toast.LENGTH_LONG).show();
-//
-//                } else {
-//
-//                    Toast.makeText(getContext(), "No Group Exists", Toast.LENGTH_LONG).show();
-//
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-    }
-
+    // a view holder for each friend that will be used in the recycler view
     public static class FriendsViewHolder extends RecyclerView.ViewHolder {
 
         View mView;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/location_sender_single_layout">
+
+    <Button
+        android:id="@+id/location_sender_text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/message_text_background_sender"
+        android:padding="15dp"
+        android:layout_marginTop="5dp"
+        android:textSize="14sp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:drawableRight="@drawable/ic_location_on_black_24dp"
+        android:layout_alignParentEnd="true"
+        android:onClick="sendToMap" />
+
+    <TextView
+        android:id="@+id/location_sender_time_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/location_sender_text_layout"
+        android:layout_alignBottom="@+id/location_sender_text_layout"
+        android:text="date"
+        android:textColor="@color/black"
+        android:layout_marginEnd="5dp"/>
+</RelativeLayout>

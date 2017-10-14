@@ -32,6 +32,11 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * Created by Richard Aldrich on 10/10/2017.
+ *
+ * This class functions to add one or more friends to a specific group
+ */
 public class AddToGroupActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
@@ -60,7 +65,6 @@ public class AddToGroupActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.add_to_group_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Add to Group");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAddToGroupBtn = (Button) findViewById(R.id.add_to_group_btn);
 
@@ -83,6 +87,7 @@ public class AddToGroupActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // get all of the groups that the current user is/are member(s) of
         FirebaseRecyclerAdapter<Friends, AddToGroupActivity.UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Friends, AddToGroupActivity.UsersViewHolder>(
                 Friends.class, R.layout.users_single_layout, AddToGroupActivity.UsersViewHolder.class, mFriendsDatabase) {
             @Override
@@ -103,16 +108,7 @@ public class AddToGroupActivity extends AppCompatActivity {
                          usersViewHolder.setDisplayStatus(userStatus);
                          usersViewHolder.setCheckBoxVisibility(true);
 
-//                         if (usersViewHolder.checkBox()) {
-//
-//                             Toast.makeText(AddToGroupActivity.this, userName, Toast.LENGTH_LONG).show();
-//
-//                         } else {
-//
-//                             Toast.makeText(AddToGroupActivity.this, "false", Toast.LENGTH_LONG).show();
-//
-//                         }
-
+                         // add or remove the user when the check box is check or unchecked
                          usersViewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
                              @Override
                              public void onClick(View v) {
@@ -125,6 +121,7 @@ public class AddToGroupActivity extends AppCompatActivity {
                              }
                          });
 
+                         // add or remove the user when the user is check or unchecked
                          usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                              @Override
                              public void onClick(View view) {
@@ -186,6 +183,7 @@ public class AddToGroupActivity extends AppCompatActivity {
 
     }
 
+    // a view holder of one user that will be used in the recycler view
     public static class UsersViewHolder extends RecyclerView.ViewHolder {
 
         View mView;
@@ -222,8 +220,6 @@ public class AddToGroupActivity extends AppCompatActivity {
 
         public void setCheckBoxVisibility(boolean value) {
 
-//            checkBox = (CheckBox) mView.findViewById(R.id.users_check_box);
-
             if (value) {
 
                 checkBox.setVisibility(View.VISIBLE);
@@ -232,8 +228,6 @@ public class AddToGroupActivity extends AppCompatActivity {
         }
 
         public void setCheckBox() {
-
-//            checkBox = (CheckBox) mView.findViewById(R.id.users_check_box);
 
             if (checkBox.isChecked()) {
 
@@ -248,8 +242,6 @@ public class AddToGroupActivity extends AppCompatActivity {
 
         public boolean checkBox() {
 
-//            checkBox = (CheckBox) mView.findViewById(R.id.users_check_box);
-
             if (checkBox.isChecked()) {
 
                 return true;
@@ -263,6 +255,12 @@ public class AddToGroupActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *    this method will add a user to an array list if the check variable is true and remove the
+     *    user from the array list if the check variable is false
+     *    @param user_id the user id that will be added or removed from the array list.
+     *    @param check the boolean value that will specify whether the user will be added or removed.
+     */
     public void addToSelection(String user_id, boolean check) {
 
         if (check) {
@@ -277,6 +275,11 @@ public class AddToGroupActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *    this method will add a specific user to be added to a specific group.
+     *    @param user_id the user id that will be added to a group.
+     *    @param group_id the group id that belong to the group that the user will be added to.
+     */
     public void addToGroup(final String user_id, final String group_id) {
 
         mRootRef.child("Users").child(user_id).addListenerForSingleValueEvent(new ValueEventListener() {

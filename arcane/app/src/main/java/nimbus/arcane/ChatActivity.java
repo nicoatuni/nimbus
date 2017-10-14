@@ -47,6 +47,13 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * Created by Richard Aldrich on 21/9/2017.
+ *
+ * Last edited by Richard Aldrich 14/10/2017
+ *
+ * this class functions as a personal chat container
+ */
 public class ChatActivity extends AppCompatActivity {
 
     private String mChatUser;
@@ -84,7 +91,6 @@ public class ChatActivity extends AppCompatActivity {
         mChatToolbar = (Toolbar) findViewById(R.id.chat_app_bar);
         setSupportActionBar(mChatToolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowCustomEnabled(true);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -106,7 +112,7 @@ public class ChatActivity extends AppCompatActivity {
         mChatSendBtn = (ImageButton) findViewById(R.id.chat_send_btn);
         mChatMessageView = (EditText) findViewById(R.id.chat_field);
 
-        mAdapter = new MessageAdapter(messagesList);
+        mAdapter = new MessageAdapter(messagesList, mChatUser);
 
         mMessagesList = (RecyclerView) findViewById(R.id.chat_message_list);
         mLinearLayout = new LinearLayoutManager(this);
@@ -134,7 +140,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 } else {
 
-                    GetTimeAgo getTimeAgo = new GetTimeAgo();
+//                    GetTimeAgo getTimeAgo = new GetTimeAgo();
 //                    long lastTime = Long.parseLong(online);
 //                    String lastSeenTime = getTimeAgo.getTimeAgo(lastTime, getApplicationContext());
 
@@ -197,6 +203,9 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * load all the message that the current user and the user chosen and show the message.
+     */
     private void loadMessages() {
 
         DatabaseReference friends_database = mRootRef.child("Users").child(mCurrentUserId).child("Friends");
@@ -235,6 +244,11 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * save the message sent to the database and show it in the chat message.
+     * @param type the type of message to be sent
+     * @param msg the message that the user type on the input text layout
+     */
     private void sendMessage(String type, String msg) {
 
         String message;
@@ -257,6 +271,7 @@ public class ChatActivity extends AppCompatActivity {
             String current_user_ref = "Users/" + mCurrentUserId + "/Friends/" + mChatUser + "/Chats";
             String chat_user_ref = "Users/" + mChatUser + "/Friends/" + mCurrentUserId + "/Chats";
 
+            // a new map that will be put into database
             Map messageMap = new HashMap();
             messageMap.put("message", message);
             messageMap.put("seen", false);
@@ -320,7 +335,8 @@ public class ChatActivity extends AppCompatActivity {
                 latitude = mLocation.getLatitude();
                 longitude = mLocation.getLongitude();
                 mUserLocation = new LatLng(latitude, longitude);
-                Toast.makeText(ChatActivity.this, mUserLocation.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(ChatActivity.this, mUserLocation.toString(), Toast.LENGTH_LONG).show();
+                sendMessage("location", mUserLocation.toString());
 
             } else {
 
@@ -334,13 +350,23 @@ public class ChatActivity extends AppCompatActivity {
 
         }
 
-        if (item.getItemId() == R.id.user_menu_destination) {
-
-            Intent mapIntent = new Intent(ChatActivity.this, MapActivity.class);
-            startActivity(mapIntent);
-
-        }
+//        if (item.getItemId() == R.id.user_menu_destination) {
+//
+//            Intent mapIntent = new Intent(ChatActivity.this, MapActivity.class);
+//            startActivity(mapIntent);
+//
+//        }
 
         return true;
+    }
+
+    public void sendToMap(View view) {
+
+        Intent mapIntent = new Intent(ChatActivity.this, MapActivity.class);
+        mapIntent.putExtra("user", mChatUser);
+        startActivity(mapIntent);
+
+//        Log.d("LOCATION FROM Chat", mChatUser);
+
     }
 }

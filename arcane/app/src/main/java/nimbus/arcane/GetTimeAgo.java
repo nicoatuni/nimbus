@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 /**
- * Created by Richard Aldrich on 19/9/2017.
+ * https://gist.github.com/rozag/2583aaec0d4b4ab0e2af
  */
 
 public class GetTimeAgo extends Application {
@@ -25,25 +25,32 @@ public class GetTimeAgo extends Application {
  * limitations under the License.
  */
 
-    private static final int SECOND_MILLIS = 1000;
-    private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
-    private static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
-    private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
+    public static final int SECOND_MILLIS = 1000;
+    public static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
+    public static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
+    public static final int DAY_MILLIS = 24 * HOUR_MILLIS;
 
+    private long now;
+    private long time;
 
-    public static String getTimeAgo(long time) {
+    public GetTimeAgo(long time, long now) {
+        this.now = now;
+        this.time = time;
+    }
+
+    public String getTimeAgo(long time, long now) {
         if (time < 1000000000000L) {
             // if timestamp given in seconds, convert to millis
             time *= 1000;
         }
 
-        long now = System.currentTimeMillis();
+//        long now = System.currentTimeMillis();
         if (time > now || time <= 0) {
             return null;
         }
 
         // TODO: localize
-        final long diff = now - time;
+        long diff = getTimeDiff(now, time);
         if (diff < MINUTE_MILLIS) {
             return "just now";
         } else if (diff < 2 * MINUTE_MILLIS) {
@@ -59,5 +66,9 @@ public class GetTimeAgo extends Application {
         } else {
             return diff / DAY_MILLIS + " days ago";
         }
+    }
+
+    public long getTimeDiff(long now, long time) {
+        return now - time;
     }
 }
