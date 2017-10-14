@@ -37,12 +37,9 @@ public class ARView extends View{
 
         this.context = context;
 
-
         routePoints = MapFragment.routePoints;
         final List<HashMap<String,String>> pointList = routePoints.get(0);
         final int pointLength = pointList.size();
-
-        //Log.d("Test","Route = "+pointList);
 
         //Pass the Array of Locations into here to be rendered later
         arPoints = new ArrayList<ARPoint>() {{
