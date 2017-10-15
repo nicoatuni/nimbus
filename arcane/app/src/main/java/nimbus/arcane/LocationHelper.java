@@ -4,9 +4,10 @@ import android.location.Location;
 
 /**
  * Created by ntdat on 1/13/17.
+ * Github : https://github.com/dat-ng/ar-location-based-android
  */
 /**
- * Last Edited by Arnold on 10/7/17
+ * Last Edited by Arnold Angelo on 10/15/17
  */
 
 //Class with functions to calculate coordinates in which the object will be rendered in the ARView
@@ -57,10 +58,10 @@ public class LocationHelper {
         return new float[] {east , north, up, 1};
     }
 
+    //Calculating distance between 2 ECEF Points
     public static float distanceFromECEF(float[] currentLocation, float[] nextPoint) {
         double distance;
-        //Still without z which is the altitude
-        distance = Math.sqrt(Math.pow((nextPoint[0]-currentLocation[0]),2)+Math.pow((nextPoint[1]-currentLocation[1]),2));
+        distance = Math.sqrt(Math.pow((nextPoint[0]-currentLocation[0]),2)+Math.pow((nextPoint[1]-currentLocation[1]),2)+Math.pow((nextPoint[2]-currentLocation[2]),2));
         return (float)distance;
     }
 }

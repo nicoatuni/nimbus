@@ -19,9 +19,10 @@ import java.util.List;
 
 /**
  * Created by ntdat on 1/13/17.
+ * Github : https://github.com/dat-ng/ar-location-based-android
  */
 /**
- * Last Edited by Arnold 10/12/17
+ * Last Edited by Arnold Angelo 10/15/17
  */
 
 public class ARView extends View{
@@ -31,12 +32,11 @@ public class ARView extends View{
 
     private Location currentLocation;
     private ARPoint destination;
-
     private List<ARPoint> arPoints;
     public static List<List<HashMap<String, String>>> routePoints;
 
-    private int i = 1;
-    private boolean routing = true;
+    private int pointindex = 1;
+    private boolean routing = true; //Boolean to determine between two AR Modes
 
     //Initializing the AR Points
     public ARView(Context context) {
@@ -54,8 +54,6 @@ public class ARView extends View{
                 double lat=0;
                 double lng=0;
                 for (String key : pointList.get(j).keySet()) {
-                    //Log.d("COOR",key);
-                    //Log.d("VAL","val = "+(pointList.get(j).get(key)));
                     if (key=="lat") {
                         lat = Double.parseDouble(pointList.get(j).get(key));
                     } else if (key=="lng"){
@@ -67,7 +65,6 @@ public class ARView extends View{
         }};
 
         destination = ARActivity.destinationARPoint;
-        //Log.d("DESTINATION POINT",destination);
     }
 
 
@@ -83,27 +80,30 @@ public class ARView extends View{
 
     //Increment Index used for showing AR Points
     public void incrementIndex() {
-        this.i = this.i + 1;
+        this.pointindex = this.pointindex + 1;
     }
 
-    //set Index
+    //Change/Setting Index used for showing AR Points
     public void setIndex(int index) {
-        this.i = index;
+        this.pointindex = index;
     }
 
     //Get the current Index
     public int getIndex() {
-        return this.i;
+        return this.pointindex;
     }
 
+    //Get the number of CheckPoints from user original position to target destination
     public int getARPointsSize() {
         return arPoints.size();
     }
 
+    //Get the Current CheckPoint
     public ARPoint getARPoint() {
-        return arPoints.get(i);
+        return arPoints.get(pointindex);
     }
 
+    //Set the AR Mode
     public void setType(boolean isRouting) {
         routing = isRouting;
     }
@@ -125,11 +125,10 @@ public class ARView extends View{
 
         float[] currentLocationInECEF = LocationHelper.WSG84toECEF(currentLocation);
 
+        //AR Routing Mode
         if (routing==true){
-
-
-            if (i < arPoints.size()) {
-                float[] pointInECEF = LocationHelper.WSG84toECEF(arPoints.get(i).getLocation());
+            if (pointindex < arPoints.size()) {
+                float[] pointInECEF = LocationHelper.WSG84toECEF(arPoints.get(pointindex).getLocation());
                 float[] pointInENU = LocationHelper.ECEFtoENU(currentLocation, currentLocationInECEF, pointInECEF);
 
                 float[] cameraCoordinateVector = new float[4];
@@ -144,7 +143,7 @@ public class ARView extends View{
                     canvas.drawCircle(x,y,radius+20,paint);
                     paint.setColor(Color.RED);
                     canvas.drawCircle(x, y, radius, paint);
-                    canvas.drawText("Checkpoint "+(i), x - (30*6), y-160, paint);
+                    canvas.drawText("Checkpoint "+(pointindex), x - (30*6), y-160, paint);
                     canvas.drawText("Distance : " + LocationHelper.distanceFromECEF(currentLocationInECEF,pointInECEF) + " m", x - (30 * 11), y - 80, paint);
                 }
             }
@@ -154,6 +153,7 @@ public class ARView extends View{
                 canvas.drawText("Arrived at Destination", canvas.getWidth()/4, canvas.getHeight()/2, paint);
             }
         }
+        //AR Destination Target Mode
         else {
             float[] pointInECEF = LocationHelper.WSG84toECEF(destination.getLocation());
             float[] pointInENU = LocationHelper.ECEFtoENU(currentLocation, currentLocationInECEF, pointInECEF);

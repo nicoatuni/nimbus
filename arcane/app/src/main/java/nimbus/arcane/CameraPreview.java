@@ -16,10 +16,10 @@ import java.util.List;
 
 /**
  * Created by ntdat on 1/13/17.
+ * Github : https://github.com/dat-ng/ar-location-based-android
  */
-
 /**
- * Last Edited by Arnold on 10/12/17
+ * Last Edited by Arnold Angelo on 10/15/17
  */
 
 public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
@@ -27,14 +27,15 @@ public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
 
     SurfaceView surfaceView;
     SurfaceHolder surfaceHolder;
-    Camera.Size previewSize;
-    List<Camera.Size> supportedPreviewSizes;
+
     Camera camera;
+    Camera.Size previewSize;
     Camera.Parameters parameters;
+    List<Camera.Size> supportedPreviewSizes;
+
     Activity activity;
 
     float[] projectionMatrix = new float[16];
-
     int cameraWidth;
     int cameraHeight;
     private final static float Z_NEAR = 0.5f;
@@ -165,7 +166,8 @@ public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
         }
     }
 
-
+    //Optimal Preview size for the camera view, but will cause the view to be a bit streched
+    /*
     private Camera.Size getOptimalPreviewSize(List<Camera.Size> sizes, int width, int height) {
         final double ASPECT_TOLERANCE = 0.1;
         double targetRatio = (double) width / height;
@@ -203,7 +205,7 @@ public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
         }
 
         return optimalSize;
-    }
+    } */
 
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         if(camera != null) {
