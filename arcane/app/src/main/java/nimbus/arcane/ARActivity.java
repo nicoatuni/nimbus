@@ -21,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -51,6 +52,9 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 //import android.graphics.Matrix;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
+
 import java.lang.*;
 import java.util.HashMap;
 import java.util.List;
@@ -59,45 +63,55 @@ import org.w3c.dom.Text;
 
 /**
  * Created by ntdat on 1/13/17.
+ * Github : https://github.com/dat-ng/ar-location-based-android
  */
 /**
- * Last Edited by Arnold on 10/12/17
+ * Last Edited by Arnold Angelo on 10/15/17
  */
 
-
+//The Activity that runs the AR feature on our App
 public class ARActivity extends AppCompatActivity implements SensorEventListener, LocationListener {
 
     final static String TAG = "ARActivity";
+
     private SurfaceView surfaceView; //Surface View for the AR View
     private FrameLayout cameraContainerLayout; //The Frame Layout for Camera View
-    private ARView arOverlayView; //Class for drawing the AR object
-    private Camera camera; //Camera to access camera view and it's features
-    private CameraPreview arCamera; //???
-    private TextView tvCurrentLocation; //Text containing current location
-    private TextView pointsLeft;
 
-    private ImageView compass;
-    private ImageView objectDir;
+    private Camera camera; //Camera to access camera view and it's features
+    private ARView arOverlayView; //Class for drawing the AR object
+    private CameraPreview arCamera; //Class that determine the Camera Preview(Size,Scale,etc) of the AR view
+
+    private TextView tvCurrentLocation; //Text containing current location
+    private TextView pointsLeft; //Text containing how many checkpoints left
+    private ImageView compass; //Compass image showing user direction towards north,south,east,west
+    private ImageView objectDir; //Compass image showing user direction towards target object
+
     private float azimuth = 0f;
     private float currentAzimuth = 0f;
+    private float angle; //Angle between position to destination
 
     private float[] mGravity = new float[3]; //Accelerometer Array
     private float[] mGeomagnetic = new float[3]; //Magnetometer Array
-    //Angle between position to destination
-    float angle;
 
     private SensorManager sensorManager; //Sensor manager to access the device's sensor
     private final static int REQUEST_CAMERA_PERMISSIONS_CODE = 11;
     public static final int REQUEST_LOCATION_PERMISSIONS_CODE = 0;
-
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; //???
-    private static final long MIN_TIME_BW_UPDATES = 0;//???
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0;
+    private static final long MIN_TIME_BW_UPDATES = 0;
+    private float DISTANCE_THRESHOLD = 15.0f; /*Minimum distance needs to be reached between the user and target to show that the user have reach
+                                                the target*/
 
     private LocationManager locationManager; //Location manager to get location service and current location
     public Location location; //Location of the user now
+
     boolean isGPSEnabled;
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
+    private boolean isRouting = true; //Boolean that shows if the AR mode is in Routing mode or not
+    private boolean destinationReached = false;
+
+    public static LatLng destinationPoint=null;
+    public static ARPoint destinationARPoint;
 
     private Switch mSwitch;
 
@@ -106,6 +120,9 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
+
+        destinationPoint = (LatLng)getIntent().getExtras().get("destination");
+        destinationARPoint = new ARPoint(destinationPoint.latitude,destinationPoint.longitude);
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);
@@ -119,6 +136,25 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         arOverlayView = new ARView(this);
 
         mSwitch = (Switch) findViewById(R.id.switch_ar);
+
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    isRouting = false;
+                    arOverlayView.setType(isRouting);
+                    mSwitch.setChecked(true);
+                    Toast.makeText(ARActivity.this, "Changing to DestinationTarget Mode", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    isRouting = true;
+                    arOverlayView.setType(isRouting);
+                    mSwitch.setChecked(false);
+                    Toast.makeText(ARActivity.this, "Changing to RoutePoints Mode", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -128,6 +164,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         requestCameraPermission();
         registerSensors();
         initAROverlayView();
+
     }
 
     @Override
@@ -136,6 +173,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         super.onPause();
     }
 
+    //Calculate angle between to points by their latitudes and longitudes
     private double angleFromCoordinate(double lat1, double long1, double lat2, double long2) {
         double dLon = (long2 - long1);
 
@@ -150,7 +188,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         return brng;
     }
 
-    //Request to use Camera when Activity start
+    //Request to use Camera in the device
     public void requestCameraPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                 this.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -160,7 +198,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         }
     }
 
-    //Request to access Location/GPS when Activity start -- Might not be necessary since Map already get locationar
+    //Request to access Location/GPS in the device
     public void requestLocationPermission() {
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
         for (String permission : permissions) {
@@ -172,6 +210,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         }
     }
 
+    //Updating the AR View for each resume
     public void initAROverlayView() {
         if (arOverlayView.getParent() != null) {
             ((ViewGroup) arOverlayView.getParent()).removeView(arOverlayView);
@@ -179,6 +218,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         cameraContainerLayout.addView(arOverlayView);
     }
 
+    //Creating a new CameraPreview Object and keep updating the Camera Preview for each resume
     public void initARCameraView() {
         reloadSurfaceView();
 
@@ -193,6 +233,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         initCamera();
     }
 
+    //Opening Camera and Attaching the camera object to CameraPreview object to be used
     private void initCamera() {
         int numCams = Camera.getNumberOfCameras();
         if(numCams > 0){
@@ -206,6 +247,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         }
     }
 
+    //Updating the Surfaceview
     private void reloadSurfaceView() {
         if (surfaceView.getParent() != null) {
             ((ViewGroup) surfaceView.getParent()).removeView(surfaceView);
@@ -230,7 +272,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                 SensorManager.SENSOR_DELAY_FASTEST);
         sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),SensorManager.SENSOR_DELAY_GAME);
         sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_GAME);
-
     }
 
     @Override
@@ -247,11 +288,13 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                 projectionMatrix = arCamera.getProjectionMatrix();
             }
 
-            //Multiply the Projection Matrix of the AR Camera and the
             Matrix.multiplyMM(rotatedProjectionMatrix, 0, projectionMatrix, 0, rotationMatrixFromVector, 0);
             this.arOverlayView.updateRotatedProjectionMatrix(rotatedProjectionMatrix);
         }
 
+        /* Line 296 - 332
+          Code Explanation : Getting data from the device's sensors and calculate angle for the compass
+        * Code Cited from : https://www.youtube.com/watch?v=RcqXFxqIAW4 */
         final float alpha = 0.97f;
 
         synchronized (this) {
@@ -280,8 +323,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                 Animation anim = new RotateAnimation(currentAzimuth, azimuth, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 currentAzimuth = azimuth;
 
-                float dAngle = angle - azimuth;
-                if (dAngle < 0) { //If left rotation
+                float dAngle = angle - azimuth; //Delta angle between the Device Angle in NSWE(Nort,South,West,East) with the Angle between User and Destination in NSWE
+                if (dAngle < 0) {
                     dAngle = 360 - Math.abs(dAngle);
                 }
 
@@ -301,12 +344,11 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         //do nothing
     }
 
-    //Initiate the location service and get our position (latitude, longitude) and pass it to variable "location"
+    //Initiate the location service and get our position
     private void initLocationService() {
 
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
         for (String permission : permissions) {
-            //Only works for SDK version below 23 --See Android Studio Documentation for more info--
             if (Build.VERSION.SDK_INT >= 23 &&
                     ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
                 return;
@@ -330,7 +372,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
 
             if (isNetworkEnabled) {
-                //??? Anyone know what this do ???
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
                         MIN_TIME_BW_UPDATES,
                         MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
@@ -343,7 +384,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             }
 
             if (isGPSEnabled)  {
-                //??? Anyone know what this do ???
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                         MIN_TIME_BW_UPDATES,
                         MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
@@ -361,32 +401,74 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         }
     }
 
+    //
     private void updateLatestLocation(Location location) {
         if (arOverlayView !=null) {
 
             this.location = location;
+            ARPoint nextpoint;
+            float[] curLoc;
+            float[] targetLoc;
+            float distance;
 
-            if(arOverlayView.getIndex()<arOverlayView.getARPointsSize()) {
-                ARPoint nextpoint = arOverlayView.getARPoint();
-                float[] curLoc = LocationHelper.WSG84toECEF(location);
-                float[] targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
-                float distance = LocationHelper.distanceFromECEF(curLoc,targetLoc);
+            //When in Routing Mode
+            if (isRouting==true) {
 
-                if (distance<20.0f) {
-                    arOverlayView.incrementIndex();
+                if (arOverlayView.getIndex() < arOverlayView.getARPointsSize()) {
+                    nextpoint = arOverlayView.getARPoint();
+
+                    curLoc = LocationHelper.WSG84toECEF(location);
+                    targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
+                    distance = LocationHelper.distanceFromECEF(curLoc, targetLoc);
+
+                    if (distance < DISTANCE_THRESHOLD) {
+                        arOverlayView.incrementIndex();
+                    }
+
+                    if (arOverlayView.getIndex() < arOverlayView.getARPointsSize()) { //When haven't reached all checkpoints after increment
+                        angle = (float) angleFromCoordinate(location.getLatitude(), location.getLongitude(), arOverlayView.getARPoint().getLocation().getLatitude(), arOverlayView.getARPoint().getLocation().getLongitude());
+
+                    } else { //When have reached all checkpoints
+                        angle = currentAzimuth;
+
+                    }
+
+                } else {
+                    angle =currentAzimuth;
                 }
 
-                //Log.d("INCINDEX","INDEX = "+arOverlayView.getIndex());
-                angle = (float) angleFromCoordinate(location.getLatitude(),location.getLongitude(),arOverlayView.getARPoint().getLocation().getLatitude(),arOverlayView.getARPoint().getLocation().getLongitude());
+                //Send the current location to AROverlayView Class, which will render the target
+                arOverlayView.updateCurrentLocation(location);
+                //Update the current location to TextView
+                tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
+                        location.getLatitude(), location.getLongitude()));
+                pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getARPointsSize()-arOverlayView.getIndex())));
+
+            }
+            else { //in Destination Target Mode
+                nextpoint = destinationARPoint;
+
+                curLoc = LocationHelper.WSG84toECEF(location);
+                targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
+
+                distance = LocationHelper.distanceFromECEF(curLoc,targetLoc);
+
+                if (distance < 5.0f) {
+                    destinationReached = true;
+                    arOverlayView.setIndex(arOverlayView.getARPointsSize());
+                }
+
+                angle = (float) angleFromCoordinate(location.getLatitude(),location.getLongitude(),nextpoint.getLocation().getLatitude(),nextpoint.getLocation().getLongitude());
+
+                //Send the current location to AROverlayView Class, which will render the target
+                arOverlayView.updateCurrentLocation(location);
+                //Update the current location to TextView
+                tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
+                        location.getLatitude(), location.getLongitude()));
+                pointsLeft.setText(String.format("DestinationTarget Mode"));
+
             }
 
-
-            //Send the current location to AROverlayView Class, which will render the target
-            arOverlayView.updateCurrentLocation(location);
-            //Update the current location to TextView
-            tvCurrentLocation.setText(String.format("My Position \nLatitude: %.10s \nLongitude: %.10s \n",
-                    location.getLatitude(), location.getLongitude()));
-            pointsLeft.setText(String.format("Checkpoint(s) Left : %d",(arOverlayView.getARPointsSize()-arOverlayView.getIndex())));
         }
     }
 
