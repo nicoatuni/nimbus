@@ -561,12 +561,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     if (isChecked) {
 
                         //Log.d("DESTINATION","Destination : "+mDestination);
-                        Intent arIntent = new Intent(getContext(), ARActivity.class);
-                        arIntent.putExtra("destination", mDestination);
-//                        arIntent.putExtra("routing_points", routePoints.toString());
-                        startActivity(arIntent);
+                        if (routePoints != null) {
+                            Intent arIntent = new Intent(getContext(), ARActivity.class);
+                            arIntent.putExtra("destination", mDestination);
+                            //arIntent.putExtra("routing_points", routePoints.toString());
+                            startActivity(arIntent);
 
-                        Toast.makeText(getContext(), "Opening AR Activity", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Opening AR Activity", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(),"Please wait while we are fetching the route data", Toast.LENGTH_LONG).show();
+                        }
                         mSwitch.setChecked(false);
 
                     } else {

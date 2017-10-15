@@ -145,11 +145,13 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                     isRouting = false;
                     arOverlayView.setType(isRouting);
                     mSwitch.setChecked(true);
+                    Toast.makeText(ARActivity.this, "Changing to DestinationTarget Mode", Toast.LENGTH_SHORT).show();
 
                 } else {
                     isRouting = true;
                     arOverlayView.setType(isRouting);
                     mSwitch.setChecked(false);
+                    Toast.makeText(ARActivity.this, "Changing to RoutePoints Mode", Toast.LENGTH_LONG).show();
                 }
             }
         });
