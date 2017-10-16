@@ -5,7 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 /**
- * Created by Richard Aldrich on 17/9/2017.
+ * @author Richard Aldrich
+ * Last edited by Nico Dinata
  */
 
 class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -31,6 +32,10 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
                 MapFragment mapFragment = new MapFragment();
                 return mapFragment;
 
+            case 3:
+                RequestFragment requestFragment = new RequestFragment();
+                return requestFragment;
+
             default:
                 return null;
         }
@@ -39,7 +44,7 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     public CharSequence getPageTitle(int position) {
@@ -54,6 +59,9 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
 
             case 2:
                 return "MAP";
+
+            case 3:
+                return "REQUEST";
 
             default:
                 return null;
