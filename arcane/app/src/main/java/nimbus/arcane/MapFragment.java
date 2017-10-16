@@ -77,6 +77,8 @@ import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
+ * Last Edited by Richard Aldrich 17/10/2017
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
