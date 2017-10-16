@@ -157,7 +157,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mGroupList = (Spinner) mMainView.findViewById(R.id.group_list);
 
-        mGroupList.setVisibility(View.INVISIBLE);
+        if(firstTime){
+            mGroupList.setVisibility(View.INVISIBLE);
+        }
+
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -227,14 +230,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
+
+
                     latitude = (double) dataSnapshot.child("latitude").getValue();
                     longitude = (double) dataSnapshot.child("longitude").getValue();
 
                     mUserLocation = new LatLng(latitude, longitude);
-                    mMap.clear();
-                    mProgress.dismiss();
-                    mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+
+                    if(mMap!=null){
+                        mMap.clear();
+                        mProgress.dismiss();
+                        mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
+                    }
+
 
                     if(selectedGroupID!=null){
                         Log.e("CALL", "FROM OnView Created");
@@ -724,7 +733,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
 
 
-    private String getDirectionsUrl(LatLng origin, LatLng dest) {
+    public String getDirectionsUrl(LatLng origin, LatLng dest) {
 
         // Origin of route
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
