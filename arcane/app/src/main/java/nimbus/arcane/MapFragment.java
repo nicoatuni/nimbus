@@ -229,10 +229,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
 
-//                    if(selectedGroupID!=null){
-//                        Log.e("CALL", "FROM OnView Created");
-//                        addMarker(selectedGroupID);
-//                    }
+                    if(selectedGroupID!=null){
+                        Log.e("CALL", "FROM OnView Created");
+                        addMarker(selectedGroupID);
+                    }
 
 
 
@@ -291,9 +291,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                             LatLng user_location = new LatLng(user_latitude, user_longitude);
 
 //                            deleteMarker(user_name);
+                            verifyMarker(user_name);
                             Marker marker = mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-
-//                            verifyMarker(marker, user_name);
 
                             mMarkerMap.put(user_name, marker);
                         }
@@ -337,12 +336,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
-    private void verifyMarker(Marker marker, String user_name) {
+    private void verifyMarker(String user_name) {
 
             Marker tMarker = (Marker) mMarkerMap.get(user_name);
             if (tMarker != null) {
 
-                marker.remove();
+                tMarker.remove();
                 mMarkerMap.remove(user_name);
 
             }
@@ -452,13 +451,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 }
 
-//                if(selectedGroupID != null){
-//                    Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
-//                    Log.e("GROUP ID", selectedGroupID);
-//                    addMarker(selectedGroupID);
-//                } else {
-//                    Toast.makeText(getContext(), "no group", Toast.LENGTH_LONG).show();
-//                }
+                if(selectedGroupID != null){
+                    Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
+                    Log.e("GROUP ID", selectedGroupID);
+                    addMarker(selectedGroupID);
+                } else {
+                    Toast.makeText(getContext(), "no group", Toast.LENGTH_LONG).show();
+                }
 
                 makeRoute(mUserLocation, mDestination);
 
@@ -526,11 +525,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         }
 
-//        if(selectedGroupID!=null){
-//            Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
-//            Log.e("CALL FROM", "AFTER PERMISSION");
-//            addMarker(selectedGroupID);
-//        }
+        if(selectedGroupID!=null){
+            Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
+            Log.e("CALL FROM", "AFTER PERMISSION");
+            addMarker(selectedGroupID);
+        }
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
