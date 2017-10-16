@@ -64,4 +64,22 @@ public class LocationHelper {
         distance = Math.sqrt(Math.pow((nextPoint[0]-currentLocation[0]),2)+Math.pow((nextPoint[1]-currentLocation[1]),2)+Math.pow((nextPoint[2]-currentLocation[2]),2));
         return (float)distance;
     }
+
+    //Calculating distance between 2 LatLong
+    //Source : https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
+    public static float distanceFromLatLong(double lat1, double lon1, double lat2, double lon2) {
+        int R = 6371; // Radius of the earth in km
+        double dLat = Math.toRadians(lat2-lat1);  // deg2rad below
+        double dLon = Math.toRadians(lon2-lon1);
+        double a =
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                        Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                                Math.sin(dLon/2) * Math.sin(dLon/2)
+                ;
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        double d = R * c; // Distance in km
+
+        return (float)(d*1000);
+    }
+
 }
