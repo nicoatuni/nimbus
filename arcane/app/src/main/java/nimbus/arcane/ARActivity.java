@@ -335,7 +335,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         brng = Math.toDegrees(brng);
         brng = (brng + 360) % 360;
 
-        return brng;
+        return brng; //Bearing or Angle between 2 coordinates
     }
 
     public float calculateAzimuth(float[] orientation) {
