@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.sip.SipAudioCall;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -118,6 +119,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private ProgressDialog mProgress;
 
+    private ValueEventListener mRef;
+
     public MapFragment() {
         // Required empty public constructor
     }
@@ -203,10 +206,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mLocation = gpsTracker.getLocation();
 
-        mProgress.setTitle("Fetching GPS location");
-        mProgress.setMessage("Please wait while we fetch your location");
-        mProgress.setCanceledOnTouchOutside(false);
-        mProgress.show();
+        if (firstTime) {
+
+            mProgress.setTitle("Fetching GPS location");
+            mProgress.setMessage("Please wait while we fetch your location");
+            mProgress.setCanceledOnTouchOutside(false);
+            mProgress.show();
+
+        }
 
         if (mLocation != null) {
 
@@ -264,12 +271,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             if (!group_id.equals(id)) {
 
                 deleteAllMarker();
+                if (mRef != null) {
+
+                    mRootRef.child("Groups").child(group_id).child("Members").removeEventListener(mRef);
+//                    mRootRef.removeEventListener(mRef);
+                    Log.e("GO INSIDE", "REMOVE EVENT");
+
+                }
                 group_id = id;
 
             }
         }
 
-        mRootRef.child("Groups").child(id).child("Members").addValueEventListener(new ValueEventListener() {
+        mRef = mRootRef.child("Groups").child(id).child("Members").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
