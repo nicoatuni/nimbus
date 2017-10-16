@@ -173,21 +173,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         super.onPause();
     }
 
-    //Calculate angle between to points by their latitudes and longitudes
-    private double angleFromCoordinate(double lat1, double long1, double lat2, double long2) {
-        double dLon = (long2 - long1);
-
-        double y = Math.sin(dLon) * Math.cos(lat2);
-        double x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
-
-        double brng = Math.atan2(y, x);
-
-        brng = Math.toDegrees(brng);
-        brng = (brng + 360) % 360;
-
-        return brng;
-    }
-
     //Request to use Camera in the device
     public void requestCameraPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
@@ -317,8 +302,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             if (success) {
                 float orientation[] = new float[3];
                 SensorManager.getOrientation(R, orientation);
-                azimuth = (float) Math.toDegrees(orientation[0]);
-                azimuth = (azimuth + 360) % 360;
+
+                azimuth = calculateAzimuth(orientation);
 
                 Animation anim = new RotateAnimation(currentAzimuth, azimuth, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 currentAzimuth = azimuth;
@@ -333,10 +318,39 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
                 compass.startAnimation(anim); //Your Phone orientation based on the NSEW
                 objectDir.setRotation(dAngle); //Where you should turn your phone
-
             }
         }
 
+    }
+
+    //Calculate angle between to points by their latitudes and longitudes
+    public double angleFromCoordinate(double lat1, double long1, double lat2, double long2) {
+        double dLon = (long2 - long1);
+
+        double x = Math.cos(Math.toRadians(lat2)) * Math.sin(Math.toRadians(dLon));
+        double y = Math.cos(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) - Math.sin(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(dLon));
+
+        double brng = Math.atan2(x, y);
+
+        brng = Math.toDegrees(brng);
+        brng = (brng + 360) % 360;
+
+        return brng; //Bearing or Angle between 2 coordinates
+    }
+
+    public float calculateAzimuth(float[] orientation) {
+        float azimuth = (float) Math.toDegrees(orientation[0]);
+        azimuth = (azimuth + 360) % 360;
+        return azimuth;
+    }
+
+    public float calculatedAngle(float azimuthCalc, double latitude1, double longitude1, double latitude2, double longitude2) {;
+        float angle = (float) angleFromCoordinate(latitude1,longitude1,latitude2,longitude2);
+        float dAngle = angle - azimuthCalc; //Delta angle between the Device Angle in NSWE(Nort,South,West,East) with the Angle between User and Destination in NSWE
+        if (dAngle < 0) {
+            dAngle = 360 - Math.abs(dAngle);
+        }
+        return dAngle;
     }
 
     @Override
@@ -397,11 +411,9 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             }
         } catch (Exception ex)  {
             Log.e(TAG, ex.getMessage());
-
         }
     }
 
-    //
     private void updateLatestLocation(Location location) {
         if (arOverlayView !=null) {
 
@@ -434,7 +446,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                     }
 
                 } else {
-                    angle =currentAzimuth;
+                    angle = currentAzimuth;
                 }
 
                 //Send the current location to AROverlayView Class, which will render the target
@@ -489,6 +501,10 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
     @Override
     public void onProviderDisabled(String s) {
+
+    }
+
+    public void ARActivity(){
 
     }
 }
