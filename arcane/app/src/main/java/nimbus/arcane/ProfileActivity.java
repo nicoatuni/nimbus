@@ -217,6 +217,7 @@ public class ProfileActivity extends AppCompatActivity {
                     notificationData.put("type", "request");
 
                     Map requestMap = new HashMap();
+                    requestMap.put("Users/" + user_key + "/request/" + user_id + "/request_type", "received");
                     requestMap.put("Friend_Request/" + user_id + "/" + user_key + "/request_type", "sent");
                     requestMap.put("Friend_Request/" + user_key + "/" + user_id + "/request_type", "received");
                     requestMap.put("notifications/" + user_key + "/" + newNotificationID, notificationData);
@@ -249,6 +250,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Map friendReqMap = new HashMap();
                     friendReqMap.put("Friend_Request/" + user_id + "/" + user_key, null);
                     friendReqMap.put("Friend_Request/" + user_key + "/" + user_id, null);
+                    friendReqMap.put("Users/" + user_key + "/request/" + user_id, null);
 
                     mRootRef.updateChildren(friendReqMap, new DatabaseReference.CompletionListener() {
                         @Override
@@ -278,14 +280,11 @@ public class ProfileActivity extends AppCompatActivity {
                 if (mCurrentState == REQUEST_RECEIVED) {
 
                     Map friendsMap = new HashMap();
-//                    friendsMap.put("Friends/" + mCurrentUser.getUid() + "/" + user_key + "/date", ServerValue.TIMESTAMP);
-//                    friendsMap.put("Friends/" +  user_key + "/" + mCurrentUser.getUid() + "/date", ServerValue.TIMESTAMP);
                     friendsMap.put("Users/" + user_id + "/Friends/" + user_key + "/date", ServerValue.TIMESTAMP);
                     friendsMap.put("Users/" + user_key + "/Friends/" + user_id + "/date", ServerValue.TIMESTAMP);
-//                    friendsMap.put("Users/" + user_id + "/Groups/Members/" + user_key + "/date", ServerValue.TIMESTAMP);
-//                    friendsMap.put("Users/" + user_key + "/Groups/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
                     friendsMap.put("Friend_Request/" + user_id + "/" + user_key, null);
                     friendsMap.put("Friend_Request/" + user_key + "/" + user_id, null);
+                    friendsMap.put("Users/" + user_key + "/request/" + user_id, null);
 
                     mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
                         @Override
