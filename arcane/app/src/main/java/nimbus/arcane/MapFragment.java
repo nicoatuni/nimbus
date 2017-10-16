@@ -271,6 +271,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             if (!group_id.equals(id)) {
 
                 deleteAllMarker();
+                // check if the value event listener is listening to other group or not, if yes then
+                // remove the listener to the previous group
                 if (mRef != null) {
 
                     mRootRef.child("Groups").child(group_id).child("Members").removeEventListener(mRef);
@@ -283,6 +285,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         }
 
+        // add a new event listener to the group to get the location changed of the members
         mRef = mRootRef.child("Groups").child(id).child("Members").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
