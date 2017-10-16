@@ -66,6 +66,7 @@ public class LocationHelper {
     }
 
     //Calculating distance between 2 LatLong
+    //Source : https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
     public static float distanceFromLatLong(double lat1, double lon1, double lat2, double lon2) {
         int R = 6371; // Radius of the earth in km
         double dLat = Math.toRadians(lat2-lat1);  // deg2rad below
