@@ -85,8 +85,9 @@
             android:parentActivityName=".ChatActivity" />
         <activity
             android:name=".ARActivity"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".AddToGroupActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".AddToGroupActivity" />
+        <activity android:name=".SelectGroupActivity"></activity>
     </application>
 
 </manifest>

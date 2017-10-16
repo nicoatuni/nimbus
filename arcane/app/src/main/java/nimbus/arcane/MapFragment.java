@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.sip.SipAudioCall;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,15 +25,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.ParallelExecutorCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -65,6 +72,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -79,6 +87,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Boolean firstTime = true;
+    private String selectedGroupID=null;
+    private String group_id;
+    private boolean state = true;
+    private int time = 1;
 
     private static LocationManager locationManager;
     private static LocationListener locationListener;
@@ -95,6 +107,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private Switch mSwitch;
     private ImageButton mMyLocation;
+    private Button mSelectGroup;
+    private Spinner mGroupList;
 
     private DatabaseReference mRootRef;
     private DatabaseReference mUserRef;
@@ -104,6 +118,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private HashMap mMarkerMap = new HashMap();
 
     private ProgressDialog mProgress;
+
+    private ValueEventListener mRef;
 
     public MapFragment() {
         // Required empty public constructor
@@ -137,6 +153,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mMyLocation = (ImageButton) mMainView.findViewById(R.id.map_location);
 
+        mSelectGroup = (Button) mMainView.findViewById(R.id.select_group);
+
+        mGroupList = (Spinner) mMainView.findViewById(R.id.group_list);
+
+        mGroupList.setVisibility(View.INVISIBLE);
+
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mUserRef = mRootRef.child("Users").child(mCurrentUser.getUid());
@@ -157,6 +179,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                        // adapter.notifyDataSetChanged();
                        Log.d("TESTGROUP",postSnapShot.getKey());
                    }
+
                 }
             }
             @Override
@@ -164,6 +187,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             }
         });
+    }
+
+    public void addGroupToSpinner(){
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,availableGroupIDList);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mGroupList.setAdapter(dataAdapter);
     }
 
     @Override
@@ -176,17 +206,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mLocation = gpsTracker.getLocation();
 
-        mProgress.setTitle("Fetching GPS location");
-        mProgress.setMessage("Please wait while we fetch your location");
-        mProgress.setCanceledOnTouchOutside(false);
-        mProgress.show();
+        if (firstTime) {
+
+            mProgress.setTitle("Fetching GPS location");
+            mProgress.setMessage("Please wait while we fetch your location");
+            mProgress.setCanceledOnTouchOutside(false);
+            mProgress.show();
+
+        }
 
         if (mLocation != null) {
 
             latitude = mLocation.getLatitude();
             longitude = mLocation.getLongitude();
 
-        } else {
+        }
+        else {
 
             mUserRef.child("latlng").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -201,7 +236,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
 
-                    addMarker();
+                    if(selectedGroupID!=null){
+                        Log.e("CALL", "FROM OnView Created");
+                        addMarker(selectedGroupID);
+                    }
+
+
 
                 }
 
@@ -220,28 +260,56 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
-    public void addMarker() {
+    public void addMarker(String id) {
 
-        mRootRef.child("Groups").child("-Kw2VGxV01m_oJqGa9qs").child("Members").addValueEventListener(new ValueEventListener() {
+        if (group_id == null) {
+
+            group_id = id;
+
+        } else {
+
+            if (!group_id.equals(id)) {
+
+                deleteAllMarker();
+                // check if the value event listener is listening to other group or not, if yes then
+                // remove the listener to the previous group
+                if (mRef != null) {
+
+                    mRootRef.child("Groups").child(group_id).child("Members").removeEventListener(mRef);
+//                    mRootRef.removeEventListener(mRef);
+                    Log.e("GO INSIDE", "REMOVE EVENT");
+
+                }
+                group_id = id;
+
+            }
+        }
+
+        // add a new event listener to the group to get the location changed of the members
+        mRef = mRootRef.child("Groups").child(id).child("Members").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Iterable<DataSnapshot> members = dataSnapshot.getChildren();
+                Log.e("TIME", time+"");
+                Log.e("CHILDREN COUNT", dataSnapshot.getChildrenCount() + "");
                 for (DataSnapshot member : members) {
 
+                    Log.e("USER", member.toString());
                     String user_id = member.getKey();
                     if (!user_id.equals(mCurrentUser.getUid())) {
 
                         String user_name = member.child("name").getValue().toString();
+                        Log.e("USER NAME", user_name);
                         if (member.hasChild("latlng")) {
 
                             double user_latitude = (double) member.child("latlng").child("latitude").getValue();
                             double user_longitude = (double) member.child("latlng").child("longitude").getValue();
                             LatLng user_location = new LatLng(user_latitude, user_longitude);
 
+//                            deleteMarker(user_name);
+                            verifyMarker(user_name);
                             Marker marker = mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-
-                            verifyMarker(marker, user_name);
 
                             mMarkerMap.put(user_name, marker);
                         }
@@ -257,15 +325,43 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
-    private void verifyMarker(Marker marker, String user_name) {
+    private void deleteMarker(String name) {
 
-        Marker tMarker = (Marker) mMarkerMap.get(user_name);
+        Marker tMarker = (Marker) mMarkerMap.get(name);
         if (tMarker != null) {
+            tMarker.remove();
+        }
 
-            marker.remove();
-            mMarkerMap.remove(user_name);
+    }
+
+    private void deleteAllMarker() {
+
+        for (Object key: mMarkerMap.keySet()) {
+
+            Marker tMarker = (Marker) mMarkerMap.get(key.toString());
+            if (tMarker != null) {
+
+                tMarker.remove();
+
+            } else {
+
+                Log.e("MARKER NOT REMOVE", "NO");
+
+            }
 
         }
+
+    }
+
+    private void verifyMarker(String user_name) {
+
+            Marker tMarker = (Marker) mMarkerMap.get(user_name);
+            if (tMarker != null) {
+
+                tMarker.remove();
+                mMarkerMap.remove(user_name);
+
+            }
 
     }
 
@@ -273,7 +369,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         Map locationMap = new HashMap();
         locationMap.put("Users/" + mCurrentUser.getUid() + "/latlng", location);
-        locationMap.put("Groups/" + "-Kw2VGxV01m_oJqGa9qs" + "/Members/" + mCurrentUser.getUid() + "/latlng", location);
+        Log.e("STRING Size", availableGroupIDList.size()+"");
+        for (String id : availableGroupIDList) {
+            locationMap.put("Groups/" + id + "/Members/" + mCurrentUser.getUid() + "/latlng", location);
+
+        }
+//        locationMap.put("Groups/" + "-Kw2VGxV01m_oJqGa9qs" + "/Members/" + mCurrentUser.getUid() + "/latlng", location);
 
         mRootRef.updateChildren(locationMap, new DatabaseReference.CompletionListener() {
             @Override
@@ -367,11 +468,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 }
 
-                addMarker();
+                if(selectedGroupID != null){
+                    Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
+                    Log.e("GROUP ID", selectedGroupID);
+                    addMarker(selectedGroupID);
+                } else {
+                    Toast.makeText(getContext(), "no group", Toast.LENGTH_LONG).show();
+                }
 
                 makeRoute(mUserLocation, mDestination);
-
-                Log.d("GROUPS",availableGroupIDList.toString());
 
             }
 
@@ -437,7 +542,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         }
 
-        addMarker();
+        if(selectedGroupID!=null){
+            Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
+            Log.e("CALL FROM", "AFTER PERMISSION");
+            addMarker(selectedGroupID);
+        }
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
@@ -462,6 +571,34 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             }
         });
+
+        mSelectGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("GROUPS",availableGroupIDList.toString());
+                addGroupToSpinner();
+                mSelectGroup.setVisibility(View.INVISIBLE);
+                mGroupList.setVisibility(View.VISIBLE);
+            }
+        });
+
+        mGroupList.setOnItemSelectedListener(new OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                selectedGroupID = parent.getItemAtPosition(position).toString();
+                Log.d("GROUPSSELECTED",selectedGroupID);
+                addMarker(selectedGroupID);
+
+
+            } // to close the onItemSelected
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
+
     }
 
     public static int hasPermissions(Context context, String... permissions) {
