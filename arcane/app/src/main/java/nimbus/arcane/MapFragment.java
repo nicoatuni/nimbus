@@ -599,8 +599,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             {
                 selectedGroupID = parent.getItemAtPosition(position).toString();
                 Log.d("GROUPSSELECTED",selectedGroupID);
-                addMarker(selectedGroupID);
 
+                if (mLine != null) {
+
+                    mLine.remove();
+
+                }
+
+                addMarker(selectedGroupID);
 
             } // to close the onItemSelected
             public void onNothingSelected(AdapterView<?> parent)
