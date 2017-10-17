@@ -155,7 +155,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 viewHolder.messageTime.setVisibility(View.INVISIBLE);
                 viewHolder.profileImage.setVisibility(View.INVISIBLE);
 
-                viewHolder.locationReceiverText.setText(c.getMessage());
+                viewHolder.locationReceiverText.setText("location");
                 viewHolder.locationReceiverTime.setText(c.getName());
                 viewHolder.locationReceiverFrom.setText(DateFormat.format("HH:mm", c.getTime()));
 //                viewHolder.locationProfile.setVisibility(View.INVISIBLE);

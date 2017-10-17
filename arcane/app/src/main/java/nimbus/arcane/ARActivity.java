@@ -100,6 +100,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     private static final long MIN_TIME_BW_UPDATES = 0;
     private float DISTANCE_THRESHOLD = 15.0f; /*Minimum distance needs to be reached between the user and target to show that the user have reach
                                                 the target*/
+    private float DISTANCE_THRESHOLD_CLOSE = 5.0f;
 
     private LocationManager locationManager; //Location manager to get location service and current location
     public Location location; //Location of the user now
@@ -113,6 +114,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     public static LatLng destinationPoint=null;
     public static ARPoint destinationARPoint;
 
+    public static String destinationUser;
+
     private Switch mSwitch;
 
 
@@ -123,6 +126,9 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
         destinationPoint = (LatLng)getIntent().getExtras().get("destination");
         destinationARPoint = new ARPoint(destinationPoint.latitude,destinationPoint.longitude);
+
+        destinationUser = getIntent().getExtras().getString("user_destination");
+        Log.d("userNAME",destinationUser);
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);
@@ -136,6 +142,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         arOverlayView = new ARView(this);
 
         mSwitch = (Switch) findViewById(R.id.switch_ar);
+        mSwitch.setText("To DestinationMode");
 
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -145,12 +152,14 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                     isRouting = false;
                     arOverlayView.setType(isRouting);
                     mSwitch.setChecked(true);
+                    mSwitch.setText("To RoutingMode");
                     Toast.makeText(ARActivity.this, "Changing to DestinationTarget Mode", Toast.LENGTH_SHORT).show();
 
                 } else {
                     isRouting = true;
                     arOverlayView.setType(isRouting);
                     mSwitch.setChecked(false);
+                    mSwitch.setText("To DestinationMode");
                     Toast.makeText(ARActivity.this, "Changing to RoutePoints Mode", Toast.LENGTH_LONG).show();
                 }
             }
@@ -433,8 +442,14 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                     targetLoc = LocationHelper.WSG84toECEF(nextpoint.getLocation());
                     distance = LocationHelper.distanceFromECEF(curLoc, targetLoc);
 
-                    if (distance < DISTANCE_THRESHOLD) {
-                        arOverlayView.incrementIndex();
+                    if (arOverlayView.getIndex() < arOverlayView.getARPointsSize()-1) {
+                        if (distance < DISTANCE_THRESHOLD) {
+                            arOverlayView.incrementIndex();
+                        }
+                    } else {
+                        if (distance < DISTANCE_THRESHOLD_CLOSE) {
+                            arOverlayView.incrementIndex();
+                        }
                     }
 
                     if (arOverlayView.getIndex() < arOverlayView.getARPointsSize()) { //When haven't reached all checkpoints after increment
@@ -465,7 +480,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
                 distance = LocationHelper.distanceFromECEF(curLoc,targetLoc);
 
-                if (distance < 5.0f) {
+                if (distance < DISTANCE_THRESHOLD_CLOSE) {
                     destinationReached = true;
                     arOverlayView.setIndex(arOverlayView.getARPointsSize());
                 }

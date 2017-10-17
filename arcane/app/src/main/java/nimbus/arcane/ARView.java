@@ -47,6 +47,7 @@ public class ARView extends View{
         routePoints = MapFragment.routePoints;
         final List<HashMap<String,String>> pointList = routePoints.get(0);
         final int pointLength = pointList.size();
+        destination = ARActivity.destinationARPoint;
 
         //Pass the Array of Locations into here to be rendered later
         arPoints = new ArrayList<ARPoint>() {{
@@ -62,9 +63,9 @@ public class ARView extends View{
                 }
                 add(new ARPoint(lat,lng));
             }
+            add(destination);
         }};
 
-        destination = ARActivity.destinationARPoint;
     }
 
 
@@ -170,7 +171,7 @@ public class ARView extends View{
                 canvas.drawCircle(x,y,radius+20,paint);
                 paint.setColor(Color.RED);
                 canvas.drawCircle(x, y, radius, paint);
-                canvas.drawText("Destination Point", x - (30*6), y-160, paint);
+                canvas.drawText(ARActivity.destinationUser, x - (30*(ARActivity.destinationUser.length()/2)), y-160, paint);
                 canvas.drawText("Distance : " + LocationHelper.distanceFromECEF(currentLocationInECEF,pointInECEF) + " m", x - (30 * 11), y - 80, paint);
             }
         }
