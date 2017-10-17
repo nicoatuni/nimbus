@@ -206,7 +206,7 @@ public class ChatActivity extends AppCompatActivity {
     /**
      * load all the message that the current user and the user chosen and show the message.
      */
-    private void loadMessages() {
+    public void loadMessages() {
 
         DatabaseReference friends_database = mRootRef.child("Users").child(mCurrentUserId).child("Friends");
 
@@ -249,7 +249,7 @@ public class ChatActivity extends AppCompatActivity {
      * @param type the type of message to be sent
      * @param msg the message that the user type on the input text layout
      */
-    private void sendMessage(String type, String msg) {
+    public void sendMessage(String type, String msg) {
 
         String message;
 
@@ -368,5 +368,9 @@ public class ChatActivity extends AppCompatActivity {
 
 //        Log.d("LOCATION FROM Chat", mChatUser);
 
+    }
+
+    public void setDataBase(DatabaseReference dr ){
+        mRootRef = dr;
     }
 }
