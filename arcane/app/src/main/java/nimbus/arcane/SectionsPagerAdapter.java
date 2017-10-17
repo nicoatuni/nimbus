@@ -55,7 +55,7 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return "FRIENDS";
 
             case 1:
-                return "CHATS";
+                return "GROUPS";
 
             case 2:
                 return "MAP";
