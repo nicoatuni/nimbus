@@ -86,6 +86,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     public static List<List<HashMap<String, String>>> routePoints = null;
     private ArrayList<String> availableGroupIDList=new ArrayList<String>();
+    private ArrayList<String> availableGroupNameList=new ArrayList<String>();
 
     private GoogleMap mMap;
     private Boolean firstTime = true;
@@ -202,9 +203,47 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
     }
 
+    public void getGroupReference(){
+        mRootRef.child("Groups").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(availableGroupIDList!=null){
+
+                    if (availableGroupNameList != null) {
+
+                        availableGroupNameList.clear();
+
+                    }
+//                    for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
+//                        String id=postSnapShot.getKey();
+//                        for(int i=0;i<availableGroupIDList.size();i++){
+//                            if(id.equals(availableGroupIDList.get(i))){
+//                                //Log.e("User ", postSnapShot.child("name").toString());
+//                                availableGroupNameList.add(postSnapShot.child("name").getValue().toString());
+//                            }
+//                        }
+//                    }
+                    for(int i=0;i<availableGroupIDList.size();i++){
+                        String id=availableGroupIDList.get(i);
+                        for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
+                            if(id.equals(postSnapShot.getKey())){
+                                availableGroupNameList.add(postSnapShot.child("name").getValue().toString());
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void addGroupToSpinner(){
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, availableGroupIDList);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, availableGroupNameList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mGroupList.setAdapter(dataAdapter);
@@ -465,6 +504,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
 
         getGroups();
+        getGroupReference();
 
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
 
@@ -608,6 +648,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onClick(View v) {
 
                 Log.d("GROUPS", availableGroupIDList.toString());
+                Log.d("GROUPS", availableGroupNameList.toString());
                 addGroupToSpinner();
                 mSelectGroup.setVisibility(View.INVISIBLE);
                 mGroupList.setVisibility(View.VISIBLE);
@@ -619,7 +660,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                selectedGroupID = parent.getItemAtPosition(position).toString();
+                String selectedGroupName= parent.getItemAtPosition(position).toString();
+                for(int i=0;i<availableGroupNameList.size();i++){
+                    Log.d("GROUPS",i+""+selectedGroupName+" vs "+availableGroupNameList.get(i));
+                    if(selectedGroupName.equals(availableGroupNameList.get(i))){
+
+                        selectedGroupID = availableGroupIDList.get(i);
+                    }
+                }
+               //selectedGroupID = parent.getItemAtPosition(position).toString();
                 Log.d("GROUPSSELECTED",selectedGroupID);
 
                 if (mLine != null) {

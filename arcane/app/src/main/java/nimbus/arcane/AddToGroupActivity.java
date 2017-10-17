@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -54,6 +55,7 @@ public class AddToGroupActivity extends AppCompatActivity {
 
     private String group_key;
     private String group_name;
+    private LatLng mLocation;
 
     private ArrayList<String> mSelect = new ArrayList<String>();
 
@@ -114,9 +116,9 @@ public class AddToGroupActivity extends AppCompatActivity {
                              public void onClick(View v) {
 
                                  usersViewHolder.checkBox.setChecked(usersViewHolder.checkBox.isChecked());
-                                 Toast.makeText(AddToGroupActivity.this, "checkbox", Toast.LENGTH_LONG).show();
+//                                 Toast.makeText(AddToGroupActivity.this, "checkbox", Toast.LENGTH_LONG).show();
                                  addToSelection(list_user_id, usersViewHolder.checkBox());
-                                 Log.d("SetCheckBox", "checkbox");
+//                                 Log.d("SetCheckBox", "checkbox");
 
                              }
                          });
@@ -127,9 +129,9 @@ public class AddToGroupActivity extends AppCompatActivity {
                              public void onClick(View view) {
 
                                  usersViewHolder.setCheckBox();
-                                 Toast.makeText(AddToGroupActivity.this, list_user_id, Toast.LENGTH_LONG).show();
+//                                 Toast.makeText(AddToGroupActivity.this, list_user_id, Toast.LENGTH_LONG).show();
                                  addToSelection(list_user_id, usersViewHolder.checkBox());
-                                 Log.d("SetCheckBox", "users");
+//                                 Log.d("SetCheckBox", "users");
 
                              }
                          });
@@ -171,6 +173,7 @@ public class AddToGroupActivity extends AppCompatActivity {
                     groupIntent.putExtra("group_id", group_key);
                     groupIntent.putExtra("group_name", group_name);
                     startActivity(groupIntent);
+                    finish();
 
                 } else {
 
@@ -286,28 +289,50 @@ public class AddToGroupActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String user_name = dataSnapshot.child("name").getValue().toString();
+                final String user_name = dataSnapshot.child("name").getValue().toString();
 
-                Map friendsMap = new HashMap();
-                friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
-                friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/name", user_name);
-                friendsMap.put("Users/" + user_id + "/Groups/" + group_id + "/date", ServerValue.TIMESTAMP);
-
-                mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
+                mRootRef.child("Users").child(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                    public void onDataChange(DataSnapshot snapshot) {
 
-                        if (databaseError == null) {
+                        Map friendsMap = new HashMap();
 
-                            Toast.makeText(AddToGroupActivity.this, "Friend added to group", Toast.LENGTH_LONG).show();
+                        if (snapshot.hasChild("latlng")) {
 
-                        } else {
-
-                            String error = databaseError.getMessage();
-
-                            Toast.makeText(AddToGroupActivity.this, error, Toast.LENGTH_SHORT).show();
+                            double latitude = (double) snapshot.child("latlng").child("latitude").getValue();
+                            double longitude = (double) snapshot.child("latlng").child("longitude").getValue();
+                            LatLng location = new LatLng(latitude, longitude);
+                            friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/latlng", location);
 
                         }
+
+                        friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
+                        friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/name", user_name);
+                        friendsMap.put("Users/" + user_id + "/Groups/" + group_id + "/date", ServerValue.TIMESTAMP);
+
+                        mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+                                if (databaseError == null) {
+
+                                    Toast.makeText(AddToGroupActivity.this, "Friend added to group", Toast.LENGTH_LONG).show();
+
+                                } else {
+
+                                    String error = databaseError.getMessage();
+
+                                    Toast.makeText(AddToGroupActivity.this, error, Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
 
