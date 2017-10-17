@@ -170,7 +170,7 @@ public class ARView extends View{
                 canvas.drawCircle(x,y,radius+20,paint);
                 paint.setColor(Color.RED);
                 canvas.drawCircle(x, y, radius, paint);
-                canvas.drawText("Destination Point", x - (30*6), y-160, paint);
+                canvas.drawText(ARActivity.destinationUser, x - (30*(ARActivity.destinationUser.length()/2)), y-160, paint);
                 canvas.drawText("Distance : " + LocationHelper.distanceFromECEF(currentLocationInECEF,pointInECEF) + " m", x - (30 * 11), y - 80, paint);
             }
         }

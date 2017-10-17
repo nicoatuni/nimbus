@@ -113,6 +113,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     public static LatLng destinationPoint=null;
     public static ARPoint destinationARPoint;
 
+    public static String destinationUser;
+
     private Switch mSwitch;
 
 
@@ -123,6 +125,9 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
         destinationPoint = (LatLng)getIntent().getExtras().get("destination");
         destinationARPoint = new ARPoint(destinationPoint.latitude,destinationPoint.longitude);
+
+        destinationUser = getIntent().getExtras().getString("user_destination");
+        Log.d("userNAME",destinationUser);
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_preview);

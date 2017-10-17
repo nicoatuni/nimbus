@@ -740,6 +740,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         if (routePoints != null) {
                             Intent arIntent = new Intent(getContext(), ARActivity.class);
                             arIntent.putExtra("destination", mDestination);
+                            arIntent.putExtra("user_destination", mUserDestination);
                             //arIntent.putExtra("routing_points", routePoints.toString());
                             startActivity(arIntent);
 
