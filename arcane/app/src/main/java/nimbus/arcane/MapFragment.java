@@ -463,7 +463,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 5, locationListener);
                     Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                     if (lastKnownLocation != null) {
@@ -571,7 +571,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 5, locationListener);
 
         } else {
 
@@ -583,7 +583,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 } else {
 
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 5, locationListener);
                     Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                     if (lastKnownLocation != null) {
@@ -693,7 +693,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M && context != null && permissions != null) {
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 5, locationListener);
 
             return 0;
 
