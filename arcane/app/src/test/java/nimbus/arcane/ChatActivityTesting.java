@@ -51,4 +51,10 @@ public class ChatActivityTesting {
         String expectedMessage = "testing";
         verify(mockChatClass).sendMessage(expectedType,expectedMessage);
     }
+
+    @Test
+    public void testLoadMessage() {
+        mockChatClass.loadMessages();
+        verify(mockChatClass).loadMessages();
+    }
 }

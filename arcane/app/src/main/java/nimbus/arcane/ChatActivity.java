@@ -206,7 +206,7 @@ public class ChatActivity extends AppCompatActivity {
     /**
      * load all the message that the current user and the user chosen and show the message.
      */
-    private void loadMessages() {
+    public void loadMessages() {
 
         DatabaseReference friends_database = mRootRef.child("Users").child(mCurrentUserId).child("Friends");
 
