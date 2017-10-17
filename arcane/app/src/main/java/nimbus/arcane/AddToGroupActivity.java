@@ -114,9 +114,9 @@ public class AddToGroupActivity extends AppCompatActivity {
                              public void onClick(View v) {
 
                                  usersViewHolder.checkBox.setChecked(usersViewHolder.checkBox.isChecked());
-                                 Toast.makeText(AddToGroupActivity.this, "checkbox", Toast.LENGTH_LONG).show();
+//                                 Toast.makeText(AddToGroupActivity.this, "checkbox", Toast.LENGTH_LONG).show();
                                  addToSelection(list_user_id, usersViewHolder.checkBox());
-                                 Log.d("SetCheckBox", "checkbox");
+//                                 Log.d("SetCheckBox", "checkbox");
 
                              }
                          });
@@ -127,9 +127,9 @@ public class AddToGroupActivity extends AppCompatActivity {
                              public void onClick(View view) {
 
                                  usersViewHolder.setCheckBox();
-                                 Toast.makeText(AddToGroupActivity.this, list_user_id, Toast.LENGTH_LONG).show();
+//                                 Toast.makeText(AddToGroupActivity.this, list_user_id, Toast.LENGTH_LONG).show();
                                  addToSelection(list_user_id, usersViewHolder.checkBox());
-                                 Log.d("SetCheckBox", "users");
+//                                 Log.d("SetCheckBox", "users");
 
                              }
                          });
