@@ -104,6 +104,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private LatLng mUserLocation;
     private LatLng mDestination;
+    private String mUserDestination;
 
     private double latitude, longitude;
 
@@ -178,12 +179,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                   for(DataSnapshot postSnapShot:dataSnapshot.getChildren()) {
-                       //Groups group=postSnapShot.getValue(Groups.class);
-                       availableGroupIDList.add(postSnapShot.getKey());
-                       // adapter.notifyDataSetChanged();
-                       Log.d("TESTGROUP",postSnapShot.getKey());
-                   }
+
+                    if (availableGroupIDList != null) {
+
+                        availableGroupIDList.clear();
+
+                    }
+                    for(DataSnapshot postSnapShot:dataSnapshot.getChildren()) {
+                        // Groups group=postSnapShot.getValue(Groups.class);
+                        availableGroupIDList.add(postSnapShot.getKey());
+
+                        // adapter.notifyDataSetChanged();
+                        Log.d("TESTGROUP",postSnapShot.getKey());
+                    }
 
                 }
             }
@@ -196,9 +204,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     public void addGroupToSpinner(){
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,availableGroupIDList);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, availableGroupIDList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         mGroupList.setAdapter(dataAdapter);
+
     }
 
     @Override
@@ -225,14 +235,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             latitude = mLocation.getLatitude();
             longitude = mLocation.getLongitude();
 
-        }
-        else {
+        } else {
 
             mUserRef.child("latlng").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-
-
 
                     latitude = (double) dataSnapshot.child("latitude").getValue();
                     longitude = (double) dataSnapshot.child("longitude").getValue();
@@ -302,16 +309,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Iterable<DataSnapshot> members = dataSnapshot.getChildren();
-                Log.e("TIME", time+"");
-                Log.e("CHILDREN COUNT", dataSnapshot.getChildrenCount() + "");
                 for (DataSnapshot member : members) {
 
-                    Log.e("USER", member.toString());
                     String user_id = member.getKey();
                     if (!user_id.equals(mCurrentUser.getUid())) {
 
                         String user_name = member.child("name").getValue().toString();
-                        Log.e("USER NAME", user_name);
                         if (member.hasChild("latlng")) {
 
                             double user_latitude = (double) member.child("latlng").child("latitude").getValue();
@@ -321,6 +324,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 //                            deleteMarker(user_name);
                             verifyMarker(user_name);
                             Marker marker = mMap.addMarker(new MarkerOptions().position(user_location).snippet("set as destination").title(user_name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+                            if (mUserDestination != null) {
+
+                                if (mUserDestination.equals(user_name)) {
+
+                                    mDestination = user_location;
+                                    makeRoute(mUserLocation, mDestination);
+
+                                }
+                            }
 
                             mMarkerMap.put(user_name, marker);
                         }
@@ -480,11 +493,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 }
 
                 if(selectedGroupID != null){
-                    Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
-                    Log.e("GROUP ID", selectedGroupID);
+
+//                    Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
+//                    Log.e("GROUP ID", selectedGroupID);
                     addMarker(selectedGroupID);
+                    selectedGroupID = null;
+
                 } else {
-                    Toast.makeText(getContext(), "no group", Toast.LENGTH_LONG).show();
+
+//                    Toast.makeText(getContext(), "no group", Toast.LENGTH_LONG).show();
+
                 }
 
                 makeRoute(mUserLocation, mDestination);
@@ -554,7 +572,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
 
         if(selectedGroupID!=null){
-            Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
             Log.e("CALL FROM", "AFTER PERMISSION");
             addMarker(selectedGroupID);
         }
@@ -564,6 +582,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onInfoWindowClick(Marker marker) {
 
                 mDestination = marker.getPosition();
+                mUserDestination = marker.getTitle();
+//                Log.e("USER DESTINATION", mUserDestination);
 //                Toast.makeText(getContext(), mDestination.toString(), Toast.LENGTH_LONG).show();
                 makeRoute(mUserLocation, mDestination);
 
@@ -586,10 +606,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mSelectGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("GROUPS",availableGroupIDList.toString());
+
+                Log.d("GROUPS", availableGroupIDList.toString());
                 addGroupToSpinner();
                 mSelectGroup.setVisibility(View.INVISIBLE);
                 mGroupList.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -684,7 +706,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         } else if (dest == null) {
 
-            Toast.makeText(getContext(), "please select a marker as destination", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(), "please select a marker as destination", Toast.LENGTH_LONG).show();
 
         } else {
 

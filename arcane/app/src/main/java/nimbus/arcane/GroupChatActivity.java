@@ -121,18 +121,14 @@ public class GroupChatActivity extends AppCompatActivity {
 
         DatabaseReference group_database = mRootRef.child("Groups");
 
-        group_database.child(group_key).addChildEventListener(new ChildEventListener() {
+        group_database.child(group_key).child("Chats").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                if (dataSnapshot.hasChild("Chats")) {
+                Messages message = dataSnapshot.getValue(Messages.class);
 
-                    Messages message = dataSnapshot.child("Chats").getValue(Messages.class);
-
-                    messagesList.add(message);
-                    mAdapter.notifyDataSetChanged();
-
-                }
+                messagesList.add(message);
+                mAdapter.notifyDataSetChanged();
 
             }
 
