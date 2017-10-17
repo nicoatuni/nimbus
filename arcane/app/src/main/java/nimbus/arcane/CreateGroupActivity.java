@@ -163,10 +163,8 @@ public class CreateGroupActivity extends AppCompatActivity {
                                         mProgress.dismiss();
                                         Toast.makeText(CreateGroupActivity.this, "Group created", Toast.LENGTH_LONG).show();
 
-                                        Intent groupIntent = new Intent(CreateGroupActivity.this, GroupChatActivity.class);
-                                        groupIntent.putExtra("group_name", group_name);
-                                        groupIntent.putExtra("group_id", push_id);
-                                        startActivity(groupIntent);
+                                        Intent mainIntent = new Intent(CreateGroupActivity.this, MainActivity.class);
+                                        startActivity(mainIntent);
                                         finish();
 
                                     } else {
