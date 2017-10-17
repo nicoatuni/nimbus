@@ -105,14 +105,6 @@ public class AddToGroupActivity extends AppCompatActivity {
                          String userStatus = dataSnapshot.child("status").getValue().toString();
                          String userThumbImage = dataSnapshot.child("thumb_image").getValue().toString();
 
-                         if (dataSnapshot.hasChild("latlng")) {
-
-                             double latitude = (double) dataSnapshot.child("latlng").child("latitude").getValue();
-                             double longitude = (double) dataSnapshot.child("latlng").child("longitude").getValue();
-                             mLocation = new LatLng(latitude, longitude);
-
-                         }
-
                          usersViewHolder.setDisplayName(userName);
                          usersViewHolder.setDisplayImage(userThumbImage, getApplicationContext());
                          usersViewHolder.setDisplayStatus(userStatus);
@@ -171,7 +163,7 @@ public class AddToGroupActivity extends AppCompatActivity {
 
                     for (String selection : mSelect) {
 
-                        addToGroup(selection, group_key, mLocation);
+                        addToGroup(selection, group_key);
 
                     }
 
@@ -181,6 +173,7 @@ public class AddToGroupActivity extends AppCompatActivity {
                     groupIntent.putExtra("group_id", group_key);
                     groupIntent.putExtra("group_name", group_name);
                     startActivity(groupIntent);
+                    finish();
 
                 } else {
 
@@ -290,35 +283,56 @@ public class AddToGroupActivity extends AppCompatActivity {
      *    @param user_id the user id that will be added to a group.
      *    @param group_id the group id that belong to the group that the user will be added to.
      */
-    public void addToGroup(final String user_id, final String group_id, final LatLng location) {
+    public void addToGroup(final String user_id, final String group_id) {
 
         mRootRef.child("Users").child(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String user_name = dataSnapshot.child("name").getValue().toString();
+                final String user_name = dataSnapshot.child("name").getValue().toString();
 
-                Map friendsMap = new HashMap();
-                friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
-                friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/name", user_name);
-                friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/latlng", location);
-                friendsMap.put("Users/" + user_id + "/Groups/" + group_id + "/date", ServerValue.TIMESTAMP);
-
-                mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
+                mRootRef.child("Users").child(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                    public void onDataChange(DataSnapshot snapshot) {
 
-                        if (databaseError == null) {
+                        Map friendsMap = new HashMap();
 
-                            Toast.makeText(AddToGroupActivity.this, "Friend added to group", Toast.LENGTH_LONG).show();
+                        if (snapshot.hasChild("latlng")) {
 
-                        } else {
-
-                            String error = databaseError.getMessage();
-
-                            Toast.makeText(AddToGroupActivity.this, error, Toast.LENGTH_SHORT).show();
+                            double latitude = (double) snapshot.child("latlng").child("latitude").getValue();
+                            double longitude = (double) snapshot.child("latlng").child("longitude").getValue();
+                            LatLng location = new LatLng(latitude, longitude);
+                            friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/latlng", location);
 
                         }
+
+                        friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
+                        friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/name", user_name);
+                        friendsMap.put("Users/" + user_id + "/Groups/" + group_id + "/date", ServerValue.TIMESTAMP);
+
+                        mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+                                if (databaseError == null) {
+
+                                    Toast.makeText(AddToGroupActivity.this, "Friend added to group", Toast.LENGTH_LONG).show();
+
+                                } else {
+
+                                    String error = databaseError.getMessage();
+
+                                    Toast.makeText(AddToGroupActivity.this, error, Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
 
