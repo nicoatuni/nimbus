@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -54,6 +55,7 @@ public class AddToGroupActivity extends AppCompatActivity {
 
     private String group_key;
     private String group_name;
+    private LatLng mLocation;
 
     private ArrayList<String> mSelect = new ArrayList<String>();
 
@@ -103,6 +105,14 @@ public class AddToGroupActivity extends AppCompatActivity {
                          String userStatus = dataSnapshot.child("status").getValue().toString();
                          String userThumbImage = dataSnapshot.child("thumb_image").getValue().toString();
 
+                         if (dataSnapshot.hasChild("latlng")) {
+
+                             double latitude = (double) dataSnapshot.child("latlng").child("latitude").getValue();
+                             double longitude = (double) dataSnapshot.child("latlng").child("longitude").getValue();
+                             mLocation = new LatLng(latitude, longitude);
+
+                         }
+
                          usersViewHolder.setDisplayName(userName);
                          usersViewHolder.setDisplayImage(userThumbImage, getApplicationContext());
                          usersViewHolder.setDisplayStatus(userStatus);
@@ -114,9 +124,9 @@ public class AddToGroupActivity extends AppCompatActivity {
                              public void onClick(View v) {
 
                                  usersViewHolder.checkBox.setChecked(usersViewHolder.checkBox.isChecked());
-                                 Toast.makeText(AddToGroupActivity.this, "checkbox", Toast.LENGTH_LONG).show();
+//                                 Toast.makeText(AddToGroupActivity.this, "checkbox", Toast.LENGTH_LONG).show();
                                  addToSelection(list_user_id, usersViewHolder.checkBox());
-                                 Log.d("SetCheckBox", "checkbox");
+//                                 Log.d("SetCheckBox", "checkbox");
 
                              }
                          });
@@ -127,9 +137,9 @@ public class AddToGroupActivity extends AppCompatActivity {
                              public void onClick(View view) {
 
                                  usersViewHolder.setCheckBox();
-                                 Toast.makeText(AddToGroupActivity.this, list_user_id, Toast.LENGTH_LONG).show();
+//                                 Toast.makeText(AddToGroupActivity.this, list_user_id, Toast.LENGTH_LONG).show();
                                  addToSelection(list_user_id, usersViewHolder.checkBox());
-                                 Log.d("SetCheckBox", "users");
+//                                 Log.d("SetCheckBox", "users");
 
                              }
                          });
@@ -161,7 +171,7 @@ public class AddToGroupActivity extends AppCompatActivity {
 
                     for (String selection : mSelect) {
 
-                        addToGroup(selection, group_key);
+                        addToGroup(selection, group_key, mLocation);
 
                     }
 
@@ -280,7 +290,7 @@ public class AddToGroupActivity extends AppCompatActivity {
      *    @param user_id the user id that will be added to a group.
      *    @param group_id the group id that belong to the group that the user will be added to.
      */
-    public void addToGroup(final String user_id, final String group_id) {
+    public void addToGroup(final String user_id, final String group_id, final LatLng location) {
 
         mRootRef.child("Users").child(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -291,6 +301,7 @@ public class AddToGroupActivity extends AppCompatActivity {
                 Map friendsMap = new HashMap();
                 friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/date", ServerValue.TIMESTAMP);
                 friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/name", user_name);
+                friendsMap.put("Groups/" + group_id + "/Members/" + user_id + "/latlng", location);
                 friendsMap.put("Users/" + user_id + "/Groups/" + group_id + "/date", ServerValue.TIMESTAMP);
 
                 mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
