@@ -77,6 +77,8 @@ import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
+ * Last Edited by Richard Aldrich 17/10/2017
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -597,8 +599,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             {
                 selectedGroupID = parent.getItemAtPosition(position).toString();
                 Log.d("GROUPSSELECTED",selectedGroupID);
-                addMarker(selectedGroupID);
 
+                if (mLine != null) {
+
+                    mLine.remove();
+
+                }
+
+                addMarker(selectedGroupID);
 
             } // to close the onItemSelected
             public void onNothingSelected(AdapterView<?> parent)
