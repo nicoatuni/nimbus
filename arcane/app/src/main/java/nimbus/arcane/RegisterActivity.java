@@ -185,4 +185,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+    public void setFireBaseAuth(FirebaseAuth fa ){
+        mAuth = fa;
+    }
 }

@@ -28,6 +28,7 @@ import io.reactivex.subscribers.TestSubscriber;
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -61,10 +62,12 @@ public class RegisterActivityTesting {
 
         mockedDatabaseReference = Mockito.mock(DatabaseReference.class);
 
+        mockAuth = Mockito.mock(FirebaseAuth.class);
+
         FirebaseDatabase mockedFirebaseDatabase = Mockito.mock(FirebaseDatabase.class);
         when(mockedFirebaseDatabase.getReference()).thenReturn(mockedDatabaseReference);
         when(mockAuth.createUserWithEmailAndPassword("email", "password")).thenReturn(mockAuthTask);
-
+        mockAuthTask = Mockito.mock(Task.class);
         when(mockAuth.getCurrentUser()).thenReturn(mockUser);
     }
 
@@ -74,10 +77,12 @@ public class RegisterActivityTesting {
 
     @Test
     public void createNewUser() throws Exception {
-        RegisterActivity registerActivity = new RegisterActivity();
-
-        mockAuth.createUserWithEmailAndPassword("email", "password");
-
-        verify(mockAuth).createUserWithEmailAndPassword(eq("email"), eq("password"));
+        String mockDisplayName = "display";
+        String mockEmail = "email";
+        String mockPassword= "pass";
+        RegisterActivity registerActivity = Mockito.mock(RegisterActivity.class);
+        registerActivity.setFireBaseAuth(mockAuth);
+        registerActivity.register_user(mockDisplayName, mockEmail, mockPassword);
+        verify(registerActivity).register_user(mockDisplayName, mockEmail, mockPassword);
     }
 }
