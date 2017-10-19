@@ -92,6 +92,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private Boolean firstTime = true;
     private String selectedGroupID=null;
     private String group_id;
+    private String group_demo;
     private boolean state = true;
     private int time = 1;
 
@@ -184,6 +185,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     if (availableGroupIDList != null) {
 
                         availableGroupIDList.clear();
+                        mUserDestination = null;
 
                     }
                     for(DataSnapshot postSnapShot:dataSnapshot.getChildren()) {
@@ -322,6 +324,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         if (group_id == null) {
 
             group_id = id;
+            group_demo = id;
 
         } else {
 
