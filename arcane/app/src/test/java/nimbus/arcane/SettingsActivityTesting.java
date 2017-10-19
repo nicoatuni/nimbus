@@ -22,6 +22,8 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 
+/* Unit testing class for Setting Activity class */
+
 public class SettingsActivityTesting {
 
     @Mock
@@ -32,6 +34,7 @@ public class SettingsActivityTesting {
     private SettingsActivity mockSettingClass;
 
     @Before
+    /* Setting up what needs to be mocked i.e. the database references */
     public void setUp() {
 
         mockedDatabaseReference = Mockito.mock(DatabaseReference.class);
@@ -45,6 +48,7 @@ public class SettingsActivityTesting {
 
 
     @Test
+    /* Test all the functions within the class */
     public void testOnActivityResult() {
         int mockSuccessRequestCode = CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE;
         int mockSuccessResultCode = Activity.RESULT_OK;

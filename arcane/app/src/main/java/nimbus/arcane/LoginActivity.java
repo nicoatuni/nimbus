@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param email the email that the user uses for login.
      * @param password the password for the corresponding email that the user typed in.
      */
-    private void login_user(String email, String password) {
+    public void login_user(String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -136,5 +136,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void setFireBaseAuth(FirebaseAuth fa ){
+        mAuth = fa;
+    }
+
+    public FirebaseAuth getFireBaseAuth(){
+        return mAuth;
     }
 }
