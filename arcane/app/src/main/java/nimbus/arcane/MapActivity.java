@@ -457,6 +457,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                         Intent arIntent = new Intent(MapActivity.this, ARActivity.class);
                         arIntent.putExtra("destination", mDestination);
+                        arIntent.putExtra("user_destination", mOtherUserName);
 //                        arIntent.putExtra("routing_points", routePoints.toString());
                         startActivity(arIntent);
 
