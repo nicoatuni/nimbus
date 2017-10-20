@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 /**
  * Created by Richard Aldrich on 3/10/2017.
+ * Last edited by Leonardus Elbert Putra 20/10/2017
  */
 
 public class GPSTracker extends Service implements LocationListener {
@@ -82,7 +83,8 @@ public class GPSTracker extends Service implements LocationListener {
 
     }
 
-    // Create a getLocation method
+    // return last known location if user has used the app otherwise request location update from
+    //location manager
     public Location getLocation() {
 
         try {

@@ -1,63 +1,57 @@
 package nimbus.arcane;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.app.Application;
+import android.location.Location;
+import android.test.ApplicationTestCase;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.StorageReference;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.w3c.dom.Text;
 
 import java.lang.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 
+import static junit.framework.Assert.assertEquals;
+
+/**
+ * Created by Richard Aldrich on 10/10/2017.
+ */
 @RunWith(MockitoJUnitRunner.class)
-
-/* Unit testing class for Setting Activity class */
 
 public class SettingsActivityTesting {
 
-    @Mock
-    private DatabaseReference mockedDatabaseReference;
+    private TextView displayName;
+    private TextView displayStatus;
+    private CircleImageView displayImage;
 
-    private StorageReference mockImageStorage;
+    private Button imageBtn;
+    private Button statusBtn;
 
-    private SettingsActivity mockSettingClass;
+    private DatabaseReference mRootRef;
 
     @Before
-    /* Setting up what needs to be mocked i.e. the database references */
-    public void setUp() {
+    public void setUp() throws Exception {
 
-        mockedDatabaseReference = Mockito.mock(DatabaseReference.class);
+        mRootRef = FirebaseDatabase.getInstance().getReference();
 
-        FirebaseDatabase mockedFirebaseDatabase = Mockito.mock(FirebaseDatabase.class);
-        when(mockedFirebaseDatabase.getReference()).thenReturn(mockedDatabaseReference);
-
-        mockSettingClass = Mockito.mock(SettingsActivity.class);
-        mockSettingClass.setDataBase(mockedFirebaseDatabase.getReference());
+//        displayName = (TextView) R.id.settings_display_name;
+//
+//        srcPostCode.setText("3055");
+//        destPostCode.setText("3010");
+//
+//        UI.addWidget("CALCULATE_BUTTON", new Button());
+//        UI.addWidget("COST_LABEL", costLabel);
+//        UI.addWidget("SOURCE_POST_CODE", srcPostCode);
+//        UI.addWidget("DESTINATION_POST_CODE", destPostCode);
     }
 
-
-    @Test
-    /* Test all the functions within the class */
-    public void testOnActivityResult() {
-        int mockSuccessRequestCode = CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE;
-        int mockSuccessResultCode = Activity.RESULT_OK;
-        Intent mockData = new Intent();
-
-        mockSettingClass.onActivityResult(mockSuccessRequestCode, mockSuccessResultCode, mockData);
-
-        verify(mockSettingClass).onActivityResult(mockSuccessRequestCode,
-                mockSuccessResultCode, mockData);
-
-    }
 }

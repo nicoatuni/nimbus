@@ -28,13 +28,14 @@ import io.reactivex.subscribers.TestSubscriber;
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Created by Richard Aldrich on 10/10/2017.
+ */
 @RunWith(MockitoJUnitRunner.class)
 
-/* Testuing unit for Register Activity class */
 public class RegisterActivityTesting {
 
     private DatabaseReference mockedDatabaseReference;
@@ -55,18 +56,15 @@ public class RegisterActivityTesting {
     private ArgumentCaptor<OnCompleteListener> testOnCompleteListener;
 
     @Before
-    /* Mocking all nessecary database references */
     public void setUp() throws Exception {
         setupTask(mockAuthTask);
 
         mockedDatabaseReference = Mockito.mock(DatabaseReference.class);
 
-        mockAuth = Mockito.mock(FirebaseAuth.class);
-
         FirebaseDatabase mockedFirebaseDatabase = Mockito.mock(FirebaseDatabase.class);
         when(mockedFirebaseDatabase.getReference()).thenReturn(mockedDatabaseReference);
         when(mockAuth.createUserWithEmailAndPassword("email", "password")).thenReturn(mockAuthTask);
-        mockAuthTask = Mockito.mock(Task.class);
+
         when(mockAuth.getCurrentUser()).thenReturn(mockUser);
     }
 
@@ -75,14 +73,11 @@ public class RegisterActivityTesting {
     }
 
     @Test
-    /* Testing the functions within the class */
     public void createNewUser() throws Exception {
-        String mockDisplayName = "display";
-        String mockEmail = "email";
-        String mockPassword= "pass";
-        RegisterActivity registerActivity = Mockito.mock(RegisterActivity.class);
-        registerActivity.setFireBaseAuth(mockAuth);
-        registerActivity.register_user(mockDisplayName, mockEmail, mockPassword);
-        verify(registerActivity).register_user(mockDisplayName, mockEmail, mockPassword);
+        RegisterActivity registerActivity = new RegisterActivity();
+
+        mockAuth.createUserWithEmailAndPassword("email", "password");
+
+        verify(mockAuth).createUserWithEmailAndPassword(eq("email"), eq("password"));
     }
 }

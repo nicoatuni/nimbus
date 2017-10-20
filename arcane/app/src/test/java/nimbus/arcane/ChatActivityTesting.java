@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 
-/* Testuing unit for Chat Activity class */
+//Need to implement test load message
 
 public class ChatActivityTesting {
 
@@ -30,9 +30,7 @@ public class ChatActivityTesting {
     private DatabaseReference mockedDatabaseReference;
 
     private ChatActivity mockChatClass;
-
     @Before
-    /* Mocking all nessecary database references */
     public void setUp() {
 
         mockedDatabaseReference = Mockito.mock(DatabaseReference.class);
@@ -45,7 +43,6 @@ public class ChatActivityTesting {
     }
 
     @Test
-    /* Testing all of the functions for Chat Activity class*/
     public void testSendMessage() {
         String mockTypeString = "test";
         String mockMessageString = "testing";
