@@ -288,4 +288,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
     }
+
+    public void setDataBase(DatabaseReference dr ){
+        mUserDatabase = dr;
+    }
 }
