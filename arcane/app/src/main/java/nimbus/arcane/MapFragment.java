@@ -171,7 +171,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mGroupList = (Spinner) mMainView.findViewById(R.id.group_list);
 
-        if(firstTime){
+        if(firstTime && selectedGroupID==null){
             mGroupList.setVisibility(View.INVISIBLE);
         }else{
             mGroupList.setVisibility(View.VISIBLE);
