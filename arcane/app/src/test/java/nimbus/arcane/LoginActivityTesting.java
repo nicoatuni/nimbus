@@ -1,8 +1,5 @@
 package nimbus.arcane;
 
-import android.location.Location;
-import android.support.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,22 +17,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.Collections;
-
-import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subscribers.TestSubscriber;
-
-import static junit.framework.Assert.assertEquals;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 
-/* Testuing unit for Register Activity class */
-public class RegisterActivityTesting {
+/* Testuing unit for Login Activity class */
+
+public class LoginActivityTesting {
 
     private DatabaseReference mockedDatabaseReference;
 
@@ -77,12 +66,11 @@ public class RegisterActivityTesting {
     @Test
     /* Testing the functions within the class */
     public void createNewUser() throws Exception {
-        String mockDisplayName = "display";
         String mockEmail = "email";
         String mockPassword= "pass";
-        RegisterActivity registerActivity = Mockito.mock(RegisterActivity.class);
-        registerActivity.setFireBaseAuth(mockAuth);
-        registerActivity.register_user(mockDisplayName, mockEmail, mockPassword);
-        verify(registerActivity).register_user(mockDisplayName, mockEmail, mockPassword);
+        LoginActivity loginActivity = Mockito.mock(LoginActivity.class);
+        loginActivity.setFireBaseAuth(mockAuth);
+        loginActivity.login_user( mockEmail, mockPassword);
+        verify(loginActivity).login_user(mockEmail, mockPassword);
     }
 }
