@@ -75,26 +75,34 @@ import java.util.Map;
 import java.util.Objects;
 
 
-/**
+/**Created by Leonardus ELbert on 3/10/2017.
  * A simple {@link Fragment} subclass.
  *
- * Last Edited by Richard Aldrich 17/10/2017
+ * Last Edited by Leonardus Elbert Putra 20/10/2017
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private static View mMainView;
 
+    //List of latitude and longitude that constructs a polygon route decoded from google direction URL
     public static List<List<HashMap<String, String>>> routePoints = null;
+
+    //Groups that the current user allowed to access
     private ArrayList<String> availableGroupIDList=new ArrayList<String>();
     private ArrayList<String> availableGroupNameList=new ArrayList<String>();
 
     private GoogleMap mMap;
+    //first time running the app after installing
     private Boolean firstTime = true;
+
+    //currently selected group ID
     private String selectedGroupID=null;
+
+    //previously selected group ID
     private String group_id;
+
     private String group_demo;
-    private boolean state = true;
-    private int time = 1;
+
 
     private static LocationManager locationManager;
     private static LocationListener locationListener;
@@ -122,6 +130,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private HashMap<String, String> mFriendsLocation = new HashMap<String, String>();
     private HashMap mMarkerMap = new HashMap();
 
+    //loading screen during getting user location
     private ProgressDialog mProgress;
 
     private ValueEventListener mRef;
@@ -162,8 +171,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mGroupList = (Spinner) mMainView.findViewById(R.id.group_list);
 
-        if(firstTime){
+        if(firstTime && selectedGroupID==null){
             mGroupList.setVisibility(View.INVISIBLE);
+        }else{
+            mGroupList.setVisibility(View.VISIBLE);
         }
 
 
@@ -176,6 +187,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         return mMainView;
     }
 
+    //register an event listener to get groups ID that are available for the current user
     public void getGroups(){
         mUserRef.child("Groups").addValueEventListener(new ValueEventListener() {
             @Override
@@ -205,6 +217,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
     }
 
+    //Since the database uses user ID as key, this function will get the groups' names corresponding
+    //to the available group IDs
     public void getGroupReference(){
         mRootRef.child("Groups").addValueEventListener(new ValueEventListener() {
             @Override
@@ -216,15 +230,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         availableGroupNameList.clear();
 
                     }
-//                    for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
-//                        String id=postSnapShot.getKey();
-//                        for(int i=0;i<availableGroupIDList.size();i++){
-//                            if(id.equals(availableGroupIDList.get(i))){
-//                                //Log.e("User ", postSnapShot.child("name").toString());
-//                                availableGroupNameList.add(postSnapShot.child("name").getValue().toString());
-//                            }
-//                        }
-//                    }
+
                     for(int i=0;i<availableGroupIDList.size();i++){
                         String id=availableGroupIDList.get(i);
                         for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
@@ -243,6 +249,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
     }
 
+    //adding group name to a drop down list that can be accessed on the map
     public void addGroupToSpinner(){
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, availableGroupNameList);
@@ -271,13 +278,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         }
 
+        //try to get lat known location
         if (mLocation != null) {
 
             latitude = mLocation.getLatitude();
             longitude = mLocation.getLongitude();
 
-        } else {
+        }
 
+
+        else {
+            //get user current location and display marker based on corresponding group the user picked
             mUserRef.child("latlng").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -319,14 +330,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+
+    //add all friends in the selected group as a marker on google map
     public void addMarker(String id) {
+
 
         if (group_id == null) {
 
             group_id = id;
             group_demo = id;
 
-        } else {
+        }
+        else {
 
             if (!group_id.equals(id)) {
 
@@ -391,6 +406,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+
     private void deleteMarker(String name) {
 
         Marker tMarker = (Marker) mMarkerMap.get(name);
@@ -419,6 +435,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    //check if marker already displayed on map to avoid duplicate
     private void verifyMarker(String user_name) {
 
             Marker tMarker = (Marker) mMarkerMap.get(user_name);
@@ -431,6 +448,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+
+    //update current user location in database
     public void addUserLocation(LatLng location) {
 
         Map locationMap = new HashMap();
@@ -440,7 +459,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             locationMap.put("Groups/" + id + "/Members/" + mCurrentUser.getUid() + "/latlng", location);
 
         }
-//        locationMap.put("Groups/" + "-Kw2VGxV01m_oJqGa9qs" + "/Members/" + mCurrentUser.getUid() + "/latlng", location);
+
 
         mRootRef.updateChildren(locationMap, new DatabaseReference.CompletionListener() {
             @Override
@@ -455,6 +474,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
 
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -472,40 +492,32 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     if (lastKnownLocation != null) {
 
                         LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-//                        mMap.clear();
                         if (mUser != null) {
 
                             mUser.remove();
 
                         }
                         mUser = mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
-//                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
 
                         // add user location to database
                         addUserLocation(userLocation);
 
                     }
 
-//                    addMarker();
 
                 }
             }
         }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
+     //Manipulates the map once available.
+     //This callback is triggered when the map is ready to be used.
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //register available groups
         getGroups();
         getGroupReference();
 
@@ -516,7 +528,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onLocationChanged(Location location) {
 
                 mUserLocation = new LatLng(location.getLatitude(), location.getLongitude());
-//                mMap.clear();
                 if (mUser != null) {
 
                     mUser.remove();
@@ -536,9 +547,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 }
 
                 if(selectedGroupID != null){
-
-//                    Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
-//                    Log.e("GROUP ID", selectedGroupID);
                     addMarker(selectedGroupID);
                     selectedGroupID = null;
 
@@ -568,6 +576,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         };
 
+        //check permission to access user location
         int permission_all = 1;
         int check_permission;
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -592,21 +601,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     if (lastKnownLocation != null) {
 
                         LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-//                        mMap.clear();
+
                         if (mUser != null) {
 
                             mUser.remove();
 
                         }
                         mUser = mMap.addMarker(new MarkerOptions().position(userLocation).title("You are here"));
-//                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
 
                         // add user location to database
                         addUserLocation(userLocation);
 
                     }
 
-//                    addMarker();
 
                 }
 
@@ -615,24 +622,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
 
         if(selectedGroupID!=null){
-//            Toast.makeText(getContext(), "ready", Toast.LENGTH_LONG).show();
+
             Log.e("CALL FROM", "AFTER PERMISSION");
             addMarker(selectedGroupID);
         }
 
+        //click listener for marker to register destination target and automatically show the route
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
 
                 mDestination = marker.getPosition();
                 mUserDestination = marker.getTitle();
-//                Log.e("USER DESTINATION", mUserDestination);
-//                Toast.makeText(getContext(), mDestination.toString(), Toast.LENGTH_LONG).show();
                 makeRoute(mUserLocation, mDestination);
 
             }
         });
 
+
+        //click listener for location button bottom right of the map
+        //recenter the camera to user location
         mMyLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -646,6 +655,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
+        //click listener for select a group button
         mSelectGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -659,10 +669,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
+        //event listener for selecting item in the group drop down list
+        //updates user current selected group to be displayed on map
         mGroupList.setOnItemSelectedListener(new OnItemSelectedListener()
         {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
+                //get group ID based on the name selected from the dropdown list
                 String selectedGroupName= parent.getItemAtPosition(position).toString();
                 for(int i=0;i<availableGroupNameList.size();i++){
                     Log.d("GROUPS",i+""+selectedGroupName+" vs "+availableGroupNameList.get(i));
@@ -674,6 +687,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                //selectedGroupID = parent.getItemAtPosition(position).toString();
                 Log.d("GROUPSSELECTED",selectedGroupID);
 
+                //make sure the route is not drawn on the map
                 if (mLine != null) {
 
                     mLine.remove();
@@ -692,6 +706,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    //check user current permission state (currently only support SDK>=23)
     public static int hasPermissions(Context context, String... permissions) {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M && context != null && permissions != null) {
@@ -717,6 +732,86 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         return 0;
     }
 
+
+
+
+    //make route on the map from user location to desired destination using google direction URL and
+    //polyline
+    private void makeRoute(LatLng origin, LatLng dest) {
+
+        if (origin == null && dest == null) {
+
+            Toast.makeText(getContext(), "user and destination location needed", Toast.LENGTH_LONG).show();
+
+        } else if (origin == null) {
+
+            Toast.makeText(getContext(), "user location not found", Toast.LENGTH_LONG).show();
+
+        } else if (dest == null) {
+
+//            Toast.makeText(getContext(), "please select a marker as destination", Toast.LENGTH_LONG).show();
+
+        } else {
+
+            if (mUser != null) {
+
+                mUser.remove();
+
+            }
+            mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
+
+            //Getting URL to the Google Directions API
+            String url = getDirectionsUrl(origin, dest);
+
+            DownloadTask downloadTask = new DownloadTask();
+
+            // Start downloading json data from Google Directions API
+            downloadTask.execute(url);
+
+            //set switch to move to ar activity
+            mSwitch.setVisibility(View.VISIBLE);
+            mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    if (isChecked) {
+
+                        if (routePoints != null) {
+                            Intent arIntent = new Intent(getContext(), ARActivity.class);
+                            arIntent.putExtra("destination", mDestination);
+                            arIntent.putExtra("user_destination", mUserDestination);
+                            startActivity(arIntent);
+
+                            Toast.makeText(getContext(), "Opening AR Activity", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(),"Please wait while we are fetching the route data", Toast.LENGTH_LONG).show();
+                        }
+                        mSwitch.setChecked(false);
+
+                    } else {
+
+                        Toast.makeText(getContext(), "Switch off", Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            });
+
+        }
+
+    }
+
+
+//Functions below here are taken and modified from   :
+//*************************************************************************************************
+
+/* Reference : https://www.journaldev.com/13373/android-google-map-drawing-route-two-points
+* by ANUPAM CHUGH
+* Last Edited by Leonardus ELbert Putra on 1/10/2017
+* Used for IT PROJECT COMP30022 University of Melbourne | Project AR.CNE*/
+
+//*************************************************************************************************
+
+    //download  URL direction route from google
     private class DownloadTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... url) {
@@ -746,76 +841,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-    private void makeRoute(LatLng origin, LatLng dest) {
-
-        if (origin == null && dest == null) {
-
-            Toast.makeText(getContext(), "user and destination location needed", Toast.LENGTH_LONG).show();
-
-        } else if (origin == null) {
-
-            Toast.makeText(getContext(), "user location not found", Toast.LENGTH_LONG).show();
-
-        } else if (dest == null) {
-
-//            Toast.makeText(getContext(), "please select a marker as destination", Toast.LENGTH_LONG).show();
-
-        } else {
-
-//            mMap.clear();
-            if (mUser != null) {
-
-                mUser.remove();
-
-            }
-            mUser = mMap.addMarker(new MarkerOptions().position(mUserLocation).title("You are here"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mUserLocation, 15));
-//            addMarker();
-
-            //Getting URL to the Google Directions API
-            String url = getDirectionsUrl(origin, dest);
-//            Toast.makeText(getContext(), url, Toast.LENGTH_SHORT).show();
-
-            DownloadTask downloadTask = new DownloadTask();
-
-            // Start downloading json data from Google Directions API
-            downloadTask.execute(url);
-
-            mSwitch.setVisibility(View.VISIBLE);
-            mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                    if (isChecked) {
-
-                        //Log.d("DESTINATION","Destination : "+mDestination);
-                        if (routePoints != null) {
-                            Intent arIntent = new Intent(getContext(), ARActivity.class);
-                            arIntent.putExtra("destination", mDestination);
-                            arIntent.putExtra("user_destination", mUserDestination);
-                            //arIntent.putExtra("routing_points", routePoints.toString());
-                            startActivity(arIntent);
-
-                            Toast.makeText(getContext(), "Opening AR Activity", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(getContext(),"Please wait while we are fetching the route data", Toast.LENGTH_LONG).show();
-                        }
-                        mSwitch.setChecked(false);
-
-                    } else {
-
-                        Toast.makeText(getContext(), "Switch off", Toast.LENGTH_LONG).show();
-
-                    }
-                }
-            });
-
-        }
-
-    }
-
-
-
+    //construct google direction URL request based on origin and destination location
     public String getDirectionsUrl(LatLng origin, LatLng dest) {
 
         // Origin of route
@@ -937,6 +963,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             }
 
+            //make sure to remove old route before drawing a new one
             if (mLine != null) {
 
                 mLine.remove();

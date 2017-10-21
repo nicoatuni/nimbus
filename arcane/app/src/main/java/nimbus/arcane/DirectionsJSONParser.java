@@ -12,9 +12,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
+
 /**
  * Created by anupamchugh on 27/11/15.
  */
+
+//*************************************************************************************************
+
+/* Reference : https://www.journaldev.com/13373/android-google-map-drawing-route-two-points
+* by ANUPAM CHUGH
+* Used for IT PROJECT COMP30022 University of Melbourne | Project AR.CNE*/
+
+//*************************************************************************************************
 
 public class DirectionsJSONParser {
 
