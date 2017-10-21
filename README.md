@@ -10,6 +10,11 @@ AR•CNE is an Augmented Reality (AR) based application that mainly helps people
 - Sharing location in group or private chat
 - User sign-up/sign-in with customizable profile page
 
+## Device Requirements
+
+- Android device running SDK>=23
+- Android version 6.0 or above
+
 ## Download and Use
 
 To download raw project, simply Clone this rep and open folder using a Java based IDE (preferably Android Studio).
