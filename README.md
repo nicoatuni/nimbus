@@ -21,7 +21,7 @@ Note: This app requires constant Internet connection and GPS tracking to work pr
 ### Using Map and Routing
 
 - sign up or login
-- go to map fragment
+- go to map tab
 - select and pick a group that you want to track
 - pick a user marker that you want as a destination target and click it
 - click "select as destination" text at the top of the marker you clicked
