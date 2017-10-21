@@ -4,7 +4,7 @@ AR•CNE is an Augmented Reality (AR) based application that mainly helps people
 
 ## List of the app features:
 
-- Augmented reallity route tracking
+- Augmented reality route tracking
 - Group with chat system
 - Private user to user chat
 - Sharing location in group or private chat
@@ -23,8 +23,8 @@ Note: This app requires constant Internet connection and GPS tracking to work pr
 - sign up or login
 - go to map fragment
 - select and pick a group that you want to track
-- pick a user marker that you want as a destination target
-- click "select as destination" text at the top of the marker you picked
+- pick a user marker that you want as a destination target and click it
+- click "select as destination" text at the top of the marker you clicked
 - once the destination and routing is rendered, you can switch to AR mode by togling the AR switch at the 
   top right of the map
 
@@ -39,5 +39,5 @@ Nico Dinata | ndinata@student.unimelb.edu.au | 770318
 Richard Aldrich | rsiem@student.unimelb.edu.au | 716039
 
 ## Acknowledgement
-- drawing route: https://www.journaldev.com/13373/android-google-map-drawing-route-two-points by ANUPAM CHUGH
+- drawing route between 2 points: https://www.journaldev.com/13373/android-google-map-drawing-route-two-points by ANUPAM CHUGH
 - inspired by TVAC Studio
