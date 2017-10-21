@@ -18,9 +18,7 @@ To try this app in Android Studio, Run the app using an Android smartphone or an
 
 Note: This app requires constant Internet connection and GPS tracking to work properly, so using an emulator means you might need to mock your location
 
-## How To Use
-
-### Map and Routing
+### Using Map and Routing
 
 - sign up or login
 - go to map fragment
