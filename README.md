@@ -32,6 +32,16 @@ Note: This app requires constant Internet connection and GPS tracking to work pr
 - click "select as destination" text at the top of the marker you clicked
 - once the destination and routing is rendered, you can switch to AR mode by togling the AR switch at the 
   top right of the map
+  
+### Using AR Feature
+- after switching to AR mode, the user will be directed to the AR View
+- in the AR View you will see 2 compasses, one showing the device's direction in relation to the four cardinal
+directions and the other one showing the device's direction in relation to target point/location
+- in the AR View you can choose 2 types of the AR Mode by toogling the Mode Switch on the top right corner
+- the first mode is Routing Mode, where we split the polyline in from the map to a list of checkpoints. The next checkpoint in the route will be rendered as a red dot, and will change to the next one as we move near the current checkpoint. The user can also see how many checkpoints left until the destination.
+- the second mode is Destination Target Mode, where we directly set the red dot on the AR View as the direction and location of the target location.
+- in the AR View, the user can see the distance between the user and the target checkpoint/location.
+- to go back to the map feature, the user simply need to press the back button on their smartphone
 
 ## Members of nimbus:
 
