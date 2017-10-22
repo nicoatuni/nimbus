@@ -56,3 +56,5 @@ Richard Aldrich | rsiem@student.unimelb.edu.au | 716039
 ## Acknowledgement
 - drawing route between 2 points: https://www.journaldev.com/13373/android-google-map-drawing-route-two-points by ANUPAM CHUGH
 - inspired by TVAC Studio
+- AR inspiration and source : https://github.com/dat-ng/ar-location-based-android
+- compass base : https://www.youtube.com/watch?v=RcqXFxqIAW4
